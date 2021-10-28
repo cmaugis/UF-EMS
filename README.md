@@ -1,3 +1,1 @@
-# UF-Eléments de Modélisation Statistique
-
-Cette page regroupe les supports de cours de l'UF Eléments de Modélisation Statistique (EMS)
+On trouve ici les slides de cours de la partie Modèle Linéaire général et généralisé de l'UF EMS. 
