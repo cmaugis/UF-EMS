@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 7 Analyse de variance (ANOVA) | Modèle linéaire général et modèle linéaire généralisé</title>
+  <meta name="description" content="Chapitre 7 Analyse de variance (ANOVA) | Modèle linéaire général et modèle linéaire généralisé" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 7 Analyse de variance (ANOVA) | Modèle linéaire général et modèle linéaire généralisé" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 7 Analyse de variance (ANOVA) | Modèle linéaire général et modèle linéaire généralisé" />
+  
+  
+  
+
+<meta name="author" content="Cathy Maugis-Rabusseau (INSA Toulouse / IMT)" />
+
+
+<meta name="date" content="2021-10-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="regression.html"/>
+<link rel="next" href="ANCOVA.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">UF Elements de modélisation statistique</a></li>
+<li>      <img src="image/LogoInsaToulouse.jpg" height="20px" align="right"/>      </li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Préface</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#modélisation-dune-réponse-quantitative"><i class="fa fa-check"></i><b>1.1</b> Modélisation d’une réponse quantitative</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#jeu-de-données-illustratif"><i class="fa fa-check"></i><b>1.1.1</b> Jeu de données illustratif</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#régression-linéaire"><i class="fa fa-check"></i><b>1.1.2</b> Régression linéaire</a></li>
+<li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#analyse-de-la-variance-anova"><i class="fa fa-check"></i><b>1.1.3</b> Analyse de la variance (ANOVA)</a></li>
+<li class="chapter" data-level="1.1.4" data-path="intro.html"><a href="intro.html#analyse-de-covariance-ancova"><i class="fa fa-check"></i><b>1.1.4</b> Analyse de covariance (ANCOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#modélisation-dune-variable-binaire-de-comptage"><i class="fa fa-check"></i><b>1.2</b> Modélisation d’une variable binaire, de comptage, …</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#objectifs-du-cours"><i class="fa fa-check"></i><b>1.3</b> Objectifs du cours</a></li>
+</ul></li>
+<li class="part"><span><b>I Le modèle linéaire général</b></span></li>
+<li class="chapter" data-level="2" data-path="DefML.html"><a href="DefML.html"><i class="fa fa-check"></i><b>2</b> Définitions générales</a><ul>
+<li class="chapter" data-level="2.1" data-path="DefML.html"><a href="DefML.html#modlinreg"><i class="fa fa-check"></i><b>2.1</b> Modèle linéaire régulier</a></li>
+<li class="chapter" data-level="2.2" data-path="DefML.html"><a href="DefML.html#exemples-de-modèle-linéaire-gaussien"><i class="fa fa-check"></i><b>2.2</b> Exemples de modèle linéaire gaussien</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="DefML.html"><a href="DefML.html#le-modèle-de-régression-linéaire"><i class="fa fa-check"></i><b>2.2.1</b> Le modèle de régression linéaire</a></li>
+<li class="chapter" data-level="2.2.2" data-path="DefML.html"><a href="DefML.html#le-modèle-danalyse-de-la-variance"><i class="fa fa-check"></i><b>2.2.2</b> Le modèle d’analyse de la variance</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="DefML.html"><a href="DefML.html#en-résumé"><i class="fa fa-check"></i><b>2.3</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="EstML.html"><a href="EstML.html"><i class="fa fa-check"></i><b>3</b> Estimation des paramètres</a><ul>
+<li class="chapter" data-level="3.1" data-path="EstML.html"><a href="EstML.html#estimation-de-theta"><i class="fa fa-check"></i><b>3.1</b> Estimation de <span class="math inline">\(\theta\)</span></a></li>
+<li class="chapter" data-level="3.2" data-path="EstML.html"><a href="EstML.html#valeurs-ajustées-et-résidus"><i class="fa fa-check"></i><b>3.2</b> Valeurs ajustées et résidus</a></li>
+<li class="chapter" data-level="3.3" data-path="EstML.html"><a href="EstML.html#estimation-de-sigma2"><i class="fa fa-check"></i><b>3.3</b> Estimation de <span class="math inline">\(\sigma^2\)</span></a></li>
+<li class="chapter" data-level="3.4" data-path="EstML.html"><a href="EstML.html#erreurs-standards"><i class="fa fa-check"></i><b>3.4</b> Erreurs standards</a></li>
+<li class="chapter" data-level="3.5" data-path="EstML.html"><a href="EstML.html#intervalle-de-confiance-de-theta_j-de-xtheta_i-et-de-x_0theta"><i class="fa fa-check"></i><b>3.5</b> Intervalle de confiance de <span class="math inline">\(\theta_j\)</span>, de <span class="math inline">\((X\theta)_i\)</span> et de <span class="math inline">\(X_0\theta\)</span></a><ul>
+<li class="chapter" data-level="3.5.1" data-path="EstML.html"><a href="EstML.html#ICthetaj"><i class="fa fa-check"></i><b>3.5.1</b> Intervalle de confiance de <span class="math inline">\(\theta_j\)</span></a></li>
+<li class="chapter" data-level="3.5.2" data-path="EstML.html"><a href="EstML.html#ICXthetai"><i class="fa fa-check"></i><b>3.5.2</b> Intervalle de confiance de <span class="math inline">\((X\theta)_i\)</span></a></li>
+<li class="chapter" data-level="3.5.3" data-path="EstML.html"><a href="EstML.html#ICX0theta"><i class="fa fa-check"></i><b>3.5.3</b> Intervalle de confiance de <span class="math inline">\(X_0\theta\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="EstML.html"><a href="EstML.html#ICpredit"><i class="fa fa-check"></i><b>3.6</b> Intervalles de prédiction</a></li>
+<li class="chapter" data-level="3.7" data-path="EstML.html"><a href="EstML.html#qualité-dajustement"><i class="fa fa-check"></i><b>3.7</b> Qualité d’ajustement</a></li>
+<li class="chapter" data-level="3.8" data-path="EstML.html"><a href="EstML.html#en-résumé-1"><i class="fa fa-check"></i><b>3.8</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Test.html"><a href="Test.html"><i class="fa fa-check"></i><b>4</b> Test de Fisher-Snedecor</a><ul>
+<li class="chapter" data-level="4.1" data-path="Test.html"><a href="Test.html#hypothèses-testées"><i class="fa fa-check"></i><b>4.1</b> Hypothèses testées</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="Test.html"><a href="Test.html#première-écriture"><i class="fa fa-check"></i><b>4.1.1</b> Première écriture</a></li>
+<li class="chapter" data-level="4.1.2" data-path="Test.html"><a href="Test.html#seconde-écriture"><i class="fa fa-check"></i><b>4.1.2</b> Seconde écriture</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="Test.html"><a href="Test.html#le-test-de-fisher-snedecor"><i class="fa fa-check"></i><b>4.2</b> Le test de Fisher-Snedecor</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="Test.html"><a href="Test.html#principe"><i class="fa fa-check"></i><b>4.2.1</b> Principe</a></li>
+<li class="chapter" data-level="4.2.2" data-path="Test.html"><a href="Test.html#comblinconjointes"><i class="fa fa-check"></i><b>4.2.2</b> La statistique de test</a></li>
+<li class="chapter" data-level="4.2.3" data-path="Test.html"><a href="Test.html#règle-de-décision"><i class="fa fa-check"></i><b>4.2.3</b> Règle de décision</a></li>
+<li class="chapter" data-level="4.2.4" data-path="Test.html"><a href="Test.html#comblin"><i class="fa fa-check"></i><b>4.2.4</b> Cas particulier où <span class="math inline">\(q=1\)</span> : Test de Student</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="Test.html"><a href="Test.html#intervalle-région-de-confiance-pour-ctheta"><i class="fa fa-check"></i><b>4.3</b> Intervalle (région) de confiance pour <span class="math inline">\(C\theta\)</span></a><ul>
+<li class="chapter" data-level="4.3.1" data-path="Test.html"><a href="Test.html#ic-pour-ctheta-in-mathbbr"><i class="fa fa-check"></i><b>4.3.1</b> IC pour <span class="math inline">\(C\theta \in \mathbb{R}\)</span></a></li>
+<li class="chapter" data-level="4.3.2" data-path="Test.html"><a href="Test.html#région-de-confiance-pour-ctheta-in-mathbbrq"><i class="fa fa-check"></i><b>4.3.2</b> Région de confiance pour <span class="math inline">\(C\theta \in \mathbb{R}^q\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="Test.html"><a href="Test.html#en-résumé-2"><i class="fa fa-check"></i><b>4.4</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="singulier.html"><a href="singulier.html"><i class="fa fa-check"></i><b>5</b> Modèles singuliers, orthogonalité et importance des hypothèses sur les erreurs</a><ul>
+<li class="chapter" data-level="5.1" data-path="singulier.html"><a href="singulier.html#quand-h1-h4-ne-sont-pas-respectées"><i class="fa fa-check"></i><b>5.1</b> Quand H1-H4 ne sont pas respectées…</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="singulier.html"><a href="singulier.html#propriétés-de-lestimateur-des-moindres-carrés-widehattheta"><i class="fa fa-check"></i><b>5.1.1</b> Propriétés de l’estimateur des moindres carrés <span class="math inline">\(\widehat{\theta}\)</span></a></li>
+<li class="chapter" data-level="5.1.2" data-path="singulier.html"><a href="singulier.html#propriétés-de-lestimateur-des-moindres-carrés-widehatsigma2"><i class="fa fa-check"></i><b>5.1.2</b> Propriétés de l’estimateur des moindres carrés <span class="math inline">\(\widehat{\sigma}^2\)</span></a></li>
+<li class="chapter" data-level="5.1.3" data-path="singulier.html"><a href="singulier.html#modèles-avec-corrélations"><i class="fa fa-check"></i><b>5.1.3</b> Modèles avec corrélations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="singulier.html"><a href="singulier.html#ModSingulier"><i class="fa fa-check"></i><b>5.2</b> Modèles singuliers</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="singulier.html"><a href="singulier.html#contraintes-didentifiabilité"><i class="fa fa-check"></i><b>5.2.1</b> Contraintes d’identifiabilité</a></li>
+<li class="chapter" data-level="5.2.2" data-path="singulier.html"><a href="singulier.html#fonctions-estimables-et-contrastes"><i class="fa fa-check"></i><b>5.2.2</b> Fonctions estimables et contrastes</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="singulier.html"><a href="singulier.html#orthogonalité"><i class="fa fa-check"></i><b>5.3</b> Orthogonalité</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="singulier.html"><a href="singulier.html#orthogonalité-pour-les-modèles-réguliers"><i class="fa fa-check"></i><b>5.3.1</b> Orthogonalité pour les modèles réguliers</a></li>
+<li class="chapter" data-level="5.3.2" data-path="singulier.html"><a href="singulier.html#orthogonalité-pour-les-modèles-non-réguliers"><i class="fa fa-check"></i><b>5.3.2</b> Orthogonalité pour les modèles non-réguliers</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="singulier.html"><a href="singulier.html#en-résumé-3"><i class="fa fa-check"></i><b>5.4</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>6</b> La régression linéaire</a><ul>
+<li class="chapter" data-level="6.1" data-path="regression.html"><a href="regression.html#introduction"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="regression.html"><a href="regression.html#exemple-illustratif"><i class="fa fa-check"></i><b>6.1.1</b> Exemple illustratif</a></li>
+<li class="chapter" data-level="6.1.2" data-path="regression.html"><a href="regression.html#problématique"><i class="fa fa-check"></i><b>6.1.2</b> Problématique</a></li>
+<li class="chapter" data-level="6.1.3" data-path="regression.html"><a href="regression.html#le-modèle-de-régression-linéaire-simple"><i class="fa fa-check"></i><b>6.1.3</b> Le modèle de régression linéaire simple</a></li>
+<li class="chapter" data-level="6.1.4" data-path="regression.html"><a href="regression.html#le-modèle-de-régression-linéaire-multiple"><i class="fa fa-check"></i><b>6.1.4</b> Le modèle de régression linéaire multiple</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="regression.html"><a href="regression.html#estimation"><i class="fa fa-check"></i><b>6.2</b> Estimation</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="regression.html"><a href="regression.html#résultats-généraux"><i class="fa fa-check"></i><b>6.2.1</b> Résultats généraux</a></li>
+<li class="chapter" data-level="6.2.2" data-path="regression.html"><a href="regression.html#propriétés-en-régression-linéaire-simple"><i class="fa fa-check"></i><b>6.2.2</b> Propriétés en régression linéaire simple</a></li>
+<li class="chapter" data-level="6.2.3" data-path="regression.html"><a href="regression.html#le-coefficient-r2"><i class="fa fa-check"></i><b>6.2.3</b> Le coefficient <span class="math inline">\(R^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="regression.html"><a href="regression.html#tests-et-intervalles-de-confiance"><i class="fa fa-check"></i><b>6.3</b> Tests et intervalles de confiance</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="regression.html"><a href="regression.html#test-de-nullité-dun-paramètre-du-modèle"><i class="fa fa-check"></i><b>6.3.1</b> Test de nullité d’un paramètre du modèle</a></li>
+<li class="chapter" data-level="6.3.2" data-path="regression.html"><a href="regression.html#test-de-nullité-de-quelques-paramètres-du-modèle"><i class="fa fa-check"></i><b>6.3.2</b> Test de nullité de quelques paramètres du modèle</a></li>
+<li class="chapter" data-level="6.3.3" data-path="regression.html"><a href="regression.html#test-de-nullité-de-tous-les-paramètres-du-modèle"><i class="fa fa-check"></i><b>6.3.3</b> Test de nullité de tous les paramètres du modèle</a></li>
+<li class="chapter" data-level="6.3.4" data-path="regression.html"><a href="regression.html#intervalle-de-confiance-de-theta_j-de-xtheta_i-et-de-x_0theta-1"><i class="fa fa-check"></i><b>6.3.4</b> Intervalle de confiance de <span class="math inline">\(\theta_j\)</span>, de <span class="math inline">\((X\theta)_i\)</span> et de <span class="math inline">\(X_0\theta\)</span></a></li>
+<li class="chapter" data-level="6.3.5" data-path="regression.html"><a href="regression.html#intervalle-de-prédiction"><i class="fa fa-check"></i><b>6.3.5</b> Intervalle de prédiction</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="regression.html"><a href="regression.html#sélection-des-variables-explicatives"><i class="fa fa-check"></i><b>6.4</b> Sélection des variables explicatives</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="regression.html"><a href="regression.html#cadre-général-de-sélection-de-modèles"><i class="fa fa-check"></i><b>6.4.1</b> Cadre général de sélection de modèles</a></li>
+<li class="chapter" data-level="6.4.2" data-path="regression.html"><a href="regression.html#quelques-critères-pour-sélectionner-un-modèle"><i class="fa fa-check"></i><b>6.4.2</b> Quelques critères pour sélectionner un modèle</a></li>
+<li class="chapter" data-level="6.4.3" data-path="regression.html"><a href="regression.html#algorithmes-de-sélection-de-variables"><i class="fa fa-check"></i><b>6.4.3</b> Algorithmes de sélection de variables</a></li>
+<li class="chapter" data-level="6.4.4" data-path="regression.html"><a href="regression.html#illustration-sur-lexemple"><i class="fa fa-check"></i><b>6.4.4</b> Illustration sur l’exemple</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="regression.html"><a href="regression.html#régression-linéaire-régularisée"><i class="fa fa-check"></i><b>6.5</b> Régression linéaire régularisée</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="regression.html"><a href="regression.html#régression-ridge"><i class="fa fa-check"></i><b>6.5.1</b> Régression ridge</a></li>
+<li class="chapter" data-level="6.5.2" data-path="regression.html"><a href="regression.html#régression-lasso"><i class="fa fa-check"></i><b>6.5.2</b> Régression Lasso</a></li>
+<li class="chapter" data-level="6.5.3" data-path="regression.html"><a href="regression.html#régression-elastic-net"><i class="fa fa-check"></i><b>6.5.3</b> Régression Elastic-Net</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="regression.html"><a href="regression.html#ValidationMod"><i class="fa fa-check"></i><b>6.6</b> Validation du modèle</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="regression.html"><a href="regression.html#contrôle-graphique-a-posteriori"><i class="fa fa-check"></i><b>6.6.1</b> Contrôle graphique a posteriori</a></li>
+<li class="chapter" data-level="6.6.2" data-path="regression.html"><a href="regression.html#pour-vérifier-les-hypothèses-h1-et-h2-adéquation-et-homoscédasticité"><i class="fa fa-check"></i><b>6.6.2</b> Pour vérifier les hypothèses H1 et H2 : adéquation et homoscédasticité</a></li>
+<li class="chapter" data-level="6.6.3" data-path="regression.html"><a href="regression.html#pour-vérifier-lhypothèse-h3-indépendance"><i class="fa fa-check"></i><b>6.6.3</b> Pour vérifier l’hypothèse H3 : indépendance</a></li>
+<li class="chapter" data-level="6.6.4" data-path="regression.html"><a href="regression.html#pour-vérifier-lhypothèse-h4-gaussianité"><i class="fa fa-check"></i><b>6.6.4</b> Pour vérifier l’hypothèse H4 : gaussianité</a></li>
+<li class="chapter" data-level="6.6.5" data-path="regression.html"><a href="regression.html#détection-de-données-aberrantes"><i class="fa fa-check"></i><b>6.6.5</b> Détection de données aberrantes</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="regression.html"><a href="regression.html#en-résumé-4"><i class="fa fa-check"></i><b>6.7</b> En résumé</a></li>
+<li class="chapter" data-level="6.8" data-path="regression.html"><a href="regression.html#quelques-codes-python"><i class="fa fa-check"></i><b>6.8</b> Quelques codes python</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ANOVA.html"><a href="ANOVA.html"><i class="fa fa-check"></i><b>7</b> Analyse de variance (ANOVA)</a><ul>
+<li class="chapter" data-level="7.1" data-path="ANOVA.html"><a href="ANOVA.html#vocabulaire"><i class="fa fa-check"></i><b>7.1</b> Vocabulaire</a></li>
+<li class="chapter" data-level="7.2" data-path="ANOVA.html"><a href="ANOVA.html#analyse-de-variance-à-un-facteur"><i class="fa fa-check"></i><b>7.2</b> Analyse de variance à un facteur</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="ANOVA.html"><a href="ANOVA.html#exemple-et-notations"><i class="fa fa-check"></i><b>7.2.1</b> Exemple et notations</a></li>
+<li class="chapter" data-level="7.2.2" data-path="ANOVA.html"><a href="ANOVA.html#modèle-régulier"><i class="fa fa-check"></i><b>7.2.2</b> Modèle régulier</a></li>
+<li class="chapter" data-level="7.2.3" data-path="ANOVA.html"><a href="ANOVA.html#modèle-singulier"><i class="fa fa-check"></i><b>7.2.3</b> Modèle singulier</a></li>
+<li class="chapter" data-level="7.2.4" data-path="ANOVA.html"><a href="ANOVA.html#prédictions-résidus-et-variance"><i class="fa fa-check"></i><b>7.2.4</b> Prédictions, résidus et variance</a></li>
+<li class="chapter" data-level="7.2.5" data-path="ANOVA.html"><a href="ANOVA.html#intervalle-de-confiance-et-test-sur-leffet-facteur"><i class="fa fa-check"></i><b>7.2.5</b> Intervalle de confiance et test sur l’effet facteur</a></li>
+<li class="chapter" data-level="7.2.6" data-path="ANOVA.html"><a href="ANOVA.html#test-deffet-du-facteur"><i class="fa fa-check"></i><b>7.2.6</b> Test d’effet du facteur</a></li>
+<li class="chapter" data-level="7.2.7" data-path="ANOVA.html"><a href="ANOVA.html#tableau-danalyse-de-la-variance-à-un-facteur"><i class="fa fa-check"></i><b>7.2.7</b> Tableau d’analyse de la variance à un facteur</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="ANOVA.html"><a href="ANOVA.html#analyse-de-variance-à-deux-facteurs"><i class="fa fa-check"></i><b>7.3</b> Analyse de variance à deux facteurs</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="ANOVA.html"><a href="ANOVA.html#notations-et-exemple"><i class="fa fa-check"></i><b>7.3.1</b> Notations et exemple</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ANOVA.html"><a href="ANOVA.html#modélisation"><i class="fa fa-check"></i><b>7.3.2</b> Modélisation</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ANOVA.html"><a href="ANOVA.html#estimation-des-paramètres"><i class="fa fa-check"></i><b>7.3.3</b> Estimation des paramètres</a></li>
+<li class="chapter" data-level="7.3.4" data-path="ANOVA.html"><a href="ANOVA.html#prédiction-résidus-et-variance"><i class="fa fa-check"></i><b>7.3.4</b> Prédiction, résidus et variance</a></li>
+<li class="chapter" data-level="7.3.5" data-path="ANOVA.html"><a href="ANOVA.html#décomposition-de-la-variabilité"><i class="fa fa-check"></i><b>7.3.5</b> Décomposition de la variabilité</a></li>
+<li class="chapter" data-level="7.3.6" data-path="ANOVA.html"><a href="ANOVA.html#le-diagramme-dinteractions"><i class="fa fa-check"></i><b>7.3.6</b> Le diagramme d’interactions</a></li>
+<li class="chapter" data-level="7.3.7" data-path="ANOVA.html"><a href="ANOVA.html#tests-dhypothèses"><i class="fa fa-check"></i><b>7.3.7</b> Tests d’hypothèses</a></li>
+<li class="chapter" data-level="7.3.8" data-path="ANOVA.html"><a href="ANOVA.html#test-dabsence-deffet-du-facteur-b"><i class="fa fa-check"></i><b>7.3.8</b> Test d’absence d’effet du facteur <span class="math inline">\(B\)</span></a></li>
+<li class="chapter" data-level="7.3.9" data-path="ANOVA.html"><a href="ANOVA.html#tableau-danalyse-de-variance-à-deux-facteurs-croisés-dans-le-cas-dun-plan-orthogonal"><i class="fa fa-check"></i><b>7.3.9</b> Tableau d’analyse de variance à deux facteurs croisés dans le cas d’un plan orthogonal</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ANOVA.html"><a href="ANOVA.html#en-résumé-5"><i class="fa fa-check"></i><b>7.4</b> En résumé</a></li>
+<li class="chapter" data-level="7.5" data-path="ANOVA.html"><a href="ANOVA.html#quelques-codes-en-python"><i class="fa fa-check"></i><b>7.5</b> Quelques codes en python</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="ANOVA.html"><a href="ANOVA.html#exemple-danova-à-un-facteur"><i class="fa fa-check"></i><b>7.5.1</b> Exemple d’ANOVA à un facteur</a></li>
+<li class="chapter" data-level="7.5.2" data-path="ANOVA.html"><a href="ANOVA.html#exemple-danova-à-deux-facteurs"><i class="fa fa-check"></i><b>7.5.2</b> Exemple d’ANOVA à deux facteurs</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ANCOVA.html"><a href="ANCOVA.html"><i class="fa fa-check"></i><b>8</b> Analyse de covariance (ANCOVA)</a><ul>
+<li class="chapter" data-level="8.1" data-path="ANCOVA.html"><a href="ANCOVA.html#les-données"><i class="fa fa-check"></i><b>8.1</b> Les données</a></li>
+<li class="chapter" data-level="8.2" data-path="ANCOVA.html"><a href="ANCOVA.html#modélisation-1"><i class="fa fa-check"></i><b>8.2</b> Modélisation</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="ANCOVA.html"><a href="ANCOVA.html#modélisation-régulière"><i class="fa fa-check"></i><b>8.2.1</b> Modélisation régulière</a></li>
+<li class="chapter" data-level="8.2.2" data-path="ANCOVA.html"><a href="ANCOVA.html#modélisation-singulière"><i class="fa fa-check"></i><b>8.2.2</b> Modélisation singulière</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="ANCOVA.html"><a href="ANCOVA.html#estimation-des-paramètres-1"><i class="fa fa-check"></i><b>8.3</b> Estimation des paramètres</a></li>
+<li class="chapter" data-level="8.4" data-path="ANCOVA.html"><a href="ANCOVA.html#tests-dhypothèses-1"><i class="fa fa-check"></i><b>8.4</b> Tests d’hypothèses</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="ANCOVA.html"><a href="ANCOVA.html#absence-de-tout-effet"><i class="fa fa-check"></i><b>8.4.1</b> Absence de tout effet</a></li>
+<li class="chapter" data-level="8.4.2" data-path="ANCOVA.html"><a href="ANCOVA.html#test-dabsence-dinteraction"><i class="fa fa-check"></i><b>8.4.2</b> Test d’absence d’interaction</a></li>
+<li class="chapter" data-level="8.4.3" data-path="ANCOVA.html"><a href="ANCOVA.html#test-dabsence-de-leffet-de-la-covariable-z"><i class="fa fa-check"></i><b>8.4.3</b> Test d’absence de l’effet de la covariable z</a></li>
+<li class="chapter" data-level="8.4.4" data-path="ANCOVA.html"><a href="ANCOVA.html#test-dabsence-de-leffet-facteur-t"><i class="fa fa-check"></i><b>8.4.4</b> Test d’absence de l’effet facteur T</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ANCOVA.html"><a href="ANCOVA.html#en-résumé-6"><i class="fa fa-check"></i><b>8.5</b> En résumé</a></li>
+<li class="chapter" data-level="8.6" data-path="ANCOVA.html"><a href="ANCOVA.html#quelques-codes-en-python-1"><i class="fa fa-check"></i><b>8.6</b> Quelques codes en python</a></li>
+</ul></li>
+<li class="part"><span><b>II Le modèle linéaire généralisé</b></span></li>
+<li class="chapter" data-level="9" data-path="GLM.html"><a href="GLM.html"><i class="fa fa-check"></i><b>9</b> Principe du modèle linéaire généralisé</a><ul>
+<li class="chapter" data-level="9.1" data-path="GLM.html"><a href="GLM.html#introduction-1"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="GLM.html"><a href="GLM.html#caractérisation-dun-modèle-linéaire-généralisé"><i class="fa fa-check"></i><b>9.2</b> Caractérisation d’un modèle linéaire généralisé</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="GLM.html"><a href="GLM.html#loi-de-la-variable-réponse-y"><i class="fa fa-check"></i><b>9.2.1</b> Loi de la variable réponse <span class="math inline">\(Y\)</span></a></li>
+<li class="chapter" data-level="9.2.2" data-path="GLM.html"><a href="GLM.html#prédicteur-linéaire"><i class="fa fa-check"></i><b>9.2.2</b> Prédicteur linéaire</a></li>
+<li class="chapter" data-level="9.2.3" data-path="GLM.html"><a href="GLM.html#fonction-de-lien"><i class="fa fa-check"></i><b>9.2.3</b> Fonction de lien</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="GLM.html"><a href="GLM.html#EstimMLG"><i class="fa fa-check"></i><b>9.3</b> Estimation</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="GLM.html"><a href="GLM.html#estimation-par-maximum-de-vraisemblance"><i class="fa fa-check"></i><b>9.3.1</b> Estimation par maximum de vraisemblance</a></li>
+<li class="chapter" data-level="9.3.2" data-path="GLM.html"><a href="GLM.html#algorithmes-de-newton-raphson-et-fisher-scoring"><i class="fa fa-check"></i><b>9.3.2</b> Algorithmes de Newton-Raphson et Fisher-scoring</a></li>
+<li class="chapter" data-level="9.3.3" data-path="GLM.html"><a href="GLM.html#equations-de-vraisemblance"><i class="fa fa-check"></i><b>9.3.3</b> Equations de vraisemblance</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="GLM.html"><a href="GLM.html#NormalitéAsymptotique"><i class="fa fa-check"></i><b>9.4</b> Loi asymptotique de l’EMV et inférence</a></li>
+<li class="chapter" data-level="9.5" data-path="GLM.html"><a href="GLM.html#tests-dhypothèses-2"><i class="fa fa-check"></i><b>9.5</b> Tests d’hypothèses</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="GLM.html"><a href="GLM.html#test-de-modèles-emboîtés"><i class="fa fa-check"></i><b>9.5.1</b> Test de modèles emboîtés</a></li>
+<li class="chapter" data-level="9.5.2" data-path="GLM.html"><a href="GLM.html#TestParamMLG"><i class="fa fa-check"></i><b>9.5.2</b> Test d’un paramètre <span class="math inline">\(\theta_j\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="GLM.html"><a href="GLM.html#MLGIC"><i class="fa fa-check"></i><b>9.6</b> Intervalle de confiance pour <span class="math inline">\(\theta_j\)</span></a><ul>
+<li class="chapter" data-level="9.6.1" data-path="GLM.html"><a href="GLM.html#par-wald"><i class="fa fa-check"></i><b>9.6.1</b> Par Wald</a></li>
+<li class="chapter" data-level="9.6.2" data-path="GLM.html"><a href="GLM.html#fondé-sur-le-rapport-de-vraisemblances"><i class="fa fa-check"></i><b>9.6.2</b> Fondé sur le rapport de vraisemblances</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="GLM.html"><a href="GLM.html#qualité-dajustement-1"><i class="fa fa-check"></i><b>9.7</b> Qualité d’ajustement</a><ul>
+<li class="chapter" data-level="9.7.1" data-path="GLM.html"><a href="GLM.html#le-pseudo-r2"><i class="fa fa-check"></i><b>9.7.1</b> Le pseudo <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="9.7.2" data-path="GLM.html"><a href="GLM.html#le-chi2-de-pearson-généralisé"><i class="fa fa-check"></i><b>9.7.2</b> Le <span class="math inline">\(\chi^2\)</span> de Pearson généralisé</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="GLM.html"><a href="GLM.html#ResidusGLM"><i class="fa fa-check"></i><b>9.8</b> Diagnostic, résidus</a></li>
+<li class="chapter" data-level="9.9" data-path="GLM.html"><a href="GLM.html#en-résumé-7"><i class="fa fa-check"></i><b>9.9</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="RegLogistique.html"><a href="RegLogistique.html"><i class="fa fa-check"></i><b>10</b> Régression logistique</a><ul>
+<li class="chapter" data-level="10.1" data-path="RegLogistique.html"><a href="RegLogistique.html#introduction-2"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="RegLogistique.html"><a href="RegLogistique.html#pourquoi-des-modèles-particuliers"><i class="fa fa-check"></i><b>10.2</b> Pourquoi des modèles particuliers ?</a></li>
+<li class="chapter" data-level="10.3" data-path="RegLogistique.html"><a href="RegLogistique.html#odds-et-odds-ratio"><i class="fa fa-check"></i><b>10.3</b> Odds et odds ratio</a></li>
+<li class="chapter" data-level="10.4" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-logistique-simple"><i class="fa fa-check"></i><b>10.4</b> Régression logistique simple</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="RegLogistique.html"><a href="RegLogistique.html#subquanti"><i class="fa fa-check"></i><b>10.4.1</b> Avec une variable explicative quantitative</a></li>
+<li class="chapter" data-level="10.4.2" data-path="RegLogistique.html"><a href="RegLogistique.html#sect1expquali"><i class="fa fa-check"></i><b>10.4.2</b> Avec une variable explicative qualitative</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-logistique-multiple"><i class="fa fa-check"></i><b>10.5</b> Régression logistique multiple</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="RegLogistique.html"><a href="RegLogistique.html#modèle-sans-interaction"><i class="fa fa-check"></i><b>10.5.1</b> Modèle sans interaction</a></li>
+<li class="chapter" data-level="10.5.2" data-path="RegLogistique.html"><a href="RegLogistique.html#modèle-avec-interactions"><i class="fa fa-check"></i><b>10.5.2</b> Modèle avec interactions</a></li>
+<li class="chapter" data-level="10.5.3" data-path="RegLogistique.html"><a href="RegLogistique.html#etude-complémentaire-du-modèle-retenu"><i class="fa fa-check"></i><b>10.5.3</b> Etude complémentaire du modèle retenu</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="RegLogistique.html"><a href="RegLogistique.html#quelques-codes-avec-python"><i class="fa fa-check"></i><b>10.6</b> Quelques codes avec python</a></li>
+<li class="chapter" data-level="10.7" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-polytomique"><i class="fa fa-check"></i><b>10.7</b> Régression polytomique</a><ul>
+<li class="chapter" data-level="10.7.1" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-multinomiale-ou-polytomique-non-ordonnée"><i class="fa fa-check"></i><b>10.7.1</b> Régression multinomiale ou polytomique non-ordonnée</a></li>
+<li class="chapter" data-level="10.7.2" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-polytomique-ordonnée"><i class="fa fa-check"></i><b>10.7.2</b> Régression polytomique ordonnée</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="RegLogLin.html"><a href="RegLogLin.html"><i class="fa fa-check"></i><b>11</b> Régression de Poisson / régression loglinéaire</a><ul>
+<li class="chapter" data-level="11.1" data-path="RegLogLin.html"><a href="RegLogLin.html#modèle-de-régression-loglinéaire"><i class="fa fa-check"></i><b>11.1</b> Modèle de régression loglinéaire</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="RegLogLin.html"><a href="RegLogLin.html#pourquoi-un-modèle-particulier"><i class="fa fa-check"></i><b>11.1.1</b> Pourquoi un modèle particulier ?</a></li>
+<li class="chapter" data-level="11.1.2" data-path="RegLogLin.html"><a href="RegLogLin.html#estimation-des-paramètres-3"><i class="fa fa-check"></i><b>11.1.2</b> Estimation des paramètres</a></li>
+<li class="chapter" data-level="11.1.3" data-path="RegLogLin.html"><a href="RegLogLin.html#ajustement-et-prédiction"><i class="fa fa-check"></i><b>11.1.3</b> Ajustement et prédiction</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="RegLogLin.html"><a href="RegLogLin.html#exemple-de-régression-loglinéaire-avec-r"><i class="fa fa-check"></i><b>11.2</b> Exemple de régression loglinéaire avec R</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="RegLogLin.html"><a href="RegLogLin.html#régression-loglinéaire-simple"><i class="fa fa-check"></i><b>11.2.1</b> Régression loglinéaire simple</a></li>
+<li class="chapter" data-level="11.2.2" data-path="RegLogLin.html"><a href="RegLogLin.html#régression-loglinéaire-multiple"><i class="fa fa-check"></i><b>11.2.2</b> Régression loglinéaire multiple</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="RegLogLin.html"><a href="RegLogLin.html#sur-dispersion-et-modèle-binomial-négatif"><i class="fa fa-check"></i><b>11.3</b> Sur-dispersion et modèle binomial négatif</a></li>
+<li class="chapter" data-level="11.4" data-path="RegLogLin.html"><a href="RegLogLin.html#quelques-codes-avec-python-1"><i class="fa fa-check"></i><b>11.4</b> Quelques codes avec python</a></li>
+</ul></li>
+<li class="appendix"><span><b>Annexes</b></span></li>
+<li class="chapter" data-level="A" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html"><i class="fa fa-check"></i><b>A</b> Rappels de probabilités, statistiques et d’optimisation</a><ul>
+<li class="chapter" data-level="A.1" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#rappels-sur-les-échantillons-gaussiens"><i class="fa fa-check"></i><b>A.1</b> Rappels sur les échantillons gaussiens</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#la-loi-normale"><i class="fa fa-check"></i><b>A.1.1</b> La loi normale</a></li>
+<li class="chapter" data-level="A.1.2" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#vecteurs-gaussiens"><i class="fa fa-check"></i><b>A.1.2</b> Vecteurs gaussiens</a></li>
+<li class="chapter" data-level="A.1.3" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#loi-du-khi-deux-loi-de-student-loi-de-fisher"><i class="fa fa-check"></i><b>A.1.3</b> Loi du khi-deux, loi de Student, loi de Fisher</a></li>
+<li class="chapter" data-level="A.1.4" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#estimation-de-la-moyenne-et-de-la-variance-dun-échantillon-gaussien"><i class="fa fa-check"></i><b>A.1.4</b> Estimation de la moyenne et de la variance d’un échantillon gaussien</a></li>
+<li class="chapter" data-level="A.1.5" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#construction-dintervalles-de-confiance"><i class="fa fa-check"></i><b>A.1.5</b> Construction d’intervalles de confiance</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#estimation-sans-biais-de-variance-minimale"><i class="fa fa-check"></i><b>A.2</b> Estimation sans biais de variance minimale</a></li>
+<li class="chapter" data-level="A.3" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#Newton-Raphson"><i class="fa fa-check"></i><b>A.3</b> La méthode de Newton-Raphson</a></li>
+<li class="chapter" data-level="A.4" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#théorème-central-limite-condition-de-lindeberg"><i class="fa fa-check"></i><b>A.4</b> Théorème central limite: condition de Lindeberg</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html"><i class="fa fa-check"></i><b>B</b> Preuves de quelques résultats du cours</a><ul>
+<li class="chapter" data-level="B.1" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#ProofFisher"><i class="fa fa-check"></i><b>B.1</b> Preuve pour le test de Fisher</a></li>
+<li class="chapter" data-level="B.2" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:ortho"><i class="fa fa-check"></i><b>B.2</b> Preuve de la proposition @ref(prp:Proportho)</a></li>
+<li class="chapter" data-level="B.3" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:risque"><i class="fa fa-check"></i><b>B.3</b> Preuve de la proposition @ref(prp:risque)</a></li>
+<li class="chapter" data-level="B.4" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:KL"><i class="fa fa-check"></i><b>B.4</b> Preuve de la proposition @ref(prp:KL)</a></li>
+<li class="chapter" data-level="B.5" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:Mallows"><i class="fa fa-check"></i><b>B.5</b> Critère du <span class="math inline">\(C_p\)</span> de Mallows</a></li>
+<li class="chapter" data-level="B.6" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:Sj"><i class="fa fa-check"></i><b>B.6</b> Preuve de la proposition @ref(prp:eqSj)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li>Cathy Maugis-Rabusseau</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modèle linéaire général et modèle linéaire généralisé</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ANOVA" class="section level1">
+<h1><span class="header-section-number">Chapitre 7</span> Analyse de variance (ANOVA)</h1>
+<blockquote>
+<p>Les slides associés à l’ANOVA sont disponibles ici <a href="">SlidesANOVA.pdf</a></p>
+<p>Le jeu de données utilisé dans ce chapitre en ANOVA à deux facteurs est disponible ici <a href="Data/ble.csv">Ble.txt</a></p>
+</blockquote>
+<div id="vocabulaire" class="section level2">
+<h2><span class="header-section-number">7.1</span> Vocabulaire</h2>
+<p>On se place ici dans le cas où l’on souhaite expliquer une variable quantitative à l’aide d’une ou plusieurs variables <em>qualitatives</em> explicatives, appelées <strong>facteurs</strong>. Les modalités d’une variable qualitative explicative sont appelées <strong>niveaux</strong> du facteur.</p>
+<p>Un plan d’expérience répertorie l’ensemble des combinaisons des différents facteurs considérés par l’expérimentateur. Nous donnons ici qu’un peu de vocabulaire sur les plans d’expérience pour la suite, nous n’aborderons pas la théorie de la planification expérimentale dans ce cours.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-42" class="definition"><strong>Definition 7.1  </strong></span>Vocabulaire issu de la planification expérimentale :</p>
+<ul>
+<li>On appelle <strong>cellule</strong> d’un plan d’expérience une case du tableau, associée à une combinaison des facteurs contrôlés.</li>
+<li>Un plan est dit <strong>complet</strong> s’il a au moins une observation dans chaque cellule.</li>
+<li>Un plan est dit <strong>répété</strong> s’il a plus d’une observation par cellule.</li>
+<li>Un plan est dit <strong>équilibré</strong> si chaque cellule comporte le même nombre d’observations.</li>
+<li>Un plan équilibré et répété est dit <strong>equirépété</strong>.</li>
+</ul>
+</div>
+</div>
+<div id="analyse-de-variance-à-un-facteur" class="section level2">
+<h2><span class="header-section-number">7.2</span> Analyse de variance à un facteur</h2>
+<div id="exemple-et-notations" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> Exemple et notations</h3>
+<p>On dispose d’une variable quantitative <span class="math inline">\(Y\)</span> à expliquer et d’un seul facteur explicatif. On note</p>
+<ul>
+<li><span class="math inline">\(i\)</span> l’indice du niveau (ou de la “cellule”) pour le facteur explicatif,</li>
+<li><span class="math inline">\(I\)</span> le nombre de niveaux (<span class="math inline">\(i=1, \cdots, I\)</span>),</li>
+<li><span class="math inline">\(n_i\)</span> le nombre d’expériences dans le niveau <span class="math inline">\(i\)</span>, - <span class="math inline">\(j=1,\cdots,n_i\)</span> l’indice de l’expérience dans le niveau <span class="math inline">\(i\)</span>,</li>
+<li><span class="math inline">\(n=\sum_{i=1}^I n_i\)</span> le nombre total d’expériences.</li>
+</ul>
+<p>Une expérience (ou encore un “individu”) est repérée par deux indices : le numéro de la cellule (<span class="math inline">\(i\)</span>) et le numéro de l’observation dans la cellule (<span class="math inline">\(j\)</span>). Ainsi on note</p>
+<p><span class="math display">\[Y_{ij} =  \textrm{ la valeur théorique de la réponse quantitative pour l&#39;expérience } j \textrm{ du niveau }i\]</span></p>
+<p>Dans cette section, nous allons illustrer les notions abordées avec l’exemple suivant :</p>
+<p>On s’intéresse aux notes obtenues par des étudiants à un oral. On s’interroge sur un effet potentiel de l’examinateur sur la note obtenue.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Examiner (i)</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mark <span class="math inline">\(Y_{ij}\)</span></td>
+<td>10, 11, 11</td>
+<td>8, 10, 11, 12</td>
+<td>10, 13, 14, 14</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>12,13,15</td>
+<td>14, 15, 16, 16</td>
+<td>15, 16, 16</td>
+</tr>
+<tr class="odd">
+<td>Number <span class="math inline">\(n_i\)</span></td>
+<td>6</td>
+<td>8</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>Average <span class="math inline">\(Y_{i.}\)</span></td>
+<td>12</td>
+<td>12.75</td>
+<td>14</td>
+</tr>
+</tbody>
+</table>
+<p><img src="Bookdown-poly_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+</div>
+<div id="modèle-régulier" class="section level3">
+<h3><span class="header-section-number">7.2.2</span> Modèle régulier</h3>
+<p>On modélise une variable quantitative en fonction d’un facteur à <span class="math inline">\(I\)</span> niveaux. <span class="math inline">\(Y\)</span> est la variable à expliquer qui prend la valeur <span class="math inline">\(Y_{ij}\)</span> pour l’individu <span class="math inline">\(j\)</span> du niveau <span class="math inline">\(i\)</span> du facteur.</p>
+<p>Le modèle s’écrit :
+<span class="math display" id="eq:ANOVA1M1">\[\begin{equation}
+\left\{
+\begin{array}{l}
+Y_{ij}=m_i+\varepsilon_{ij},\ \forall i=1, \cdots I,\  \forall j=1,\cdots, n_i \\
+\\
+\varepsilon_{ij} \textrm{ i.i.d } \mathcal{N}(0,\sigma^2)
+\end{array}
+\right.
+\tag{7.1}
+\end{equation}\]</span></p>
+<p>Le modèle peut se réécrire sous la forme matricielle suivante :</p>
+<p><span class="math display">\[Y=
+\left(\begin{array}{c}Y_{1,1}\\ \vdots \\ Y_{1n_1}\\Y_{21}\\ \vdots \\Y_{In_I} \end{array}\right)
+=
+\left(
+\begin{array}{c c c c c}
+1_{n_1} &amp; 0_{n_1} &amp; 0_{n_1} &amp; \cdots &amp; 0_{n_1} \\
+0_{n_2} &amp; 1_{n_2} &amp; 0_{n_2} &amp; \cdots &amp; 0_{n_2} \\
+0_{n_3} &amp; 0_{n_3} &amp; 1_{n_3} &amp; \cdots &amp; 0_{n_3} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots\\
+0_{n_I} &amp; 0_{n_I} &amp; 0_{n_I} &amp; \cdots &amp; 1_{n_I} \\
+\end{array}
+\right) 
+\left(
+\begin{array}{c}
+m_1\\
+m_2\\
+\vdots \\
+m_I
+\end{array}
+\right) 
++ \varepsilon\]</span></p>
+<p>avec <span class="math inline">\(\varepsilon \sim \mathcal{N}_n \left(0_{n},\sigma^2 I_n\right).\)</span></p>
+<p>Le modèle <a href="ANOVA.html#eq:ANOVA1M1">(7.1)</a> est <strong>régulier</strong> (<span class="math inline">\(rg(X)=I\)</span>). On peut donc facilement estimer les paramètres en utilisant <span class="math inline">\(\widehat{\theta}=(X&#39;X)^{-1}X&#39;Y\)</span>.</p>
+<div class="proposition">
+<p><span id="prp:estAOV1" class="proposition"><strong>Proposition 7.1  </strong></span>Estimateur - Cas régulier</p>
+<ul>
+<li><p>Dans la modélisation <a href="ANOVA.html#eq:ANOVA1M1">(7.1)</a>, les <span class="math inline">\(m_i\)</span> sont estimés par
+<span class="math display">\[
+\widehat{m_i} = Y_{i.} : = \frac{1}{n_i}\sum_{j=1}^{n_i} Y_{ij}
+\]</span>
+On les appelle les <strong>effets principaux des facteurs</strong>.</p></li>
+<li><p>Les <span class="math inline">\(\widehat{m_i}\)</span> sont indépendants et de loi respective
+<span class="math display">\[
+\widehat{m_i}\sim\mathcal{N}\left(m_i,\frac{\sigma^2}{n_i}\right)
+\]</span></p></li>
+</ul>
+</div>
+<p>Avec le logiciel R, il suffit d’utiliser la commande <code>anReg&lt;-lm(Marks~Exam -1)</code>.
+On peut vérifier la matrice de design <span class="math inline">\(X\)</span> par la commande <code>model.matrix(Marks~Exam -1)</code>.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="ANOVA.html#cb63-1"></a>anReg&lt;-<span class="kw">lm</span>(Marks<span class="op">~</span>Exam <span class="dv">-1</span>)</span>
+<span id="cb63-2"><a href="ANOVA.html#cb63-2"></a><span class="kw">summary</span>(anReg)</span></code></pre></div>
+<pre><code>
+Call:
+lm(formula = Marks ~ Exam - 1)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+ -4.75  -1.00   0.00   2.00   3.25 
+
+Coefficients:
+      Estimate Std. Error t value Pr(&gt;|t|)    
+ExamA  12.0000     0.9789   12.26 3.58e-10 ***
+ExamB  12.7500     0.8478   15.04 1.23e-11 ***
+ExamC  14.0000     0.9063   15.45 7.88e-12 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 2.398 on 18 degrees of freedom
+Multiple R-squared:  0.9716,    Adjusted R-squared:  0.9668 
+F-statistic:   205 on 3 and 18 DF,  p-value: 4.226e-14</code></pre>
+</div>
+<div id="modèle-singulier" class="section level3">
+<h3><span class="header-section-number">7.2.3</span> Modèle singulier</h3>
+<p>Pour des raisons d’interprétation, on peut s’intéresser à un changement de paramétrage. Il s’agit d’un changement de variables dans la fonction à minimiser dont les variables sont les paramètres du modèle. Soulignons que les nouvelles équations que nous allons définir ci-après correspondent toujours à celles d’un modèle à un facteur. Si on veut comparer les effets des niveaux du facteur, on peut prendre comme référence un effet moyen et examiner les écarts des effets des différents niveaux à cet effet moyen. Le modèle initial <a href="ANOVA.html#eq:ANOVA1M1">(7.1)</a> peut s’écrire sous la forme :</p>
+<p><span class="math display" id="eq:ANOVA1M2">\[\begin{equation}
+Y_{ij}= \mu + \alpha_i + \varepsilon_{ij}
+\tag{7.2}
+\end{equation}\]</span></p>
+<p>où <span class="math inline">\(\mu\)</span> est l’effet moyen et <span class="math inline">\(\alpha_i=m_i-\mu\)</span> l’effet différentiel du niveau <span class="math inline">\(i\)</span>. Mais ce modèle est alors surparamétré (cf Chapitre <a href="singulier.html#singulier">5</a>). Pour le rendre identifiable, il faut imposer une contrainte entre les paramètres. Généralement, on considère le modèle <a href="ANOVA.html#eq:ANOVA1M2">(7.2)</a> sous la contrainte <span class="math inline">\(\sum_{i=1}^I n_i \alpha_i=0\)</span> (on l’appellera par la suite la contrainte “naturelle”) car elle rend le modèle orthogonal. Attention sous R, la contrainte “par défaut” est <span class="math inline">\(\alpha_1=0\)</span>.</p>
+<div class="proposition">
+<p><span id="prp:estAOV1bis" class="proposition"><strong>Proposition 7.2  </strong></span>Les paramètres <span class="math inline">\(\mu\)</span> et <span class="math inline">\(\alpha_i\)</span> de la modélisation <a href="ANOVA.html#eq:ANOVA1M2">(7.2)</a> sont estimés,</p>
+<ul>
+<li><p>sous la contrainte “naturelle”, par :
+<span class="math display">\[
+  \widehat{\mu}=Y_{..} := \frac{1}{n}\sum_{i=1}^{I} \sum_{j=1}^{n_i} Y_{ij} \textrm{ et } \widehat{\alpha_i}=Y_{i.} -Y_{..}
+\]</span></p></li>
+<li><p>sous la contrainte <span class="math inline">\(\alpha_1=0\)</span>, par :
+<span class="math display">\[
+  \widehat{\mu}=Y_{1.} \mbox{ et } \widehat{\alpha_i}=Y_{i.} -Y_{1.}, \forall i&gt;1.
+\]</span></p></li>
+</ul>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-43" class="exercise"><strong>Exercise 7.1  </strong></span>Pour prouver la proposition <a href="ANOVA.html#prp:estAOV1bis">7.2</a>,</p>
+<ul>
+<li><p>pour la modélisation <a href="ANOVA.html#eq:ANOVA1M2">(7.2)</a> sous la contrainte d’orthogonalité, vous pouvez minimiser la fonction des moindres carrés
+<span class="math display">\[
+h(\mu,\alpha_1,\ldots,\alpha_I) = \sum_{i=1}^I \sum_{j=1}^{n_i} (Y_{ij} - \mu - \alpha_i)^2
+\]</span>
+sous la contrainte <span class="math inline">\(\sum_{i=1}^I n_i\alpha_i=0\)</span>.</p></li>
+<li><p>Pour la modélisation <a href="ANOVA.html#eq:ANOVA1M2">(7.2)</a> sous la contrainte <span class="math inline">\(\alpha_1=0\)</span>, vous pouvez faire le lien avec la modélisation régulière et utiliser la proposition <a href="ANOVA.html#prp:estAOV1">7.1</a>.</p></li>
+</ul>
+</div>
+<p>Ces résultats sont résumés dans notre exemple par les Figures <a href="ANOVA.html#fig:estimAOV1M2naturel">7.1</a> pour la contrainte “naturelle” (d’orthogonalité) et Figure <a href="ANOVA.html#fig:estimAOV1M2default">7.2</a> pour la contrainte par défaut sous R.</p>
+<div class="figure"><span id="fig:estimAOV1M2naturel"></span>
+<img src="Bookdown-poly_files/figure-html/estimAOV1M2naturel-1.png" alt="\label{estimAOV1M2naturel} Schéma d'estimation dans le cas singulier de l'anova à un facteur sous la contrainte d'orthogonalité." width="672" />
+<p class="caption">
+Figure 7.1:  Schéma d’estimation dans le cas singulier de l’anova à un facteur sous la contrainte d’orthogonalité.
+</p>
+</div>
+<div class="figure"><span id="fig:estimAOV1M2default"></span>
+<img src="Bookdown-poly_files/figure-html/estimAOV1M2default-1.png" alt="\label{estimAOV1M2default} Schéma d'estimation dans le cas singulier de l'anova à un facteur sous la contrainte d'orthogonalité." width="672" />
+<p class="caption">
+Figure 7.2:  Schéma d’estimation dans le cas singulier de l’anova à un facteur sous la contrainte d’orthogonalité.
+</p>
+</div>
+<p>Sous R, on ajuste le modèle sous la contrainte <span class="math inline">\(\alpha_1=0\)</span> toujours avec la commande <code>lm()</code> :</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="ANOVA.html#cb65-1"></a>anSing &lt;-<span class="st"> </span><span class="kw">lm</span>(Notes<span class="op">~</span>Exam,<span class="dt">data=</span>Data)</span>
+<span id="cb65-2"><a href="ANOVA.html#cb65-2"></a><span class="kw">summary</span>(anSing)</span></code></pre></div>
+<pre><code>
+Call:
+lm(formula = Notes ~ Exam, data = Data)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+ -4.75  -1.00   0.00   2.00   3.25 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  12.0000     0.9789  12.258 3.58e-10 ***
+ExamB         0.7500     1.2950   0.579    0.570    
+ExamC         2.0000     1.3341   1.499    0.151    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 2.398 on 18 degrees of freedom
+Multiple R-squared:  0.115, Adjusted R-squared:  0.01669 
+F-statistic:  1.17 on 2 and 18 DF,  p-value: 0.333</code></pre>
+</div>
+<div id="prédictions-résidus-et-variance" class="section level3">
+<h3><span class="header-section-number">7.2.4</span> Prédictions, résidus et variance</h3>
+<p>On retrouve que les valeurs ajustées et donc les résidus ne sont pas impactés par le choix de la modélisation (régulière ou singulière) et par la contrainte dans le cas singulier.</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-44" class="proposition"><strong>Proposition 7.3  </strong></span>Pour la modélisation <a href="ANOVA.html#eq:ANOVA1M1">(7.1)</a> et la modélisation <a href="ANOVA.html#eq:ANOVA1M2">(7.2)</a>, on obtient que</p>
+<ul>
+<li>les valeurs ajustées <span class="math inline">\(\widehat{Y_{ij}}\)</span> dans la cellule <span class="math inline">\(i\)</span> sont constantes et sont égales à la moyenne <span class="math inline">\(Y_{i.}\)</span> des observations dans la cellule <span class="math inline">\(i\)</span> :
+<span class="math display">\[\widehat{Y_{ij}}=Y_{i.},\]</span></li>
+<li>les résidus :
+<span class="math display">\[\widehat{\varepsilon_{ij}} = Y_{ij}-\widehat{Y_{ij}}.\]</span></li>
+<li>l’estimateur de <span class="math inline">\(\sigma^2\)</span> est donné par :
+<span class="math display">\[\widehat{\sigma^2}=\frac{1}{n-I}\sum_{i=1}^I \sum_{j=1}^{n_i} (Y_{ij}-Y_{i.})^2.\]</span></li>
+</ul>
+</div>
+<p>On a les propriétés suivantes analogues à celles de la régression linéaire.</p>
+<div class="proposition">
+<p><span id="prp:prop1AOV1" class="proposition"><strong>Proposition 7.4  </strong></span>On a les propriétés suivantes analogues à celles de la régression linéaire.</p>
+<ul>
+<li>La moyenne des résidus par cellule est nulle : <span class="math inline">\(\forall i=1,\cdots, I, \, \frac{1}{n_i} \sum_{j=1}^{n_i} \widehat{\varepsilon}_{ij}=0.\)</span></li>
+<li>La moyenne générale des résidus est nulle : <span class="math inline">\(\frac{1}{n} \sum_{i=1}^I \sum_{j=1}^{n_i} \widehat{\varepsilon}_{ij}=0\)</span>.</li>
+<li>La moyenne des valeurs ajustées est égale à la moyenne des valeurs observées : <span class="math inline">\(\frac{1}{n} \sum_{i=1}^I \sum_{j=1}^{n_i} \widehat{Y_{ij}}= \frac{1}{n} \sum_{i=1}^I \sum_{j=1}^{n_i} Y_{ij}\)</span>.</li>
+<li><span class="math inline">\(cov(\widehat{\varepsilon},\widehat{Y})=0\)</span>.</li>
+<li><span class="math inline">\(var(Y)=var(\widehat{Y})+var(\widehat{\varepsilon})\)</span>.</li>
+</ul>
+</div>
+<p>La dernière propriété nous amène à définir les quantités suivantes.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-45" class="definition"><strong>Definition 7.2  </strong></span>La variance se décompose en</p>
+<ul>
+<li><p><span class="math inline">\(var(\widehat{Y})\)</span> appelée <strong>variance inter-groupe</strong> définie par
+<span class="math display">\[var(\widehat{Y}) = \frac{1}{n}\sum_{i=1}^I n_i\left(Y_{i.}-Y_{..}\right)^2,\]</span>
+variance des moyennes par cellule, pondérées par les poids des cellules <span class="math inline">\(n_i/n\)</span>.</p></li>
+<li><p><span class="math inline">\(var(\widehat{\varepsilon})\)</span> appelée <strong>variance intra-groupe</strong>, ou variance résiduelle, définie par :
+<span class="math display">\[var(\widehat{\varepsilon})=\frac{1}{n}\sum_{i=1}^I \sum_{j=1}^{n_i} (Y_{ij}-Y_{i.})^2=\frac{1}{n}\sum_{i=1}^I n_i var_i(Y)\]</span>
+où <span class="math inline">\(var_i(Y)\)</span> est la variance des valeurs observées dans le niveau <span class="math inline">\(i\)</span> :
+<span class="math inline">\(\displaystyle var_i(Y)=\frac{1}{n_i}\sum_{j=1}^{n_i} (Y_{ij}-Y_{i.})^2\)</span>.</p></li>
+</ul>
+<p>Par conséquent, <span class="math inline">\(var(\widehat{\varepsilon})\)</span> est la moyenne des variances des observations dans les cellules.</p>
+</div>
+<p>La relation <span class="math inline">\(var(Y) = var(\widehat{Y})+var(\widehat{\varepsilon})\)</span> s’écrit ici :
+<span class="math display">\[
+\textrm{
+Variance totale = Variance inter + Variance intra.}
+\]</span></p>
+<p>On définit également le coefficient <span class="math inline">\(R^2\)</span> comme le rapport de la variance inter-groupe sur la variance totale :
+<span class="math display">\[R^2=\frac{ var(\widehat{Y})}{ var(Y)} = 1 - \frac{var(\widehat{\varepsilon})}{var(Y)}.\]</span>
+On l’appelle rapport de corrélation empirique entre la variable quantitative <span class="math inline">\(Y\)</span> et le facteur considéré. C’est une mesure de liaison entre une variable quantitative et une variable qualitative. On peut mentionner les deux cas particuliers suivants :</p>
+<ul>
+<li><span class="math inline">\(R^2=1 \leftrightarrow \widehat{\varepsilon}=0_{n} \leftrightarrow \forall j=1, \cdots, n_i, Y_{ij}=Y_{i.}\)</span> i.e. <span class="math inline">\(Y\)</span> est constant dans chaque cellule.</li>
+<li><span class="math inline">\(R^2=0 \leftrightarrow var(\widehat{Y})=0 \leftrightarrow \forall i=1, \cdots, I,Y_{i.}=Y_{..}\)</span>, i.e. la moyenne de <span class="math inline">\(Y\)</span> est la même dans chaque cellule.</li>
+</ul>
+</div>
+<div id="intervalle-de-confiance-et-test-sur-leffet-facteur" class="section level3">
+<h3><span class="header-section-number">7.2.5</span> Intervalle de confiance et test sur l’effet facteur</h3>
+<div id="intervalle-de-confiance-pour-les-m_i" class="section level4">
+<h4><span class="header-section-number">7.2.5.1</span> Intervalle de confiance pour les <span class="math inline">\(m_i\)</span></h4>
+<p>Dans le cadre général du modèle gaussien, on a montré que les estimateurs des paramètres du modèle sont distribués selon une loi gaussienne. Cette propriété peut s’appliquer au modèle à un facteur pour lequel on a posé l’hypothèse de normalité et d’indépendance des erreurs. Pour construire un intervalle de confiance pour les <span class="math inline">\(m_i\)</span>, il suffit donc de construire un intervalle de confiance de Student en utilisant que</p>
+<p><span class="math display">\[\widehat{m_i}\sim \mathcal{N}(m_i,\sigma^2/n_i) ,\ \frac{(n-I)\widehat{\sigma}^2}{\sigma^2}\sim \chi^2(n-I) \textrm{ et } \widehat{m_i}\perp \!\!\! \perp\widehat{\sigma}^2\]</span>
+On obtient donc
+<span class="math display">\[IC_{1-\alpha}(m_i)=\left[\widehat{m_i}\pm t_{n-I,1-\alpha/2}\sqrt{\frac{\widehat{\sigma}^2}{n_i}}\ \right].\]</span></p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="ANOVA.html#cb67-1"></a>anReg&lt;-<span class="kw">lm</span>(Marks<span class="op">~</span>Exam <span class="dv">-1</span>)</span>
+<span id="cb67-2"><a href="ANOVA.html#cb67-2"></a><span class="kw">confint</span>(anReg)</span></code></pre></div>
+<pre><code>          2.5 %   97.5 %
+ExamA  9.943313 14.05669
+ExamB 10.968857 14.53114
+ExamC 12.095878 15.90412</code></pre>
+</div>
+<div id="intervalle-de-confiance-pour-mu-et-alpha_i" class="section level4">
+<h4><span class="header-section-number">7.2.5.2</span> Intervalle de confiance pour <span class="math inline">\(\mu\)</span> et <span class="math inline">\(\alpha_i\)</span></h4>
+<p>Dans le cas du modèle singulier <a href="ANOVA.html#eq:ANOVA1M2">(7.2)</a> sous la contrainte <span class="math inline">\(\alpha_1\)</span> par défaut sous R, on obtient des intervalles de confiance pour les paramètres avec la commande <code>confint()</code>.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="ANOVA.html#cb69-1"></a>anSing&lt;-<span class="kw">lm</span>(Marks<span class="op">~</span>Exam)</span>
+<span id="cb69-2"><a href="ANOVA.html#cb69-2"></a><span class="kw">confint</span>(anSing)</span></code></pre></div>
+<pre><code>                 2.5 %    97.5 %
+(Intercept)  9.9433129 14.056687
+ExamB       -1.9707414  3.470741
+ExamC       -0.8027921  4.802792</code></pre>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-46" class="exercise"><strong>Exercise 7.2  </strong></span>Construisez les intervalles de confiance donnés par les commandes ci-dessous.
+Pour cela,</p>
+<ul>
+<li>on estime <span class="math inline">\(\mu\)</span> par <span class="math inline">\(Y_{1.}=\hat m_1\sim\mathcal{N}(\mu,\frac{\sigma^2}{n_1})\)</span></li>
+<li>on estime <span class="math inline">\(\alpha_i\)</span> par <span class="math inline">\(\hat m_i - \hat m_1 \sim \mathcal{N}(\alpha_i,\sigma^2(\frac{1}{n_1}+\frac{1}{n_i}))\)</span> car <span class="math inline">\(\hat m_i\perp \!\!\! \perp\hat m_1\)</span></li>
+<li>on estime <span class="math inline">\(\sigma^2\)</span> par <span class="math inline">\(\widehat{\sigma}^2\)</span></li>
+<li><span class="math inline">\(\frac{(n-I)\widehat{\sigma}^2}{\sigma^2}\sim \chi^2(n-I) \textrm{ et } \widehat{\alpha}_i\perp \!\!\! \perp\widehat{\sigma}^2\)</span></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="test-deffet-du-facteur" class="section level3">
+<h3><span class="header-section-number">7.2.6</span> Test d’effet du facteur</h3>
+<p>On peut étudier l’effet du facteur sur la variable <span class="math inline">\(Y\)</span> en posant l’hypothèse d’égalité de tous les paramètres du modèle :
+<span class="math display">\[\mathcal{H}_0 : m_1 = m_2 = \cdots = m_I = m \Longleftrightarrow \forall i=1, \cdots, I,\ \alpha_i=0\]</span>
+versus
+<span class="math display">\[\mathcal{H}_1 : \exists (i,i&#39;) \mbox{ tel que } m_i \neq m_{i&#39;}.\]</span>
+Sous <span class="math inline">\(\mathcal{H}_0\)</span>, tous les paramètres <span class="math inline">\(m_i\)</span> sont égaux et le modèle s’écrit :
+<span class="math display">\[Y_{ij}=m +\varepsilon_{ij} \mbox{ avec } \widehat{m} = Y_{..} = \frac{1}{n}\sum_{i=1}^I\sum_{j=1}^{n_i}Y_{ij}.\]</span>
+On teste l’hypothèse d’égalité des paramètres <span class="math inline">\(m_i\)</span> du modèle à partir de la statistique de Fisher :
+<span class="math display">\[F=\frac{\displaystyle\sum_{i=1}^In_i(Y_{i.}-Y_{..})^2  / (I-1)}{\displaystyle\sum_{i=1}^I\sum_{j=1}^{n_i}(Y_{ij}-Y_{i.} )^2 / (n-I)}= \frac{SSE/ (I-1)}{SSR / (n-I)} \underset{\mathcal{H}_0}{\sim} \mathcal{F}(I-1,n-I),\]</span>
+où <span class="math inline">\(SSE\)</span> désigne la sommes des carrés inter-groupes et <span class="math inline">\(SSR\)</span> est la somme des carrés intra-groupes.
+On rejette <span class="math inline">\(\mathcal{H}_0\)</span> si <span class="math inline">\(F &gt; f_{1-\alpha,I-1,n-I}\)</span>.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="ANOVA.html#cb71-1"></a>anmequal&lt;-<span class="kw">lm</span>(Marks<span class="op">~</span><span class="dv">1</span>)</span>
+<span id="cb71-2"><a href="ANOVA.html#cb71-2"></a><span class="kw">anova</span>(anmequal,anReg)</span></code></pre></div>
+<pre><code>Analysis of Variance Table
+
+Model 1: Marks ~ 1
+Model 2: Marks ~ Exam - 1
+  Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)
+1     20 116.95                           
+2     18 103.50  2    13.452 1.1698  0.333</code></pre>
+<!--
+\begin{Exo}
+Dans les deux sorties suivantes, quelles sont les hypothèses testées? Construisez le test de Fisher associé. Notez bien la différence entre les deux procédures.
+\begin{center}
+\begin{minipage}{8cm}
+\begin{Verbatim}[fontsize=\scriptsize, frame=single]
+> anova(an1)
+Analysis of Variance Table
+
+Response: Notes
+          Df Sum Sq Mean Sq F value    Pr(>F)    
+Exam       3   3588 1196.00  219.67 2.311e-14 ***
+Residuals 18     98    5.44                      
+
+> anova(an2)
+Analysis of Variance Table
+
+Response: Notes
+          Df Sum Sq Mean Sq F value Pr(>F)
+Exam       2 12.952  6.4762  1.1895 0.3272
+Residuals 18 98.000  5.4444           
+\end{Verbatim}
+\end{minipage}
+\end{center}
+\end{Exo}
+-->
+</div>
+<div id="tableau-danalyse-de-la-variance-à-un-facteur" class="section level3">
+<h3><span class="header-section-number">7.2.7</span> Tableau d’analyse de la variance à un facteur</h3>
+<p>Toutes ces estimations peuvent être présentées sous la forme d’un tableau d’analyse de la variance à un facteur :</p>
+<div class="figure"><span id="fig:TabANOVA1"></span>
+<img src="image/TabANOVA1.png" alt="\label{TadANOVA1} Table résumé de l'ANOVA à un facteur" width="100%" />
+<p class="caption">
+Figure 7.3:  Table résumé de l’ANOVA à un facteur
+</p>
+</div>
+<!--
+$$
+\begin{array}{|c|c|c|c|c|c|}
+\hline
+\mbox{ Source }& \mbox{ddl} & \mbox{Somme des Carrés} &\mbox{ Moyenne des Carrés }& F& f_{1-\alpha}\\
+\hline
+\mbox{ Facteur } & I-1 & SCE = \displaystyle\sum_{i=1}^I n_i (Y_{i.}-Y_{..})^2  & \frac{SCE}{I-1} = MCE
+ & \frac{MCE}{\widehat{\sigma}^2}   & f_{1-\alpha,I-1,n-I}\\
+\hline
+\mbox{ Résiduel } & n-I & SCR = \displaystyle \sum_{i=1}^I\sum_{j=1}^{n_i}(Y_{ij}-Y_{i.})^2 & \frac{SCR}{n-I} = \widehat{\sigma}^2 & \multicolumn{2}{c}{} \\
+\cline{1-4}
+\mbox{ Total } & n-1 &SCT = \displaystyle  \sum_{i=1}^I \sum_{j=1}^{n_i}(Y_{ij}-Y_{..})^2  & \multicolumn{3}{c}{} \\
+\cline{1-3}
+\end{array}
+$$
+-->
+</div>
+</div>
+<div id="analyse-de-variance-à-deux-facteurs" class="section level2">
+<h2><span class="header-section-number">7.3</span> Analyse de variance à deux facteurs</h2>
+<div id="notations-et-exemple" class="section level3">
+<h3><span class="header-section-number">7.3.1</span> Notations et exemple</h3>
+<p>Soit <span class="math inline">\(Y\)</span> la variable réponse quantitative que l’on veut expliquer ici par rapport à deux variables qualitatives, i.e deux facteurs.
+Le premier facteur (<strong>facteur ligne</strong>), dit “<span class="math inline">\(A\)</span>”, admet <span class="math inline">\(I\)</span> niveaux, le deuxième (<strong>facteur colonne</strong>), dit “<span class="math inline">\(B\)</span>”, admet <span class="math inline">\(J\)</span> niveaux. On considère le tableau croisé
+entre les <span class="math inline">\(I\)</span> modalités du facteur <span class="math inline">\(A\)</span> et les <span class="math inline">\(J\)</span> modalités du facteur <span class="math inline">\(B\)</span>. On appelle <strong>cellule</strong> une case du tableau. Par la suite, on note :
+<span class="math display">\[
+\begin{array}{ll}
+ i=1, \cdots I &amp; \mbox{ les indices des niveaux du facteur ligne } A\\
+j= 1, \cdots J &amp; \mbox{ les indices des niveaux du facteur colonne } B \\
+n_{ij }             &amp; \mbox{ le nombre d&#39;observations pour le niveau } i \mbox{ du facteur } A \mbox{ et pour le niveau }\\
+                      &amp;  j \mbox{ du facteur } B \mbox{ (nombre d&#39;observations dans la cellule } (i,j))\\
+\ell=1, \cdots, n_{ij} &amp; \mbox{ les indices des observations de la cellule } (i,j)\\
+Y_{ij\ell}         &amp; \mbox{ la } \ell \mbox{-ième observation dans la cellule } (i,j)\\
+Y_{ij.}             &amp; \mbox{la moyenne des observations dans la cellule } (i,j) : Y_{ij.}=\frac{1}{n_{ij}}\sum_{\ell=1}^{n_{ij}}Y_{ij\ell}.
+\end{array}
+\]</span></p>
+<p>On utilisera également les notations suivantes :</p>
+<p><span class="math display">\[
+\begin{array}{l}
+Y_{i..} = \frac{1}{n_{i+}} \sum_{j=1}^J \sum_{\ell=1}^{n_{ij}} Y_{ij\ell} \textrm{ avec } n_{i+} = \sum_{j=1}^J n_{ij}\\
+\\
+Y_{.j.} = \frac{1}{n_{+j}} \sum_{i=1}^I \sum_{\ell=1}^{n_{ij}} Y_{ij\ell} \textrm{ avec } n_{+j} = \sum_{i=1}^I n_{ij}\\
+\\
+Y_{...} = \frac{1}{n}  \sum_{i=1}^I \sum_{j=1}^J \sum_{\ell=1}^{n_{ij}} Y_{ij\ell} \textrm{ avec } n= \sum_{i=1}^I n_{i+} =\sum_{j=1}^J n_{+j}
+\end{array}
+\]</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-47" class="example"><strong>Example 7.1  </strong></span>Cet exemple est issu du livre de <span class="citation">Husson and Pagès (<a href="#ref-HussonPages" role="doc-biblioref">2013</a>)</span>.
+Au cours d’une étude sur les facteurs influençant le rendement de blé, on a comparé trois variétés de blé (facteur B de modalités L, N et NF) et deux apports d’azote (facteur A apport normal, dose 1; apport intensif, dose 2). Trois répétitions pour chaque couple (variété, dose) ont été effectuées (<span class="math inline">\(n_{ij}=3\)</span>, plan équilibré) et le rendement (en q/ha) a été mesuré (<span class="math inline">\(Y_{ij\ell}\)</span>). On s’intéresse aux différences qui pourraient exister d’une variété à l’autre, et aux interactions éventuelles des variétés avec les apports azotés.</p>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th>Variety</th>
+<th>L (<span class="math inline">\(j=1\)</span>)</th>
+<th>N (<span class="math inline">\(j=2\)</span>)</th>
+<th>NF (<span class="math inline">\(j=3\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dose 1 (<span class="math inline">\(i=1\)</span>)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>(<span class="math inline">\(Y_{1,j,k}\)</span>)</td>
+<td>70.35 63.59 79.83</td>
+<td>62.56 58.89 55.65</td>
+<td>69.45 64.84 66.12</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(n_{1j}=3\)</span></td>
+<td><span class="math inline">\(Y_{11.}=71.26\)</span></td>
+<td><span class="math inline">\(Y_{12.}=59.03\)</span></td>
+<td><span class="math inline">\(Y_{13.}=66.80\)</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Dose 2 (<span class="math inline">\(i=2\)</span>)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>(<span class="math inline">\(Y_{2,j,k}\)</span>)</td>
+<td>74.97 69.12 77.18</td>
+<td>58.78 64.39 60.83</td>
+<td>69.85 64.89 67.15</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(n_{2j}=3\)</span></td>
+<td><span class="math inline">\(Y_{21.}=73.76\)</span></td>
+<td><span class="math inline">\(Y_{22.}=61.33\)</span></td>
+<td><span class="math inline">\(Y_{23.}=67.30\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="ANOVA.html#cb73-1"></a><span class="kw">summary</span>(Ble)</span></code></pre></div>
+<pre><code> Dose  Variety     Yield      
+ 1:9   L :6    Min.   :55.65  
+ 2:9   N :6    1st Qu.:62.82  
+       NF:6    Median :65.50  
+               Mean   :66.58  
+               3rd Qu.:69.75  
+               Max.   :79.83  </code></pre>
+</div>
+<div id="modélisation" class="section level3">
+<h3><span class="header-section-number">7.3.2</span> Modélisation</h3>
+<div id="anova-à-deux-facteurs-croisés" class="section level4">
+<h4><span class="header-section-number">7.3.2.1</span> ANOVA à deux facteurs croisés</h4>
+<p>Le modèle général à deux facteurs croisés s’écrit sous la forme :
+<span class="math display" id="eq:aov2MG">\[\begin{equation}
+\tag{7.3}
+Y_{ij\ell}= m_{ij}+\varepsilon_{ij\ell} \mbox{ avec } i=1, \cdots, I, \, j = 1, \cdots, J, \, \ell=1, \cdots, n_{ij}
+\end{equation}\]</span>
+où <span class="math inline">\(\varepsilon_{ij\ell}\sim \mathcal{N}(0,\sigma^2)\)</span>, <span class="math inline">\(n\)</span> variables aléatoires indépendantes.</p>
+<p>Cette paramétrisation ne permet pas de distinguer les effets de chaque facteur et de leur interaction. On considère donc la paramétrisation centrée
+qui décompose <span class="math inline">\(m_{ij}\)</span> par rapport à un effet moyen général et permet de mesurer des “effets séparés” des deux
+facteurs et les “effets conjoints”. Le modèle complet s’écrit sous la forme :
+<span class="math display" id="eq:aov2MC">\[\begin{equation}
+\tag{7.4}
+Y_{ij\ell}=\mu +\alpha_i+\beta_j+\gamma_{ij} + \varepsilon_{ij\ell},\ i=1, \cdots, I, \, j = 1, \cdots, J, \, \ell=1, \cdots, n_{ij}
+\end{equation}\]</span></p>
+<p>Mais on se retrouve avec un modèle défini avec <span class="math inline">\(1 + I + J + IJ\)</span> paramètres. On doit donc introduire <span class="math inline">\(1 +I+J\)</span> contraintes pour estimer ces paramètres. On a vu dans le chapitre <a href="singulier.html#singulier">5</a> qu’il est intéressant de considérer des contraintes dans le cadre d’un dispositif orthogonal. Dans le cas de l’analyse de la variance à deux facteurs croisés, le dispositif orthogonal est caractérisé par la propriété suivante.</p>
+<div class="proposition">
+<p><span id="prp:Proportho" class="proposition"><strong>Proposition 7.5  </strong></span>Dans le modèle d’analyse de variance à deux facteurs croisés il existe des contraintes qui rendent la partition <span class="math inline">\(\mu, \, \alpha, \, \beta, \, \gamma\)</span> orthogonale si et seulement si
+<span class="math display" id="eq:EqOrtho">\[\begin{equation}
+\tag{7.5}
+n_{ij}=\frac{n_{i +}n_{+ j}}{n}.
+\end{equation}\]</span>
+Dans ce cas, les contraintes (dites de type I) sont
+<span class="math display" id="eq:aov2contraintes">\[\begin{equation}
+\tag{7.6}
+\sum_{i=1}^I n_{i+}\alpha_i=0; \,
+\sum_{j=1}^J n_{+j}\beta_j=0 ; \,
+\forall i, \, \sum_{j=1}^J n_{ij}\gamma_{ij}=0; \, 
+ \forall j, \, \sum_{i=1}^I n_{ij}\gamma_{ij}=0.
+\end{equation}\]</span></p>
+</div>
+<p>La preuve de la proposition <a href="ANOVA.html#prp:Proportho">7.5</a> est donnée en annexe <a href="preuves-de-quelques-résultats-du-cours.html#annexe:ortho">B.2</a>.</p>
+<p>En pratique, les contraintes utilisées sont souvent celles dites de type III :
+<span class="math display">\[\sum_i \alpha_i =0, \, \sum_j \beta_j=0, \, \forall i, \, \sum_j \gamma_{ij}=0 \mbox{ et } \forall j, \, \sum_j \gamma_{ij} =0\]</span>
+Avec ce système de contraintes, il n’y a possibilité d’orthogonalité que si le modèle est <strong>équilibré</strong>, i.e. <span class="math inline">\(n_{ij}=cte\)</span>, d’après la proposition <a href="ANOVA.html#prp:Proportho">7.5</a>. Attention, les contraintes <a href="ANOVA.html#eq:aov2contraintes">(7.6)</a> ne sont pas les contraintes par défaut sous R (cf <code>model.matrix(Yield~Dose * Variety )</code>). Sous R, les contraintes sont <span class="math inline">\(\alpha_1=\beta_1=\gamma_{1j}=\gamma_{i1}=0\)</span> mais on peut les modifier (cf section suivante).</p>
+<p>Dans le cas des contraintes d’orthogonalité, les <span class="math inline">\(IJ\)</span> paramètres <span class="math inline">\(m_{ij}\)</span> sont donc redéfinis en fonction de</p>
+<ul>
+<li><span class="math inline">\(\mu\)</span> un paramètre de centrage général,</li>
+<li><span class="math inline">\(\alpha_i\)</span>, <span class="math inline">\(I-1\)</span> paramètres qui caractérisent les effets principaux du facteur <span class="math inline">\(A\)</span>,</li>
+<li><span class="math inline">\(\beta_j\)</span>, <span class="math inline">\(J-1\)</span> paramètres qui caractérisent les effets principaux du facteur <span class="math inline">\(B\)</span>,</li>
+<li><span class="math inline">\(\gamma_{ij}\)</span>, <span class="math inline">\((I-1)(J-1)\)</span> paramètres qui prennent en compte les effets d’interaction.</li>
+</ul>
+<p>Dans la suite, on va se placer dans le cadre d’un <strong>dispositif orthogonal</strong>.</p>
+</div>
+<div id="anova-à-deux-facteurs-additifs" class="section level4">
+<h4><span class="header-section-number">7.3.2.2</span> ANOVA à deux facteurs additifs</h4>
+<p>Le modèle d’ANOVA à deux facteurs <strong>additif</strong> est un modèle où on suppose qu’il n’y a pas d’effet d’interaction entre les deux facteurs. Le modèle s’écrit donc sous la forme
+<span class="math display" id="eq:aov2Madd">\[\begin{equation}
+\tag{7.7}
+Y_{ij\ell}=\mu +\alpha_i+\beta_j + \varepsilon_{ij\ell}.
+\end{equation}\]</span>
+Le modèle additif est un sous-modèle du modèle complet avec interaction.</p>
+<div class="{exercise}">
+<p>Déterminez sous quelle condition il existe des contraintes rendant le modèle additif ci-dessus orthogonal.</p>
+</div>
+</div>
+</div>
+<div id="estimation-des-paramètres" class="section level3">
+<h3><span class="header-section-number">7.3.3</span> Estimation des paramètres</h3>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-48" class="proposition"><strong>Proposition 7.6  </strong></span>Dans le cadre de la paramétrisation générale <span class="math inline">\(Y_{ij\ell} = m_{ij} +\varepsilon_{ij\ell}\)</span>,
+<span class="math inline">\(m_{ij}\)</span> est estimé par
+<span class="math display">\[\displaystyle \widehat{m}_{ij}=\frac{1}{n_{ij}}\sum_{\ell=1}^{n_{ij}}Y_{ij\ell} =Y_{ij.} \sim \mathcal{N}\left(m_{ij},\frac{\sigma^2}{n_{ij}}\right)\]</span></p>
+</div>
+<p>Pour démontrer cette proposition, il suffit d’utiliser l’expression <span class="math inline">\(\widehat{\theta}=(X&#39;X)^{-1}X&#39;Y\)</span> car on est ici dans le cas régulier.</p>
+<div class="{proposition}">
+<p>Les paramètres du modèle complet d’équation <a href="ANOVA.html#eq:aov2MC">(7.4)</a> sous les contraintes d’orthogonalité <a href="ANOVA.html#eq:aov2contraintes">(7.6)</a> sont estimés par</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{l}
+\widehat \mu = Y_{...}\\
+\widehat \alpha_i = Y_{i..} - Y_{...}\\
+\widehat \beta_j = Y_{.j.} - Y_{...}\\
+\widehat \gamma_{ij} = Y_{ij.} - Y_{i..} - Y_{.j.}+Y_{...}
+\end{array}
+\right.
+\]</span></p>
+</div>
+<p>Pour démontrer cette proposition, il faut minimiser la fonction des moindres carrés sous les contraintes <a href="ANOVA.html#eq:aov2contraintes">(7.6)</a>.</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-49" class="proposition"><strong>Proposition 7.7  </strong></span>Les paramètres du modèle complet d’équation <a href="ANOVA.html#eq:aov2MC">(7.4)</a> sous les contraintes par défaut sous R (<span class="math inline">\(\alpha_1=\beta_1=\gamma_{1j}=\gamma_{i1}=0,\ \forall i,\ \forall j\)</span>) sont estimés par
+<span class="math display">\[
+\left\{
+\begin{array}{l}
+\widehat \mu = Y_{11.}\\ 
+\widehat \alpha_i = Y_{i1.} - Y_{11.}\\ 
+\widehat \beta_j = Y_{1j.} - Y_{11.}\\ 
+\widehat \gamma_{ij} = Y_{ij.} - Y_{i1.} - Y_{1j.}+Y_{11.}
+\end{array}
+\right.
+\]</span></p>
+</div>
+<p>Pour notre exemple, les résultats obtenus avec R sont les suivants</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="ANOVA.html#cb75-1"></a>anov2 =<span class="st"> </span><span class="kw">lm</span>(Yield<span class="op">~</span>Dose<span class="op">*</span>Variety,<span class="dt">data=</span>Ble)</span>
+<span id="cb75-2"><a href="ANOVA.html#cb75-2"></a><span class="kw">summary</span>(anov2)</span></code></pre></div>
+<pre><code>
+Call:
+lm(formula = Yield ~ Dose * Variety, data = Ble)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-7.667 -2.296 -0.325  2.623  8.573 
+
+Coefficients:
+                Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)       71.257      2.536  28.101 2.55e-12 ***
+Dose2              2.500      3.586   0.697  0.49899    
+VarietyN         -12.223      3.586  -3.409  0.00519 ** 
+VarietyNF         -4.453      3.586  -1.242  0.23801    
+Dose2:VarietyN    -0.200      5.071  -0.039  0.96919    
+Dose2:VarietyNF   -2.007      5.071  -0.396  0.69928    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 4.392 on 12 degrees of freedom
+Multiple R-squared:  0.6725,    Adjusted R-squared:  0.536 
+F-statistic: 4.928 on 5 and 12 DF,  p-value: 0.01105</code></pre>
+<p>Il est possible de modifier les contraintes sous R. On donne ci-dessous un exemple</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="ANOVA.html#cb77-1"></a>aov2Cbis&lt;-<span class="kw">lm</span>(Yield<span class="op">~</span><span class="kw">C</span>(Dose,sum) <span class="op">+</span><span class="st"> </span><span class="kw">C</span>(Variety,sum) <span class="op">+</span><span class="st">  </span><span class="kw">C</span>(Dose,sum)<span class="op">:</span><span class="kw">C</span>(Variety,sum),<span class="dt">data=</span>Ble)</span>
+<span id="cb77-2"><a href="ANOVA.html#cb77-2"></a><span class="co">#lm(Rendement ~ Dose * Variete,data=Ble,contrasts=list(Dose=&quot;contr.sum&quot;,Variete=&quot;contr.sum&quot;))</span></span>
+<span id="cb77-3"><a href="ANOVA.html#cb77-3"></a><span class="kw">summary</span>(aov2Cbis)</span></code></pre></div>
+<pre><code>
+Call:
+lm(formula = Yield ~ C(Dose, sum) + C(Variety, sum) + C(Dose, 
+    sum):C(Variety, sum), data = Ble)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-7.667 -2.296 -0.325  2.623  8.573 
+
+Coefficients:
+                               Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                     66.5800     1.0352  64.316  &lt; 2e-16 ***
+C(Dose, sum)1                   -0.8822     1.0352  -0.852 0.410775    
+C(Variety, sum)1                 5.9267     1.4640   4.048 0.001615 ** 
+C(Variety, sum)2                -6.3967     1.4640  -4.369 0.000913 ***
+C(Dose, sum)1:C(Variety, sum)1  -0.3678     1.4640  -0.251 0.805897    
+C(Dose, sum)1:C(Variety, sum)2  -0.2678     1.4640  -0.183 0.857923    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 4.392 on 12 degrees of freedom
+Multiple R-squared:  0.6725,    Adjusted R-squared:  0.536 
+F-statistic: 4.928 on 5 and 12 DF,  p-value: 0.01105</code></pre>
+</div>
+<div id="prédiction-résidus-et-variance" class="section level3">
+<h3><span class="header-section-number">7.3.4</span> Prédiction, résidus et variance</h3>
+<p>On retrouve une fois de plus que les valeurs ajustées et donc les résidus ne sont pas impactés par le choix de la modélisation et des contraintes d’identifiabilité.</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-50" class="proposition"><strong>Proposition 7.8  </strong></span>Dans le cadre de l’ANOVA à deux facteurs avec interaction, on obtient que</p>
+<ul>
+<li>les valeurs ajustées valent</li>
+</ul>
+<p><span class="math display">\[\widehat{Y}_{ij\ell}=\widehat{m}_{ij} = Y_{ij.}= \widehat{\mu}+\widehat{\alpha}_i+\widehat{\beta}_j+\widehat{\gamma}_{ij}\]</span>
+- les résidus valent <span class="math inline">\(\widehat{\varepsilon}_{ij\ell}=Y_{ij\ell}-Y_{ij.}\)</span></p>
+<ul>
+<li>La variance est estimée par
+<span class="math display">\[
+\displaystyle \widehat{\sigma}^2 = \frac{1}{n-IJ}\sum_{ij\ell}(\widehat{\varepsilon}_{ij\ell})^2 = \frac{1}{n-IJ}\sum_{ij\ell}(Y_{ij\ell}-Y_{ij.})^2
+\]</span></li>
+</ul>
+<p>et
+<span class="math display">\[
+\frac{(n - IJ) \widehat{\sigma}^2}{\sigma^2}\sim \chi^2(n - IJ)
+\]</span></p>
+</div>
+</div>
+<div id="décomposition-de-la-variabilité" class="section level3">
+<h3><span class="header-section-number">7.3.5</span> Décomposition de la variabilité</h3>
+<p>Comme dans l’analyse de variance à un facteur, la variabilité totale de <span class="math inline">\(Y\)</span> se décompose en une variabilité inter-cellule expliquée par le modèle (notée <span class="math inline">\(SSE\)</span>) et une variabilité intra-cellule non expliquée par le modèle (notée <span class="math inline">\(SSR\)</span>) :
+<span class="math display">\[
+\underbrace{\sum_{i=1}^I \sum_{j=1}^J\sum_{\ell=1}^{n_{ij}}(Y_{ij\ell}-Y_{...})^2}_{\mbox{SST}} = 
+\underbrace{\sum_{i=1}^I \sum_{j=1}^J n_{ij}(Y_{ij.}-Y_{...})^2}_{\mbox{SSE}} + 
+\underbrace{\sum_{i=1}^I \sum_{j=1}^Jn_{ij}var_{ij}(Y)}_{\mbox{SSR}}
+\]</span>
+avec <span class="math inline">\(var_{ij}(Y)=\frac{1}{n_{ij}}\sum_{\ell=1}^{n_{ij}}(Y_{ij\ell}- Y_{ij.})^2.\)</span></p>
+<p>Dans le cas du modèle à deux facteurs croisés, la variance inter-cellule <span class="math inline">\(SSE\)</span> peut être décomposée en une variance expliquée par le premier facteur, une variance expliquée par le second facteur et une variance expliquée par les interactions entre les deux facteurs. Dans le cas d’un plan orthogonal à deux facteurs, on définit les quantités suivantes :</p>
+<ul>
+<li><span class="math inline">\(SSA\)</span>, la somme des carrés corrigés de l’effet différentiel du facteur <span class="math inline">\(A\)</span> :
+<span class="math display">\[
+      SSA=\sum_{i=1}^I n_{i+} (Y_{i..}-Y_{...})^2 = \sum_{i=1}^I n_{i+} (\widehat{\alpha}_i)^2
+  \]</span></li>
+<li><span class="math inline">\(SSB\)</span>, la somme des carrés corrigés de l’effet différentiel du facteur <span class="math inline">\(B\)</span> :
+<span class="math display">\[
+      SSB= \sum_{j=1}^J n_{+j} (Y_{.j.} - Y_{...})^2 = \sum_{j=1}^J n_{+j} (\widehat{\beta}_j)^2
+  \]</span></li>
+<li><span class="math inline">\(SSI\)</span>, la somme des carrés corrigés de l’effet d’interaction entre les deux facteurs :
+<span class="math display">\[
+      SSI= \sum_{i=1}^I\sum_{j=1}^J n_{ij} (Y_{ij.} - Y_{i..} - Y_{.j.} + Y_{...})^2 = \sum_{i=1}^I\sum_{j=1}^J n_{ij} (\widehat{\gamma}_{ij})^2
+  \]</span></li>
+</ul>
+<p>On peut montrer que :
+<span class="math display">\[
+    SSE = SSA + SSB + SSI.
+\]</span></p>
+</div>
+<div id="le-diagramme-dinteractions" class="section level3">
+<h3><span class="header-section-number">7.3.6</span> Le diagramme d’interactions</h3>
+<p>Le diagramme d’interactions permet de visualiser graphiquement la présence ou l’absence d’interactions.
+Pour chaque <span class="math inline">\(j\)</span> fixé, on représente dans un repère orthogonal les points <span class="math inline">\((i,j)\)</span> de coordonnées <span class="math inline">\((i, \widehat{m}_{ij}=Y_{ij.})\)</span>.
+Puis on trace les segments joignants les couples de points <span class="math inline">\(((i-1,j), \, (i,j))\)</span>. On obtient ainsi pour chaque <span class="math inline">\(j\)</span> fixé une ligne brisée.</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-51" class="proposition"><strong>Proposition 7.9  </strong></span>Si l’hypothèse de non-interaction est vraie, alors les lignes brisées dans le diagramme d’interaction sont parallèles.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-52" class="proof"><em>Proof</em>. </span>La ligne brisée associée au niveau <span class="math inline">\(j\)</span> joint les points <span class="math inline">\((1,\widehat m_{1j}),(2,\hat m_{2j}),\cdots,(I,\widehat m_{Ij})\)</span>.
+S’il n’y a pas d’interaction, alors ces points ont pour coordonnées
+<span class="math inline">\((1,\widehat \alpha_1+ \widehat \beta_j),(2,\widehat \alpha_2+ \widehat \beta_j),\cdots,(I,\widehat \alpha_I+ \widehat \beta_j)\)</span>.
+Par conséquent, les lignes brisées associées aux niveaux <span class="math inline">\(j\)</span> et <span class="math inline">\(j&#39;\)</span> se correspondent par une translation verticale d’amplitude <span class="math inline">\(\widehat \beta_j-\widehat \beta_{j&#39;}\)</span>.</p>
+</div>
+<p>On lit sur ce graphique l’effet principal des modalités <span class="math inline">\(j\)</span> (le niveau moyen d’une ligne brisée),
+l’effet principal des modalités <span class="math inline">\(i\)</span> (la moyenne des ordonnées des points à abscisse fixée).
+En ce qui concerne les interactions, on obtiendra rarement des lignes brisées strictement parallèles.
+Le problème sera alors de savoir si leur non-parallélisme traduit une interaction significative. Un test est donc nécessaire.</p>
+<div class="figure"><span id="fig:FigInteractions1"></span>
+<img src="Bookdown-poly_files/figure-html/FigInteractions1-1.png" alt="\label{FigInteractions1} Moyennes de la variable $Y$ pour chaque niveau d'un facteur en fonction des niveaux de l'autre facteur : avec interaction à droite; sans interaction à gauche." width="672" />
+<p class="caption">
+Figure 7.4:  Moyennes de la variable <span class="math inline">\(Y\)</span> pour chaque niveau d’un facteur en fonction des niveaux de l’autre facteur : avec interaction à droite; sans interaction à gauche.
+</p>
+</div>
+<!--
+\begin{figure}[h]
+\centerline{\includegraphics[width=\textwidth]{Image/ChapANOVA/imagesANOVA/interaction-ggplot.png}}
+\caption{Moyennes de la variable $Y$ pour chaque niveau d'un facteur en fonction des niveaux de l'autre facteur : avec interaction à gauche; sans interaction à droite.}
+\label{FigInteractions1}
+\end{figure}
+\newpage
+-->
+<p>La Figure <a href="ANOVA.html#fig:FigInteractions1">7.4</a> illustre les comportements des moyennes des cellules de modèles avec ou sans interaction (additif).
+Chaque ligne est appelée un <strong>profil</strong>, et la présence d’interactions se caractérise par le croisement de ces profils tandis que
+le parallélisme indique l’absence d’interactions. La question est évidemment de tester si des croisements observés sont jugés significatifs.</p>
+<p>Attention, un manque de parallélisme peut aussi être dû à la présence d’une relation non-linéaire entre la variable <span class="math inline">\(Y\)</span> et l’un des facteurs.</p>
+<p>Dans notre exemple, on obtient le graphique d’interaction suivant</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="ANOVA.html#cb79-1"></a><span class="kw">attach</span>(Ble)</span>
+<span id="cb79-2"><a href="ANOVA.html#cb79-2"></a><span class="kw">interaction.plot</span>(Variety,Dose,Yield,<span class="dt">col=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>),<span class="dt">pch=</span><span class="kw">c</span>(<span class="dv">18</span>,<span class="dv">24</span>),<span class="dt">main=</span><span class="st">&quot;Interaction plot&quot;</span>,<span class="dt">type=</span><span class="st">&quot;b&quot;</span>)</span></code></pre></div>
+<p><img src="Bookdown-poly_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+</div>
+<div id="tests-dhypothèses" class="section level3">
+<h3><span class="header-section-number">7.3.7</span> Tests d’hypothèses</h3>
+<p>Trois hypothèses sont couramment considérées :</p>
+<ul>
+<li>L’hypothèse d’absence d’interactions entre les deux facteurs ou hypothèse d’additivité des 2 facteurs :
+<span class="math display">\[\mathcal{H}_I: \forall i=1, \cdots, I, _, \forall j=1, \cdots, J, \, \gamma_{ij}=0.\]</span>
+Cette hypothèse impose <span class="math inline">\((I-1)(J-1)\)</span> contraintes.</li>
+<li>L’hypothèse d’absence d’effet du facteur <span class="math inline">\(A\)</span> :
+<span class="math display">\[\mathcal{H}_A : \forall i=1, \cdots, I, \, \alpha_i =0.\]</span>
+Cette hypothèse impose <span class="math inline">\((I-1)\)</span> contraintes.</li>
+<li>L’hypothèse d’absence d’effet du facteur <span class="math inline">\(B\)</span> :
+<span class="math display">\[\mathcal{H}_B : \forall j=1, \cdots, J, \, \beta_j=0.\]</span>
+Cette hypothèse impose <span class="math inline">\((J-1)\)</span> contraintes.</li>
+</ul>
+<p>Une remarque très importante porte sur la démarche de ces tests d’hypothèses. <strong>S’il existe des interactions entre les deux facteurs, alors les deux facteurs qui constituent cette interaction doivent impérativement être introduits dans le modèle ; dans ce cas, il est donc inutile de tester l’effet de chacun des deux facteurs</strong>. En effet, la présence d’interactions entre les deux facteurs signifie qu’il y a un effet combiné des deux facteurs et donc un effet de chaque facteur.</p>
+<div id="test-de-non-interaction-entre-les-deux-facteurs" class="section level4">
+<h4><span class="header-section-number">7.3.7.1</span> Test de non-interaction entre les deux facteurs</h4>
+<p>On commence par tester l’absence d’effet d’interaction
+<span class="math inline">\(\mathcal{H}_I: \gamma_{ij}=0,\ \forall i=1, \cdots, I,\  \forall j=1, \cdots, J\)</span>. On est donc ramené à un test de Fisher entre les modèles suivants :</p>
+<ul>
+<li><span class="math inline">\([M_1]\)</span> <span class="math inline">\(Y_{ij\ell} = \mu + \alpha_i + \beta_j + \gamma_{ij} + \varepsilon_{ij\ell}\)</span> (modèle avec interaction)</li>
+<li><span class="math inline">\([M_0]\)</span> <span class="math inline">\(Y_{ij\ell} = \mu + \alpha_i + \beta_j + \varepsilon_{ij\ell}\)</span> (modèle additif)</li>
+</ul>
+<p>La statistique de test est alors donnée par
+<span class="math display">\[
+F=\frac{SSI / (I-1)(J-1)}{SSR/(n-IJ) } \underset{\mathcal{H}_0}{\sim} \mathcal{F}((I-1)(J-1),n-IJ).
+\]</span></p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="ANOVA.html#cb80-1"></a>anov2add =<span class="st"> </span><span class="kw">lm</span>(Yield <span class="op">~</span>Variety <span class="op">+</span><span class="st"> </span>Dose, <span class="dt">data=</span>Ble)</span>
+<span id="cb80-2"><a href="ANOVA.html#cb80-2"></a><span class="kw">anova</span>(anov2add,anov2)</span></code></pre></div>
+<pre><code>Analysis of Variance Table
+
+Model 1: Yield ~ Variety + Dose
+Model 2: Yield ~ Dose * Variety
+  Res.Df    RSS Df Sum of Sq     F Pr(&gt;F)
+1     14 235.14                          
+2     12 231.47  2    3.6654 0.095   0.91</code></pre>
+<p>Dans notre exemple, on retient donc le modèle additif (pas d’effet d’inetraction entre les deux facteurs).</p>
+</div>
+<div id="test-dabsence-deffet-du-facteur-a" class="section level4">
+<h4><span class="header-section-number">7.3.7.2</span> Test d’absence d’effet du facteur <span class="math inline">\(A\)</span></h4>
+<p>Si on a conservé le modèle additif au test précédent, on peut tester l’absence du facteur <span class="math inline">\(A\)</span>
+<span class="math display">\[\mathcal{H}_A: \alpha_i =0,\ \forall i=1, \cdots, I\]</span></p>
+<p>Le test de Fisher compare donc les modèles suivants
+- <span class="math inline">\([M_1]\)</span> <span class="math inline">\(Y_{ij\ell} = \mu + \alpha_i + \beta_j + \varepsilon_{ij\ell}\)</span> (modèle additif)</p>
+<ul>
+<li><span class="math inline">\([M_0]\)</span> <span class="math inline">\(Y_{ij\ell} = \mu + \beta_j + \varepsilon_{ij\ell}\)</span> (Anova à un facteur)</li>
+</ul>
+<p>La statistique de test est donnée par
+<span class="math display">\[F=\frac{SSA/(I-1)}{SSRAB/(n-(I+J-1))} \underset{\mathcal{H}_0}{\sim} \mathcal{F}(I-1,n-(I+J-1)),\]</span>
+où <span class="math inline">\(SSRAB\)</span> est le SSR du modèle additif.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="ANOVA.html#cb82-1"></a>anovA =<span class="st"> </span><span class="kw">lm</span>(Yield <span class="op">~</span>Variety,<span class="dt">data=</span>Ble)</span>
+<span id="cb82-2"><a href="ANOVA.html#cb82-2"></a><span class="kw">anova</span>(anovA,anov2add)</span></code></pre></div>
+<pre><code>Analysis of Variance Table
+
+Model 1: Yield ~ Variety
+Model 2: Yield ~ Variety + Dose
+  Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)
+1     15 249.15                           
+2     14 235.14  1     14.01 0.8341 0.3765</code></pre>
+<p>Dans notre exemple, on peut conclure qu’il n’y a pas d’effet de la dose.</p>
+</div>
+</div>
+<div id="test-dabsence-deffet-du-facteur-b" class="section level3">
+<h3><span class="header-section-number">7.3.8</span> Test d’absence d’effet du facteur <span class="math inline">\(B\)</span></h3>
+<p>Si on a conservé le modèle additif au test précédent, on peut tester l’absence du facteur
+<span class="math display">\[\mathcal{H}_B: \beta_j =0,\ \forall j=1, \cdots, J\]</span></p>
+<p>Le test de Fisher compare donc les modèles suivants</p>
+<ul>
+<li><p><span class="math inline">\([M_1]\)</span> <span class="math inline">\(Y_{ij\ell} = \mu + \alpha_i + \beta_j + \varepsilon_{ij\ell}\)</span> (modèle additif)</p></li>
+<li><p><span class="math inline">\([M_0]\)</span> <span class="math inline">\(Y_{ij\ell} = \mu + \alpha_i +\varepsilon_{ij\ell}\)</span> (ANOVA à un facteur)</p></li>
+</ul>
+<p>La statistique de test est donnée par
+<span class="math display">\[F=\frac{SSB/(J-1)}{SSRAB/(n-(I+J-1))} \underset{\mathcal{H}_0}{\sim} \mathcal{F}(J-1,n-(I+J-1)),\]</span></p>
+<p>où <span class="math inline">\(SSRAB\)</span> est le SSR du modèle additif.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="ANOVA.html#cb84-1"></a>anovB =<span class="st"> </span><span class="kw">lm</span>(Yield<span class="op">~</span>Dose,<span class="dt">data=</span>Ble)</span>
+<span id="cb84-2"><a href="ANOVA.html#cb84-2"></a><span class="kw">anova</span>(anovB,anov2add)</span></code></pre></div>
+<pre><code>Analysis of Variance Table
+
+Model 1: Yield ~ Dose
+Model 2: Yield ~ Variety + Dose
+  Res.Df    RSS Df Sum of Sq      F    Pr(&gt;F)    
+1     16 692.72                                  
+2     14 235.14  2    457.58 13.622 0.0005192 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>On retient dans notre exemple qu’il y a un effet de la variété sur le rendement.</p>
+</div>
+<div id="tableau-danalyse-de-variance-à-deux-facteurs-croisés-dans-le-cas-dun-plan-orthogonal" class="section level3">
+<h3><span class="header-section-number">7.3.9</span> Tableau d’analyse de variance à deux facteurs croisés dans le cas d’un plan orthogonal</h3>
+<p>Dans le cas du modèle à deux facteurs croisés avec dispositif orthogonal, on rappelle que la variabilité totale peut être décomposée en<br />
+<span class="math display">\[
+SST = SSE + SSR = SSA + SSB + SSI + SSR.
+\]</span>
+On peut ainsi dresser le tableau d’analyse de variance d’un plan orthogonal à deux facteurs croisés :</p>
+<div class="figure"><span id="fig:TabANOVA2"></span>
+<img src="image/TabANOVA2.png" alt="\label{TadANOVA2} Table résumé de l'ANOVA à deux facteurs" width="100%" />
+<p class="caption">
+Figure 7.5:  Table résumé de l’ANOVA à deux facteurs
+</p>
+</div>
+<!--
+$
+\begin{array}{|c|c|c|c|c|c|}
+\hline
+\mbox{ Source }& \mbox{ddl} & \mbox{Somme des} &\mbox{ Moyenne des}& F& f_{1-\alpha}\\
+                          &                   & \mbox{Carrés}         & \mbox{Carrés}           &   &                   \\
+\hline
+\mbox{ Ligne } & I-1 & SCA & MCA = SCA / (I-1)  & MCA / \widehat{\sigma}^2  & f_{1-\alpha,I-1,n-IJ}\\
+\hline
+\mbox{ Colonne } & J-1 & SCB & MCB = SCB / (J-1) & MCB / \widehat{\sigma}^2 & f_{1-\alpha,J-1,n-IJ}\\
+\hline
+\mbox{ Interactions} & (I-1)(J-1) & SCI & MCI = SCI / (I-1)(J-1)
+ & MCI / \widehat{\sigma}^2 & f_{1-\alpha,(I-1)(J-1),n-IJ}\\
+\hline
+\mbox{ Résiduel } & n-IJ & SCR & SCR / (n-IJ) = \widehat{\sigma}^2 & \multicolumn{2}{c}{} \\
+\cline{1-4}
+\mbox{ Total } & n-1 & SCT & \multicolumn{3}{c}{} \\
+\cline{1-3}
+\end{array}
+$
+-->
+</div>
+</div>
+<div id="en-résumé-5" class="section level2">
+<h2><span class="header-section-number">7.4</span> En résumé</h2>
+<div class="summarybox">
+<ul>
+<li>Savoir écrire un modèle d’ANOVA à un et deux facteurs (individuellement et matriciellement), régulier et singulier</li>
+<li>Savoir distinguer un modèle régulier d’un modèle singulier</li>
+<li>Savoir estimer les paramètres du modèle d’ANOVA dans le cas régulier et dans le cas singulier (en s’adaptant à la / les contrainte(s) choisie(s))</li>
+<li>Savoir construire un intervalle de confiance pour un paramètre du modèle d’ANOVA</li>
+<li>Savoir construire un test pour tester l’effet d’un facteur, l’effet d’interaction entre facteurs, … et savoir organiser ces différents tests</li>
+<li>Savoir interpréter un diagramme d’interaction</li>
+<li>Savoir manipuler SSA, SSB, SSI, SSE, SSR dans le cas d’un plan orthogonal.</li>
+</ul>
+</div>
+</div>
+<div id="quelques-codes-en-python" class="section level2">
+<h2><span class="header-section-number">7.5</span> Quelques codes en python</h2>
+<p>Dans cette partie, on donne quelques lignes de codes en python pour reproduire (partiellement) l’étude faite précédemment en R.</p>
+<div id="exemple-danova-à-un-facteur" class="section level3">
+<h3><span class="header-section-number">7.5.1</span> Exemple d’ANOVA à un facteur</h3>
+<div class="sourceCode" id="cb86"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb86-1"><a href="ANOVA.html#cb86-1"></a><span class="co"># Récupération des données de R avec la librairie reticulate</span></span>
+<span id="cb86-2"><a href="ANOVA.html#cb86-2"></a>Datapy<span class="op">=</span>r.Data</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb87-1"><a href="ANOVA.html#cb87-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb87-2"><a href="ANOVA.html#cb87-2"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
+<span id="cb87-3"><a href="ANOVA.html#cb87-3"></a></span>
+<span id="cb87-4"><a href="ANOVA.html#cb87-4"></a><span class="co"># Ajustement du modèle ANOVA 1 régulier</span></span>
+<span id="cb87-5"><a href="ANOVA.html#cb87-5"></a>anRegpy <span class="op">=</span> ols(<span class="st">&#39;Marks ~ Exam-1&#39;</span>, data<span class="op">=</span>Datapy).fit()<span class="op">;</span></span>
+<span id="cb87-6"><a href="ANOVA.html#cb87-6"></a>anRegpy.summary()</span>
+<span id="cb87-7"><a href="ANOVA.html#cb87-7"></a><span class="co"># Ajustement du modèle ANOVA 1 singulier</span></span></code></pre></div>
+<pre><code>&lt;class &#39;statsmodels.iolib.summary.Summary&#39;&gt;
+&quot;&quot;&quot;
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  Marks   R-squared:                       0.115
+Model:                            OLS   Adj. R-squared:                  0.017
+Method:                 Least Squares   F-statistic:                     1.170
+Date:                Jeu, 28 oct 2021   Prob (F-statistic):              0.333
+Time:                        11:09:04   Log-Likelihood:                -46.546
+No. Observations:                  21   AIC:                             99.09
+Df Residuals:                      18   BIC:                             102.2
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Exam[A]       12.0000      0.979     12.258      0.000       9.943      14.057
+Exam[B]       12.7500      0.848     15.039      0.000      10.969      14.531
+Exam[C]       14.0000      0.906     15.447      0.000      12.096      15.904
+==============================================================================
+Omnibus:                        0.750   Durbin-Watson:                   1.388
+Prob(Omnibus):                  0.687   Jarque-Bera (JB):                0.773
+Skew:                          -0.356   Prob(JB):                        0.679
+Kurtosis:                       2.386   Cond. No.                         1.15
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+&quot;&quot;&quot;</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb89-1"><a href="ANOVA.html#cb89-1"></a>anSingpy <span class="op">=</span> ols(<span class="st">&#39;Marks ~ Exam&#39;</span>, data<span class="op">=</span>Datapy).fit()</span>
+<span id="cb89-2"><a href="ANOVA.html#cb89-2"></a>anSingpy.summary()</span></code></pre></div>
+<pre><code>&lt;class &#39;statsmodels.iolib.summary.Summary&#39;&gt;
+&quot;&quot;&quot;
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  Marks   R-squared:                       0.115
+Model:                            OLS   Adj. R-squared:                  0.017
+Method:                 Least Squares   F-statistic:                     1.170
+Date:                Jeu, 28 oct 2021   Prob (F-statistic):              0.333
+Time:                        11:09:04   Log-Likelihood:                -46.546
+No. Observations:                  21   AIC:                             99.09
+Df Residuals:                      18   BIC:                             102.2
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     12.0000      0.979     12.258      0.000       9.943      14.057
+Exam[T.B]      0.7500      1.295      0.579      0.570      -1.971       3.471
+Exam[T.C]      2.0000      1.334      1.499      0.151      -0.803       4.803
+==============================================================================
+Omnibus:                        0.750   Durbin-Watson:                   1.388
+Prob(Omnibus):                  0.687   Jarque-Bera (JB):                0.773
+Skew:                          -0.356   Prob(JB):                        0.679
+Kurtosis:                       2.386   Cond. No.                         4.00
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+&quot;&quot;&quot;</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb91-1"><a href="ANOVA.html#cb91-1"></a><span class="co"># Intervalles de confiance pour les paramètres</span></span>
+<span id="cb91-2"><a href="ANOVA.html#cb91-2"></a>anRegpy.conf_int(alpha<span class="op">=</span><span class="fl">0.05</span>)</span></code></pre></div>
+<pre><code>                 0          1
+Exam[A]   9.943313  14.056687
+Exam[B]  10.968857  14.531143
+Exam[C]  12.095878  15.904122</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb93-1"><a href="ANOVA.html#cb93-1"></a>anSingpy.conf_int(alpha<span class="op">=</span><span class="fl">0.05</span>)</span></code></pre></div>
+<pre><code>                  0          1
+Intercept  9.943313  14.056687
+Exam[T.B] -1.970741   3.470741
+Exam[T.C] -0.802792   4.802792</code></pre>
+<div class="sourceCode" id="cb95"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb95-1"><a href="ANOVA.html#cb95-1"></a><span class="co"># Test d&#39;effet de l&#39;examinateur</span></span>
+<span id="cb95-2"><a href="ANOVA.html#cb95-2"></a><span class="im">from</span> statsmodels.stats.anova <span class="im">import</span> anova_lm</span>
+<span id="cb95-3"><a href="ANOVA.html#cb95-3"></a>anmequalpy <span class="op">=</span> ols(<span class="st">&#39;Marks ~1&#39;</span>, data<span class="op">=</span>Datapy).fit()<span class="op">;</span></span>
+<span id="cb95-4"><a href="ANOVA.html#cb95-4"></a>anova_lm(anmequalpy,anRegpy)</span></code></pre></div>
+<pre><code>   df_resid         ssr  df_diff    ss_diff         F    Pr(&gt;F)
+0      20.0  116.952381      0.0        NaN       NaN       NaN
+1      18.0  103.500000      2.0  13.452381  1.169772  0.332952</code></pre>
+</div>
+<div id="exemple-danova-à-deux-facteurs" class="section level3">
+<h3><span class="header-section-number">7.5.2</span> Exemple d’ANOVA à deux facteurs</h3>
+<div class="sourceCode" id="cb97"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb97-1"><a href="ANOVA.html#cb97-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb97-2"><a href="ANOVA.html#cb97-2"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
+<span id="cb97-3"><a href="ANOVA.html#cb97-3"></a></span>
+<span id="cb97-4"><a href="ANOVA.html#cb97-4"></a><span class="co"># Récuperation des données</span></span>
+<span id="cb97-5"><a href="ANOVA.html#cb97-5"></a>Blepy<span class="op">=</span>r.Ble</span>
+<span id="cb97-6"><a href="ANOVA.html#cb97-6"></a>Blepy[<span class="st">&#39;Dose&#39;</span>]<span class="op">=</span>Blepy[<span class="st">&#39;Dose&#39;</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb97-7"><a href="ANOVA.html#cb97-7"></a>Blepy[<span class="st">&#39;Variety&#39;</span>]<span class="op">=</span>Blepy[<span class="st">&#39;Variety&#39;</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb97-8"><a href="ANOVA.html#cb97-8"></a><span class="co"># Ajustement du modèle avec interaction</span></span>
+<span id="cb97-9"><a href="ANOVA.html#cb97-9"></a>anov2Singpy <span class="op">=</span> ols(<span class="st">&#39;Yield ~ Dose * Variety&#39;</span>, data<span class="op">=</span>Blepy).fit()<span class="op">;</span></span>
+<span id="cb97-10"><a href="ANOVA.html#cb97-10"></a>anov2Singpy.summary()</span></code></pre></div>
+<pre><code>&lt;class &#39;statsmodels.iolib.summary.Summary&#39;&gt;
+&quot;&quot;&quot;
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  Yield   R-squared:                       0.672
+Model:                            OLS   Adj. R-squared:                  0.536
+Method:                 Least Squares   F-statistic:                     4.928
+Date:                Jeu, 28 oct 2021   Prob (F-statistic):             0.0111
+Time:                        11:09:07   Log-Likelihood:                -48.528
+No. Observations:                  18   AIC:                             109.1
+Df Residuals:                      12   BIC:                             114.4
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+===========================================================================================
+                              coef    std err          t      P&gt;|t|      [0.025      0.975]
+-------------------------------------------------------------------------------------------
+Intercept                  71.2567      2.536     28.101      0.000      65.732      76.781
+Dose[T.2]                   2.5000      3.586      0.697      0.499      -5.313      10.313
+Variety[T.N]              -12.2233      3.586     -3.409      0.005     -20.037      -4.410
+Variety[T.NF]              -4.4533      3.586     -1.242      0.238     -12.267       3.360
+Dose[T.2]:Variety[T.N]     -0.2000      5.071     -0.039      0.969     -11.250      10.850
+Dose[T.2]:Variety[T.NF]    -2.0067      5.071     -0.396      0.699     -13.056       9.043
+==============================================================================
+Omnibus:                        1.202   Durbin-Watson:                   2.764
+Prob(Omnibus):                  0.548   Jarque-Bera (JB):                0.199
+Skew:                           0.182   Prob(JB):                        0.905
+Kurtosis:                       3.365   Cond. No.                         9.77
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+&quot;&quot;&quot;
+
+/Users/maugis/opt/anaconda3/envs/r-reticulate/lib/python3.6/site-packages/scipy/stats/stats.py:1604: UserWarning: kurtosistest only valid for n&gt;=20 ... continuing anyway, n=18
+  &quot;anyway, n=%i&quot; % int(n))</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb99-1"><a href="ANOVA.html#cb99-1"></a><span class="im">from</span> statsmodels.graphics.factorplots <span class="im">import</span> interaction_plot</span>
+<span id="cb99-2"><a href="ANOVA.html#cb99-2"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb99-3"><a href="ANOVA.html#cb99-3"></a><span class="co"># graphique d&#39;interaction</span></span>
+<span id="cb99-4"><a href="ANOVA.html#cb99-4"></a>interaction_plot(Blepy[<span class="st">&#39;Variety&#39;</span>],Blepy[<span class="st">&#39;Dose&#39;</span>],Blepy[<span class="st">&#39;Yield&#39;</span>])<span class="op">;</span></span>
+<span id="cb99-5"><a href="ANOVA.html#cb99-5"></a>plt.show()</span></code></pre></div>
+<p><img src="Bookdown-poly_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb100-1"><a href="ANOVA.html#cb100-1"></a><span class="im">from</span> statsmodels.stats.anova <span class="im">import</span> anova_lm</span>
+<span id="cb100-2"><a href="ANOVA.html#cb100-2"></a><span class="co"># Test d&#39;absence d&#39;interaction</span></span>
+<span id="cb100-3"><a href="ANOVA.html#cb100-3"></a>anov2addpy <span class="op">=</span> ols(<span class="st">&#39;Yield~Dose + Variety&#39;</span>, data<span class="op">=</span>Blepy).fit()</span>
+<span id="cb100-4"><a href="ANOVA.html#cb100-4"></a>anovaResults <span class="op">=</span> anova_lm(anov2addpy,anov2Singpy)</span>
+<span id="cb100-5"><a href="ANOVA.html#cb100-5"></a><span class="bu">print</span>(anovaResults)</span></code></pre></div>
+<pre><code>   df_resid         ssr  df_diff   ss_diff        F    Pr(&gt;F)
+0      14.0  235.137778      0.0       NaN      NaN       NaN
+1      12.0  231.472400      2.0  3.665378  0.09501  0.910041</code></pre>
+<div class="sourceCode" id="cb102"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb102-1"><a href="ANOVA.html#cb102-1"></a><span class="co"># Test d&#39;absence de l&#39;effet Dose</span></span>
+<span id="cb102-2"><a href="ANOVA.html#cb102-2"></a>anovApy <span class="op">=</span> ols(<span class="st">&#39;Yield~Variety&#39;</span>, data<span class="op">=</span>Blepy).fit()</span>
+<span id="cb102-3"><a href="ANOVA.html#cb102-3"></a><span class="bu">print</span>(anova_lm(anovApy,anov2addpy))</span></code></pre></div>
+<pre><code>   df_resid         ssr  df_diff    ss_diff         F    Pr(&gt;F)
+0      15.0  249.147467      0.0        NaN       NaN       NaN
+1      14.0  235.137778      1.0  14.009689  0.834131  0.376541</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb104-1"><a href="ANOVA.html#cb104-1"></a><span class="co"># Test d&#39;absence d&#39;effet Variété</span></span>
+<span id="cb104-2"><a href="ANOVA.html#cb104-2"></a>anovBpy <span class="op">=</span> ols(<span class="st">&#39;Yield~Dose&#39;</span>, data<span class="op">=</span>Blepy).fit()</span>
+<span id="cb104-3"><a href="ANOVA.html#cb104-3"></a><span class="bu">print</span>(anova_lm(anovBpy,anov2addpy))</span></code></pre></div>
+<pre><code>   df_resid         ssr  df_diff     ss_diff          F    Pr(&gt;F)
+0      16.0  692.719511      0.0         NaN        NaN       NaN
+1      14.0  235.137778      2.0  457.581733  13.622108  0.000519</code></pre>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-HussonPages">
+<p>Husson, François, and Jérôme Pagès. 2013. <em>Statistiques Générales Pour Utilisateurs: 2, Exercices et Corrigés</em>. Presses universitaires de Rennes.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ANCOVA.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Bookdown-poly.pdf", "Bookdown-poly.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
