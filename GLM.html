@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 9 Principe du modèle linéaire généralisé | Modèle linéaire général et modèle linéaire généralisé</title>
+  <meta name="description" content="Chapitre 9 Principe du modèle linéaire généralisé | Modèle linéaire général et modèle linéaire généralisé" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 9 Principe du modèle linéaire généralisé | Modèle linéaire général et modèle linéaire généralisé" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 9 Principe du modèle linéaire généralisé | Modèle linéaire général et modèle linéaire généralisé" />
+  
+  
+  
+
+<meta name="author" content="Cathy Maugis-Rabusseau (INSA Toulouse / IMT)" />
+
+
+<meta name="date" content="2021-10-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ANCOVA.html"/>
+<link rel="next" href="RegLogistique.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">UF Elements de modélisation statistique</a></li>
+<li>      <img src="image/LogoInsaToulouse.jpg" height="20px" align="right"/>      </li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Préface</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#modélisation-dune-réponse-quantitative"><i class="fa fa-check"></i><b>1.1</b> Modélisation d’une réponse quantitative</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#jeu-de-données-illustratif"><i class="fa fa-check"></i><b>1.1.1</b> Jeu de données illustratif</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#régression-linéaire"><i class="fa fa-check"></i><b>1.1.2</b> Régression linéaire</a></li>
+<li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#analyse-de-la-variance-anova"><i class="fa fa-check"></i><b>1.1.3</b> Analyse de la variance (ANOVA)</a></li>
+<li class="chapter" data-level="1.1.4" data-path="intro.html"><a href="intro.html#analyse-de-covariance-ancova"><i class="fa fa-check"></i><b>1.1.4</b> Analyse de covariance (ANCOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#modélisation-dune-variable-binaire-de-comptage"><i class="fa fa-check"></i><b>1.2</b> Modélisation d’une variable binaire, de comptage, …</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#objectifs-du-cours"><i class="fa fa-check"></i><b>1.3</b> Objectifs du cours</a></li>
+</ul></li>
+<li class="part"><span><b>I Le modèle linéaire général</b></span></li>
+<li class="chapter" data-level="2" data-path="DefML.html"><a href="DefML.html"><i class="fa fa-check"></i><b>2</b> Définitions générales</a><ul>
+<li class="chapter" data-level="2.1" data-path="DefML.html"><a href="DefML.html#modlinreg"><i class="fa fa-check"></i><b>2.1</b> Modèle linéaire régulier</a></li>
+<li class="chapter" data-level="2.2" data-path="DefML.html"><a href="DefML.html#exemples-de-modèle-linéaire-gaussien"><i class="fa fa-check"></i><b>2.2</b> Exemples de modèle linéaire gaussien</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="DefML.html"><a href="DefML.html#le-modèle-de-régression-linéaire"><i class="fa fa-check"></i><b>2.2.1</b> Le modèle de régression linéaire</a></li>
+<li class="chapter" data-level="2.2.2" data-path="DefML.html"><a href="DefML.html#le-modèle-danalyse-de-la-variance"><i class="fa fa-check"></i><b>2.2.2</b> Le modèle d’analyse de la variance</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="DefML.html"><a href="DefML.html#en-résumé"><i class="fa fa-check"></i><b>2.3</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="EstML.html"><a href="EstML.html"><i class="fa fa-check"></i><b>3</b> Estimation des paramètres</a><ul>
+<li class="chapter" data-level="3.1" data-path="EstML.html"><a href="EstML.html#estimation-de-theta"><i class="fa fa-check"></i><b>3.1</b> Estimation de <span class="math inline">\(\theta\)</span></a></li>
+<li class="chapter" data-level="3.2" data-path="EstML.html"><a href="EstML.html#valeurs-ajustées-et-résidus"><i class="fa fa-check"></i><b>3.2</b> Valeurs ajustées et résidus</a></li>
+<li class="chapter" data-level="3.3" data-path="EstML.html"><a href="EstML.html#estimation-de-sigma2"><i class="fa fa-check"></i><b>3.3</b> Estimation de <span class="math inline">\(\sigma^2\)</span></a></li>
+<li class="chapter" data-level="3.4" data-path="EstML.html"><a href="EstML.html#erreurs-standards"><i class="fa fa-check"></i><b>3.4</b> Erreurs standards</a></li>
+<li class="chapter" data-level="3.5" data-path="EstML.html"><a href="EstML.html#intervalle-de-confiance-de-theta_j-de-xtheta_i-et-de-x_0theta"><i class="fa fa-check"></i><b>3.5</b> Intervalle de confiance de <span class="math inline">\(\theta_j\)</span>, de <span class="math inline">\((X\theta)_i\)</span> et de <span class="math inline">\(X_0\theta\)</span></a><ul>
+<li class="chapter" data-level="3.5.1" data-path="EstML.html"><a href="EstML.html#ICthetaj"><i class="fa fa-check"></i><b>3.5.1</b> Intervalle de confiance de <span class="math inline">\(\theta_j\)</span></a></li>
+<li class="chapter" data-level="3.5.2" data-path="EstML.html"><a href="EstML.html#ICXthetai"><i class="fa fa-check"></i><b>3.5.2</b> Intervalle de confiance de <span class="math inline">\((X\theta)_i\)</span></a></li>
+<li class="chapter" data-level="3.5.3" data-path="EstML.html"><a href="EstML.html#ICX0theta"><i class="fa fa-check"></i><b>3.5.3</b> Intervalle de confiance de <span class="math inline">\(X_0\theta\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="EstML.html"><a href="EstML.html#ICpredit"><i class="fa fa-check"></i><b>3.6</b> Intervalles de prédiction</a></li>
+<li class="chapter" data-level="3.7" data-path="EstML.html"><a href="EstML.html#qualité-dajustement"><i class="fa fa-check"></i><b>3.7</b> Qualité d’ajustement</a></li>
+<li class="chapter" data-level="3.8" data-path="EstML.html"><a href="EstML.html#en-résumé-1"><i class="fa fa-check"></i><b>3.8</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Test.html"><a href="Test.html"><i class="fa fa-check"></i><b>4</b> Test de Fisher-Snedecor</a><ul>
+<li class="chapter" data-level="4.1" data-path="Test.html"><a href="Test.html#hypothèses-testées"><i class="fa fa-check"></i><b>4.1</b> Hypothèses testées</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="Test.html"><a href="Test.html#première-écriture"><i class="fa fa-check"></i><b>4.1.1</b> Première écriture</a></li>
+<li class="chapter" data-level="4.1.2" data-path="Test.html"><a href="Test.html#seconde-écriture"><i class="fa fa-check"></i><b>4.1.2</b> Seconde écriture</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="Test.html"><a href="Test.html#le-test-de-fisher-snedecor"><i class="fa fa-check"></i><b>4.2</b> Le test de Fisher-Snedecor</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="Test.html"><a href="Test.html#principe"><i class="fa fa-check"></i><b>4.2.1</b> Principe</a></li>
+<li class="chapter" data-level="4.2.2" data-path="Test.html"><a href="Test.html#comblinconjointes"><i class="fa fa-check"></i><b>4.2.2</b> La statistique de test</a></li>
+<li class="chapter" data-level="4.2.3" data-path="Test.html"><a href="Test.html#règle-de-décision"><i class="fa fa-check"></i><b>4.2.3</b> Règle de décision</a></li>
+<li class="chapter" data-level="4.2.4" data-path="Test.html"><a href="Test.html#comblin"><i class="fa fa-check"></i><b>4.2.4</b> Cas particulier où <span class="math inline">\(q=1\)</span> : Test de Student</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="Test.html"><a href="Test.html#intervalle-région-de-confiance-pour-ctheta"><i class="fa fa-check"></i><b>4.3</b> Intervalle (région) de confiance pour <span class="math inline">\(C\theta\)</span></a><ul>
+<li class="chapter" data-level="4.3.1" data-path="Test.html"><a href="Test.html#ic-pour-ctheta-in-mathbbr"><i class="fa fa-check"></i><b>4.3.1</b> IC pour <span class="math inline">\(C\theta \in \mathbb{R}\)</span></a></li>
+<li class="chapter" data-level="4.3.2" data-path="Test.html"><a href="Test.html#région-de-confiance-pour-ctheta-in-mathbbrq"><i class="fa fa-check"></i><b>4.3.2</b> Région de confiance pour <span class="math inline">\(C\theta \in \mathbb{R}^q\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="Test.html"><a href="Test.html#en-résumé-2"><i class="fa fa-check"></i><b>4.4</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="singulier.html"><a href="singulier.html"><i class="fa fa-check"></i><b>5</b> Modèles singuliers, orthogonalité et importance des hypothèses sur les erreurs</a><ul>
+<li class="chapter" data-level="5.1" data-path="singulier.html"><a href="singulier.html#quand-h1-h4-ne-sont-pas-respectées"><i class="fa fa-check"></i><b>5.1</b> Quand H1-H4 ne sont pas respectées…</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="singulier.html"><a href="singulier.html#propriétés-de-lestimateur-des-moindres-carrés-widehattheta"><i class="fa fa-check"></i><b>5.1.1</b> Propriétés de l’estimateur des moindres carrés <span class="math inline">\(\widehat{\theta}\)</span></a></li>
+<li class="chapter" data-level="5.1.2" data-path="singulier.html"><a href="singulier.html#propriétés-de-lestimateur-des-moindres-carrés-widehatsigma2"><i class="fa fa-check"></i><b>5.1.2</b> Propriétés de l’estimateur des moindres carrés <span class="math inline">\(\widehat{\sigma}^2\)</span></a></li>
+<li class="chapter" data-level="5.1.3" data-path="singulier.html"><a href="singulier.html#modèles-avec-corrélations"><i class="fa fa-check"></i><b>5.1.3</b> Modèles avec corrélations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="singulier.html"><a href="singulier.html#ModSingulier"><i class="fa fa-check"></i><b>5.2</b> Modèles singuliers</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="singulier.html"><a href="singulier.html#contraintes-didentifiabilité"><i class="fa fa-check"></i><b>5.2.1</b> Contraintes d’identifiabilité</a></li>
+<li class="chapter" data-level="5.2.2" data-path="singulier.html"><a href="singulier.html#fonctions-estimables-et-contrastes"><i class="fa fa-check"></i><b>5.2.2</b> Fonctions estimables et contrastes</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="singulier.html"><a href="singulier.html#orthogonalité"><i class="fa fa-check"></i><b>5.3</b> Orthogonalité</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="singulier.html"><a href="singulier.html#orthogonalité-pour-les-modèles-réguliers"><i class="fa fa-check"></i><b>5.3.1</b> Orthogonalité pour les modèles réguliers</a></li>
+<li class="chapter" data-level="5.3.2" data-path="singulier.html"><a href="singulier.html#orthogonalité-pour-les-modèles-non-réguliers"><i class="fa fa-check"></i><b>5.3.2</b> Orthogonalité pour les modèles non-réguliers</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="singulier.html"><a href="singulier.html#en-résumé-3"><i class="fa fa-check"></i><b>5.4</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>6</b> La régression linéaire</a><ul>
+<li class="chapter" data-level="6.1" data-path="regression.html"><a href="regression.html#introduction"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="regression.html"><a href="regression.html#exemple-illustratif"><i class="fa fa-check"></i><b>6.1.1</b> Exemple illustratif</a></li>
+<li class="chapter" data-level="6.1.2" data-path="regression.html"><a href="regression.html#problématique"><i class="fa fa-check"></i><b>6.1.2</b> Problématique</a></li>
+<li class="chapter" data-level="6.1.3" data-path="regression.html"><a href="regression.html#le-modèle-de-régression-linéaire-simple"><i class="fa fa-check"></i><b>6.1.3</b> Le modèle de régression linéaire simple</a></li>
+<li class="chapter" data-level="6.1.4" data-path="regression.html"><a href="regression.html#le-modèle-de-régression-linéaire-multiple"><i class="fa fa-check"></i><b>6.1.4</b> Le modèle de régression linéaire multiple</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="regression.html"><a href="regression.html#estimation"><i class="fa fa-check"></i><b>6.2</b> Estimation</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="regression.html"><a href="regression.html#résultats-généraux"><i class="fa fa-check"></i><b>6.2.1</b> Résultats généraux</a></li>
+<li class="chapter" data-level="6.2.2" data-path="regression.html"><a href="regression.html#propriétés-en-régression-linéaire-simple"><i class="fa fa-check"></i><b>6.2.2</b> Propriétés en régression linéaire simple</a></li>
+<li class="chapter" data-level="6.2.3" data-path="regression.html"><a href="regression.html#le-coefficient-r2"><i class="fa fa-check"></i><b>6.2.3</b> Le coefficient <span class="math inline">\(R^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="regression.html"><a href="regression.html#tests-et-intervalles-de-confiance"><i class="fa fa-check"></i><b>6.3</b> Tests et intervalles de confiance</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="regression.html"><a href="regression.html#test-de-nullité-dun-paramètre-du-modèle"><i class="fa fa-check"></i><b>6.3.1</b> Test de nullité d’un paramètre du modèle</a></li>
+<li class="chapter" data-level="6.3.2" data-path="regression.html"><a href="regression.html#test-de-nullité-de-quelques-paramètres-du-modèle"><i class="fa fa-check"></i><b>6.3.2</b> Test de nullité de quelques paramètres du modèle</a></li>
+<li class="chapter" data-level="6.3.3" data-path="regression.html"><a href="regression.html#test-de-nullité-de-tous-les-paramètres-du-modèle"><i class="fa fa-check"></i><b>6.3.3</b> Test de nullité de tous les paramètres du modèle</a></li>
+<li class="chapter" data-level="6.3.4" data-path="regression.html"><a href="regression.html#intervalle-de-confiance-de-theta_j-de-xtheta_i-et-de-x_0theta-1"><i class="fa fa-check"></i><b>6.3.4</b> Intervalle de confiance de <span class="math inline">\(\theta_j\)</span>, de <span class="math inline">\((X\theta)_i\)</span> et de <span class="math inline">\(X_0\theta\)</span></a></li>
+<li class="chapter" data-level="6.3.5" data-path="regression.html"><a href="regression.html#intervalle-de-prédiction"><i class="fa fa-check"></i><b>6.3.5</b> Intervalle de prédiction</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="regression.html"><a href="regression.html#sélection-des-variables-explicatives"><i class="fa fa-check"></i><b>6.4</b> Sélection des variables explicatives</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="regression.html"><a href="regression.html#cadre-général-de-sélection-de-modèles"><i class="fa fa-check"></i><b>6.4.1</b> Cadre général de sélection de modèles</a></li>
+<li class="chapter" data-level="6.4.2" data-path="regression.html"><a href="regression.html#quelques-critères-pour-sélectionner-un-modèle"><i class="fa fa-check"></i><b>6.4.2</b> Quelques critères pour sélectionner un modèle</a></li>
+<li class="chapter" data-level="6.4.3" data-path="regression.html"><a href="regression.html#algorithmes-de-sélection-de-variables"><i class="fa fa-check"></i><b>6.4.3</b> Algorithmes de sélection de variables</a></li>
+<li class="chapter" data-level="6.4.4" data-path="regression.html"><a href="regression.html#illustration-sur-lexemple"><i class="fa fa-check"></i><b>6.4.4</b> Illustration sur l’exemple</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="regression.html"><a href="regression.html#régression-linéaire-régularisée"><i class="fa fa-check"></i><b>6.5</b> Régression linéaire régularisée</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="regression.html"><a href="regression.html#régression-ridge"><i class="fa fa-check"></i><b>6.5.1</b> Régression ridge</a></li>
+<li class="chapter" data-level="6.5.2" data-path="regression.html"><a href="regression.html#régression-lasso"><i class="fa fa-check"></i><b>6.5.2</b> Régression Lasso</a></li>
+<li class="chapter" data-level="6.5.3" data-path="regression.html"><a href="regression.html#régression-elastic-net"><i class="fa fa-check"></i><b>6.5.3</b> Régression Elastic-Net</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="regression.html"><a href="regression.html#ValidationMod"><i class="fa fa-check"></i><b>6.6</b> Validation du modèle</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="regression.html"><a href="regression.html#contrôle-graphique-a-posteriori"><i class="fa fa-check"></i><b>6.6.1</b> Contrôle graphique a posteriori</a></li>
+<li class="chapter" data-level="6.6.2" data-path="regression.html"><a href="regression.html#pour-vérifier-les-hypothèses-h1-et-h2-adéquation-et-homoscédasticité"><i class="fa fa-check"></i><b>6.6.2</b> Pour vérifier les hypothèses H1 et H2 : adéquation et homoscédasticité</a></li>
+<li class="chapter" data-level="6.6.3" data-path="regression.html"><a href="regression.html#pour-vérifier-lhypothèse-h3-indépendance"><i class="fa fa-check"></i><b>6.6.3</b> Pour vérifier l’hypothèse H3 : indépendance</a></li>
+<li class="chapter" data-level="6.6.4" data-path="regression.html"><a href="regression.html#pour-vérifier-lhypothèse-h4-gaussianité"><i class="fa fa-check"></i><b>6.6.4</b> Pour vérifier l’hypothèse H4 : gaussianité</a></li>
+<li class="chapter" data-level="6.6.5" data-path="regression.html"><a href="regression.html#détection-de-données-aberrantes"><i class="fa fa-check"></i><b>6.6.5</b> Détection de données aberrantes</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="regression.html"><a href="regression.html#en-résumé-4"><i class="fa fa-check"></i><b>6.7</b> En résumé</a></li>
+<li class="chapter" data-level="6.8" data-path="regression.html"><a href="regression.html#quelques-codes-python"><i class="fa fa-check"></i><b>6.8</b> Quelques codes python</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ANOVA.html"><a href="ANOVA.html"><i class="fa fa-check"></i><b>7</b> Analyse de variance (ANOVA)</a><ul>
+<li class="chapter" data-level="7.1" data-path="ANOVA.html"><a href="ANOVA.html#vocabulaire"><i class="fa fa-check"></i><b>7.1</b> Vocabulaire</a></li>
+<li class="chapter" data-level="7.2" data-path="ANOVA.html"><a href="ANOVA.html#analyse-de-variance-à-un-facteur"><i class="fa fa-check"></i><b>7.2</b> Analyse de variance à un facteur</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="ANOVA.html"><a href="ANOVA.html#exemple-et-notations"><i class="fa fa-check"></i><b>7.2.1</b> Exemple et notations</a></li>
+<li class="chapter" data-level="7.2.2" data-path="ANOVA.html"><a href="ANOVA.html#modèle-régulier"><i class="fa fa-check"></i><b>7.2.2</b> Modèle régulier</a></li>
+<li class="chapter" data-level="7.2.3" data-path="ANOVA.html"><a href="ANOVA.html#modèle-singulier"><i class="fa fa-check"></i><b>7.2.3</b> Modèle singulier</a></li>
+<li class="chapter" data-level="7.2.4" data-path="ANOVA.html"><a href="ANOVA.html#prédictions-résidus-et-variance"><i class="fa fa-check"></i><b>7.2.4</b> Prédictions, résidus et variance</a></li>
+<li class="chapter" data-level="7.2.5" data-path="ANOVA.html"><a href="ANOVA.html#intervalle-de-confiance-et-test-sur-leffet-facteur"><i class="fa fa-check"></i><b>7.2.5</b> Intervalle de confiance et test sur l’effet facteur</a></li>
+<li class="chapter" data-level="7.2.6" data-path="ANOVA.html"><a href="ANOVA.html#test-deffet-du-facteur"><i class="fa fa-check"></i><b>7.2.6</b> Test d’effet du facteur</a></li>
+<li class="chapter" data-level="7.2.7" data-path="ANOVA.html"><a href="ANOVA.html#tableau-danalyse-de-la-variance-à-un-facteur"><i class="fa fa-check"></i><b>7.2.7</b> Tableau d’analyse de la variance à un facteur</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="ANOVA.html"><a href="ANOVA.html#analyse-de-variance-à-deux-facteurs"><i class="fa fa-check"></i><b>7.3</b> Analyse de variance à deux facteurs</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="ANOVA.html"><a href="ANOVA.html#notations-et-exemple"><i class="fa fa-check"></i><b>7.3.1</b> Notations et exemple</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ANOVA.html"><a href="ANOVA.html#modélisation"><i class="fa fa-check"></i><b>7.3.2</b> Modélisation</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ANOVA.html"><a href="ANOVA.html#estimation-des-paramètres"><i class="fa fa-check"></i><b>7.3.3</b> Estimation des paramètres</a></li>
+<li class="chapter" data-level="7.3.4" data-path="ANOVA.html"><a href="ANOVA.html#prédiction-résidus-et-variance"><i class="fa fa-check"></i><b>7.3.4</b> Prédiction, résidus et variance</a></li>
+<li class="chapter" data-level="7.3.5" data-path="ANOVA.html"><a href="ANOVA.html#décomposition-de-la-variabilité"><i class="fa fa-check"></i><b>7.3.5</b> Décomposition de la variabilité</a></li>
+<li class="chapter" data-level="7.3.6" data-path="ANOVA.html"><a href="ANOVA.html#le-diagramme-dinteractions"><i class="fa fa-check"></i><b>7.3.6</b> Le diagramme d’interactions</a></li>
+<li class="chapter" data-level="7.3.7" data-path="ANOVA.html"><a href="ANOVA.html#tests-dhypothèses"><i class="fa fa-check"></i><b>7.3.7</b> Tests d’hypothèses</a></li>
+<li class="chapter" data-level="7.3.8" data-path="ANOVA.html"><a href="ANOVA.html#test-dabsence-deffet-du-facteur-b"><i class="fa fa-check"></i><b>7.3.8</b> Test d’absence d’effet du facteur <span class="math inline">\(B\)</span></a></li>
+<li class="chapter" data-level="7.3.9" data-path="ANOVA.html"><a href="ANOVA.html#tableau-danalyse-de-variance-à-deux-facteurs-croisés-dans-le-cas-dun-plan-orthogonal"><i class="fa fa-check"></i><b>7.3.9</b> Tableau d’analyse de variance à deux facteurs croisés dans le cas d’un plan orthogonal</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ANOVA.html"><a href="ANOVA.html#en-résumé-5"><i class="fa fa-check"></i><b>7.4</b> En résumé</a></li>
+<li class="chapter" data-level="7.5" data-path="ANOVA.html"><a href="ANOVA.html#quelques-codes-en-python"><i class="fa fa-check"></i><b>7.5</b> Quelques codes en python</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="ANOVA.html"><a href="ANOVA.html#exemple-danova-à-un-facteur"><i class="fa fa-check"></i><b>7.5.1</b> Exemple d’ANOVA à un facteur</a></li>
+<li class="chapter" data-level="7.5.2" data-path="ANOVA.html"><a href="ANOVA.html#exemple-danova-à-deux-facteurs"><i class="fa fa-check"></i><b>7.5.2</b> Exemple d’ANOVA à deux facteurs</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ANCOVA.html"><a href="ANCOVA.html"><i class="fa fa-check"></i><b>8</b> Analyse de covariance (ANCOVA)</a><ul>
+<li class="chapter" data-level="8.1" data-path="ANCOVA.html"><a href="ANCOVA.html#les-données"><i class="fa fa-check"></i><b>8.1</b> Les données</a></li>
+<li class="chapter" data-level="8.2" data-path="ANCOVA.html"><a href="ANCOVA.html#modélisation-1"><i class="fa fa-check"></i><b>8.2</b> Modélisation</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="ANCOVA.html"><a href="ANCOVA.html#modélisation-régulière"><i class="fa fa-check"></i><b>8.2.1</b> Modélisation régulière</a></li>
+<li class="chapter" data-level="8.2.2" data-path="ANCOVA.html"><a href="ANCOVA.html#modélisation-singulière"><i class="fa fa-check"></i><b>8.2.2</b> Modélisation singulière</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="ANCOVA.html"><a href="ANCOVA.html#estimation-des-paramètres-1"><i class="fa fa-check"></i><b>8.3</b> Estimation des paramètres</a></li>
+<li class="chapter" data-level="8.4" data-path="ANCOVA.html"><a href="ANCOVA.html#tests-dhypothèses-1"><i class="fa fa-check"></i><b>8.4</b> Tests d’hypothèses</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="ANCOVA.html"><a href="ANCOVA.html#absence-de-tout-effet"><i class="fa fa-check"></i><b>8.4.1</b> Absence de tout effet</a></li>
+<li class="chapter" data-level="8.4.2" data-path="ANCOVA.html"><a href="ANCOVA.html#test-dabsence-dinteraction"><i class="fa fa-check"></i><b>8.4.2</b> Test d’absence d’interaction</a></li>
+<li class="chapter" data-level="8.4.3" data-path="ANCOVA.html"><a href="ANCOVA.html#test-dabsence-de-leffet-de-la-covariable-z"><i class="fa fa-check"></i><b>8.4.3</b> Test d’absence de l’effet de la covariable z</a></li>
+<li class="chapter" data-level="8.4.4" data-path="ANCOVA.html"><a href="ANCOVA.html#test-dabsence-de-leffet-facteur-t"><i class="fa fa-check"></i><b>8.4.4</b> Test d’absence de l’effet facteur T</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ANCOVA.html"><a href="ANCOVA.html#en-résumé-6"><i class="fa fa-check"></i><b>8.5</b> En résumé</a></li>
+<li class="chapter" data-level="8.6" data-path="ANCOVA.html"><a href="ANCOVA.html#quelques-codes-en-python-1"><i class="fa fa-check"></i><b>8.6</b> Quelques codes en python</a></li>
+</ul></li>
+<li class="part"><span><b>II Le modèle linéaire généralisé</b></span></li>
+<li class="chapter" data-level="9" data-path="GLM.html"><a href="GLM.html"><i class="fa fa-check"></i><b>9</b> Principe du modèle linéaire généralisé</a><ul>
+<li class="chapter" data-level="9.1" data-path="GLM.html"><a href="GLM.html#introduction-1"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="GLM.html"><a href="GLM.html#caractérisation-dun-modèle-linéaire-généralisé"><i class="fa fa-check"></i><b>9.2</b> Caractérisation d’un modèle linéaire généralisé</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="GLM.html"><a href="GLM.html#loi-de-la-variable-réponse-y"><i class="fa fa-check"></i><b>9.2.1</b> Loi de la variable réponse <span class="math inline">\(Y\)</span></a></li>
+<li class="chapter" data-level="9.2.2" data-path="GLM.html"><a href="GLM.html#prédicteur-linéaire"><i class="fa fa-check"></i><b>9.2.2</b> Prédicteur linéaire</a></li>
+<li class="chapter" data-level="9.2.3" data-path="GLM.html"><a href="GLM.html#fonction-de-lien"><i class="fa fa-check"></i><b>9.2.3</b> Fonction de lien</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="GLM.html"><a href="GLM.html#EstimMLG"><i class="fa fa-check"></i><b>9.3</b> Estimation</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="GLM.html"><a href="GLM.html#estimation-par-maximum-de-vraisemblance"><i class="fa fa-check"></i><b>9.3.1</b> Estimation par maximum de vraisemblance</a></li>
+<li class="chapter" data-level="9.3.2" data-path="GLM.html"><a href="GLM.html#algorithmes-de-newton-raphson-et-fisher-scoring"><i class="fa fa-check"></i><b>9.3.2</b> Algorithmes de Newton-Raphson et Fisher-scoring</a></li>
+<li class="chapter" data-level="9.3.3" data-path="GLM.html"><a href="GLM.html#equations-de-vraisemblance"><i class="fa fa-check"></i><b>9.3.3</b> Equations de vraisemblance</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="GLM.html"><a href="GLM.html#NormalitéAsymptotique"><i class="fa fa-check"></i><b>9.4</b> Loi asymptotique de l’EMV et inférence</a></li>
+<li class="chapter" data-level="9.5" data-path="GLM.html"><a href="GLM.html#tests-dhypothèses-2"><i class="fa fa-check"></i><b>9.5</b> Tests d’hypothèses</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="GLM.html"><a href="GLM.html#test-de-modèles-emboîtés"><i class="fa fa-check"></i><b>9.5.1</b> Test de modèles emboîtés</a></li>
+<li class="chapter" data-level="9.5.2" data-path="GLM.html"><a href="GLM.html#TestParamMLG"><i class="fa fa-check"></i><b>9.5.2</b> Test d’un paramètre <span class="math inline">\(\theta_j\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="GLM.html"><a href="GLM.html#MLGIC"><i class="fa fa-check"></i><b>9.6</b> Intervalle de confiance pour <span class="math inline">\(\theta_j\)</span></a><ul>
+<li class="chapter" data-level="9.6.1" data-path="GLM.html"><a href="GLM.html#par-wald"><i class="fa fa-check"></i><b>9.6.1</b> Par Wald</a></li>
+<li class="chapter" data-level="9.6.2" data-path="GLM.html"><a href="GLM.html#fondé-sur-le-rapport-de-vraisemblances"><i class="fa fa-check"></i><b>9.6.2</b> Fondé sur le rapport de vraisemblances</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="GLM.html"><a href="GLM.html#qualité-dajustement-1"><i class="fa fa-check"></i><b>9.7</b> Qualité d’ajustement</a><ul>
+<li class="chapter" data-level="9.7.1" data-path="GLM.html"><a href="GLM.html#le-pseudo-r2"><i class="fa fa-check"></i><b>9.7.1</b> Le pseudo <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="9.7.2" data-path="GLM.html"><a href="GLM.html#le-chi2-de-pearson-généralisé"><i class="fa fa-check"></i><b>9.7.2</b> Le <span class="math inline">\(\chi^2\)</span> de Pearson généralisé</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="GLM.html"><a href="GLM.html#ResidusGLM"><i class="fa fa-check"></i><b>9.8</b> Diagnostic, résidus</a></li>
+<li class="chapter" data-level="9.9" data-path="GLM.html"><a href="GLM.html#en-résumé-7"><i class="fa fa-check"></i><b>9.9</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="RegLogistique.html"><a href="RegLogistique.html"><i class="fa fa-check"></i><b>10</b> Régression logistique</a><ul>
+<li class="chapter" data-level="10.1" data-path="RegLogistique.html"><a href="RegLogistique.html#introduction-2"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="RegLogistique.html"><a href="RegLogistique.html#pourquoi-des-modèles-particuliers"><i class="fa fa-check"></i><b>10.2</b> Pourquoi des modèles particuliers ?</a></li>
+<li class="chapter" data-level="10.3" data-path="RegLogistique.html"><a href="RegLogistique.html#odds-et-odds-ratio"><i class="fa fa-check"></i><b>10.3</b> Odds et odds ratio</a></li>
+<li class="chapter" data-level="10.4" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-logistique-simple"><i class="fa fa-check"></i><b>10.4</b> Régression logistique simple</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="RegLogistique.html"><a href="RegLogistique.html#subquanti"><i class="fa fa-check"></i><b>10.4.1</b> Avec une variable explicative quantitative</a></li>
+<li class="chapter" data-level="10.4.2" data-path="RegLogistique.html"><a href="RegLogistique.html#sect1expquali"><i class="fa fa-check"></i><b>10.4.2</b> Avec une variable explicative qualitative</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-logistique-multiple"><i class="fa fa-check"></i><b>10.5</b> Régression logistique multiple</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="RegLogistique.html"><a href="RegLogistique.html#modèle-sans-interaction"><i class="fa fa-check"></i><b>10.5.1</b> Modèle sans interaction</a></li>
+<li class="chapter" data-level="10.5.2" data-path="RegLogistique.html"><a href="RegLogistique.html#modèle-avec-interactions"><i class="fa fa-check"></i><b>10.5.2</b> Modèle avec interactions</a></li>
+<li class="chapter" data-level="10.5.3" data-path="RegLogistique.html"><a href="RegLogistique.html#etude-complémentaire-du-modèle-retenu"><i class="fa fa-check"></i><b>10.5.3</b> Etude complémentaire du modèle retenu</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="RegLogistique.html"><a href="RegLogistique.html#quelques-codes-avec-python"><i class="fa fa-check"></i><b>10.6</b> Quelques codes avec python</a></li>
+<li class="chapter" data-level="10.7" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-polytomique"><i class="fa fa-check"></i><b>10.7</b> Régression polytomique</a><ul>
+<li class="chapter" data-level="10.7.1" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-multinomiale-ou-polytomique-non-ordonnée"><i class="fa fa-check"></i><b>10.7.1</b> Régression multinomiale ou polytomique non-ordonnée</a></li>
+<li class="chapter" data-level="10.7.2" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-polytomique-ordonnée"><i class="fa fa-check"></i><b>10.7.2</b> Régression polytomique ordonnée</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="RegLogLin.html"><a href="RegLogLin.html"><i class="fa fa-check"></i><b>11</b> Régression de Poisson / régression loglinéaire</a><ul>
+<li class="chapter" data-level="11.1" data-path="RegLogLin.html"><a href="RegLogLin.html#modèle-de-régression-loglinéaire"><i class="fa fa-check"></i><b>11.1</b> Modèle de régression loglinéaire</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="RegLogLin.html"><a href="RegLogLin.html#pourquoi-un-modèle-particulier"><i class="fa fa-check"></i><b>11.1.1</b> Pourquoi un modèle particulier ?</a></li>
+<li class="chapter" data-level="11.1.2" data-path="RegLogLin.html"><a href="RegLogLin.html#estimation-des-paramètres-3"><i class="fa fa-check"></i><b>11.1.2</b> Estimation des paramètres</a></li>
+<li class="chapter" data-level="11.1.3" data-path="RegLogLin.html"><a href="RegLogLin.html#ajustement-et-prédiction"><i class="fa fa-check"></i><b>11.1.3</b> Ajustement et prédiction</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="RegLogLin.html"><a href="RegLogLin.html#exemple-de-régression-loglinéaire-avec-r"><i class="fa fa-check"></i><b>11.2</b> Exemple de régression loglinéaire avec R</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="RegLogLin.html"><a href="RegLogLin.html#régression-loglinéaire-simple"><i class="fa fa-check"></i><b>11.2.1</b> Régression loglinéaire simple</a></li>
+<li class="chapter" data-level="11.2.2" data-path="RegLogLin.html"><a href="RegLogLin.html#régression-loglinéaire-multiple"><i class="fa fa-check"></i><b>11.2.2</b> Régression loglinéaire multiple</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="RegLogLin.html"><a href="RegLogLin.html#sur-dispersion-et-modèle-binomial-négatif"><i class="fa fa-check"></i><b>11.3</b> Sur-dispersion et modèle binomial négatif</a></li>
+<li class="chapter" data-level="11.4" data-path="RegLogLin.html"><a href="RegLogLin.html#quelques-codes-avec-python-1"><i class="fa fa-check"></i><b>11.4</b> Quelques codes avec python</a></li>
+</ul></li>
+<li class="appendix"><span><b>Annexes</b></span></li>
+<li class="chapter" data-level="A" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html"><i class="fa fa-check"></i><b>A</b> Rappels de probabilités, statistiques et d’optimisation</a><ul>
+<li class="chapter" data-level="A.1" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#rappels-sur-les-échantillons-gaussiens"><i class="fa fa-check"></i><b>A.1</b> Rappels sur les échantillons gaussiens</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#la-loi-normale"><i class="fa fa-check"></i><b>A.1.1</b> La loi normale</a></li>
+<li class="chapter" data-level="A.1.2" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#vecteurs-gaussiens"><i class="fa fa-check"></i><b>A.1.2</b> Vecteurs gaussiens</a></li>
+<li class="chapter" data-level="A.1.3" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#loi-du-khi-deux-loi-de-student-loi-de-fisher"><i class="fa fa-check"></i><b>A.1.3</b> Loi du khi-deux, loi de Student, loi de Fisher</a></li>
+<li class="chapter" data-level="A.1.4" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#estimation-de-la-moyenne-et-de-la-variance-dun-échantillon-gaussien"><i class="fa fa-check"></i><b>A.1.4</b> Estimation de la moyenne et de la variance d’un échantillon gaussien</a></li>
+<li class="chapter" data-level="A.1.5" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#construction-dintervalles-de-confiance"><i class="fa fa-check"></i><b>A.1.5</b> Construction d’intervalles de confiance</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#estimation-sans-biais-de-variance-minimale"><i class="fa fa-check"></i><b>A.2</b> Estimation sans biais de variance minimale</a></li>
+<li class="chapter" data-level="A.3" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#Newton-Raphson"><i class="fa fa-check"></i><b>A.3</b> La méthode de Newton-Raphson</a></li>
+<li class="chapter" data-level="A.4" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#théorème-central-limite-condition-de-lindeberg"><i class="fa fa-check"></i><b>A.4</b> Théorème central limite: condition de Lindeberg</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html"><i class="fa fa-check"></i><b>B</b> Preuves de quelques résultats du cours</a><ul>
+<li class="chapter" data-level="B.1" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#ProofFisher"><i class="fa fa-check"></i><b>B.1</b> Preuve pour le test de Fisher</a></li>
+<li class="chapter" data-level="B.2" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:ortho"><i class="fa fa-check"></i><b>B.2</b> Preuve de la proposition @ref(prp:Proportho)</a></li>
+<li class="chapter" data-level="B.3" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:risque"><i class="fa fa-check"></i><b>B.3</b> Preuve de la proposition @ref(prp:risque)</a></li>
+<li class="chapter" data-level="B.4" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:KL"><i class="fa fa-check"></i><b>B.4</b> Preuve de la proposition @ref(prp:KL)</a></li>
+<li class="chapter" data-level="B.5" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:Mallows"><i class="fa fa-check"></i><b>B.5</b> Critère du <span class="math inline">\(C_p\)</span> de Mallows</a></li>
+<li class="chapter" data-level="B.6" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:Sj"><i class="fa fa-check"></i><b>B.6</b> Preuve de la proposition @ref(prp:eqSj)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li>Cathy Maugis-Rabusseau</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modèle linéaire général et modèle linéaire généralisé</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="GLM" class="section level1">
+<h1><span class="header-section-number">Chapitre 9</span> Principe du modèle linéaire généralisé</h1>
+<blockquote>
+<p>Les slides associés à ce chapitre sont disponibles ici <a href="">SlidesMLG.pdf</a></p>
+</blockquote>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">9.1</span> Introduction</h2>
+<p>Nous observons un vecteur <span class="math inline">\(Y\)</span> de taille <span class="math inline">\(n\)</span>, réalisation d’une variable aléatoire de moyenne <span class="math inline">\(\mu\)</span> et dont les composants sont indépendants.
+Dans le cadre du modèle linéaire, on a <span class="math inline">\(\mu = X\theta\)</span> où <span class="math inline">\(X\)</span> est une matrice <span class="math inline">\(n\times k\)</span>: le design. Le vecteur <span class="math inline">\(\theta\)</span> est inconnu et modélise l’influence des variables explicatives sur la réponse <span class="math inline">\(Y\)</span>.</p>
+<p>Le modèle linéaire tel que nous l’avons vu dans la partie précédente peut donc être caractérisé de la manière suivante :</p>
+<ol style="list-style-type: decimal">
+<li>une <strong>composante aléatoire</strong> : <span class="math inline">\(Y\)</span> est un vecteur aléatoire gaussien de moyenne <span class="math inline">\(\mu\)</span> (<span class="math inline">\(Y\sim\mathcal{N}_n(\mu,\sigma^2 I_n)\)</span>),</li>
+<li>une <strong>composante “systématique”</strong> : les variables explicatives <span class="math inline">\(\textbf{x}^{(1)}, \cdots, \textbf{x}^{(p)}\)</span> définissent un prédicteur linéaire <span class="math inline">\(\eta=X\theta\)</span> avec <span class="math inline">\(\theta\in\mathbb{R}^k\)</span> (<span class="math inline">\(k\)</span> est lié à <span class="math inline">\(p\)</span>)</li>
+<li><strong>la relation liant</strong> <span class="math inline">\(\mu\)</span> et <span class="math inline">\(\eta\)</span> : <span class="math inline">\(\mu=\eta\)</span> pour le modèle linéaire.</li>
+</ol>
+<p>Imposer une dépendance linéaire entre les variables explicatives et <span class="math inline">\(\mathbb{E}[Y]\)</span> permet une étude approfondie mais peut être parfois trop restrictive. Une généralisation possible du modèle linéaire consiste donc à supposer que la relation liant <span class="math inline">\(\mu\)</span> à <span class="math inline">\(\eta\)</span> n’est pas l’identité, mais plutôt un lien du type:
+<span class="math display">\[\eta_i = g(\mu_i), \ \mathrm{pour} \ \eta=(\eta_1,\dots,\eta_n)&#39; \ \mathrm{et} \ \mu=(\mu_1,\dots, \mu_n)&#39;.\]</span>
+La fonction <span class="math inline">\(g\)</span> modélise donc le lien entre ces deux vecteurs. Cette formulation permet de modéliser un panel plus riche d’expériences.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-55" class="example"><strong>Example 9.1  </strong></span>Dans une expérience clinique, on cherche à comparer deux modes opératoires pour une opération chirurgicale donnée. L’expérience est menée sur deux hôpitaux différents. On dispose donc ici de deux facteurs à deux modalités:  et <em>hôpital</em>. La variable réponse correspond pour chaque patient au succès ou à l’échec de l’intervention : il s’agit d’une variable binaire.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-56" class="example"><strong>Example 9.2  </strong></span>Un assureur s’intéresse au nombre de sinistres automobile déclarés pendant ces dix dernières années. Il souhaite étudier si ce nombre de sinistres est lié à l’âge du conducteur, la taille de la voiture, ….
+Le nombre de sinistres peut être modélisé par une loi de Poisson.</p>
+</div>
+<p>Dans le cas particulier où la fonction de lien est de type canonique (i.e. <span class="math inline">\(g(x)=x\)</span>), rien n’interdit d’utiliser la méthode des moindres carrés introduite dans la partie précédente. Cette dernière est en effet purement géométrique et peut donc tout à fait s’appliquer à des réponses de type “binaire”. Cependant, la partie inférentielle traitée dans ce cours nécessite quant à elle des hypothèses très fortes sur la distribution des observations. Pour des modèles alternatifs, il faut donc complètement repenser la construction des tests et des intervalles de confiance. Par ailleurs, une relation de type canonique est relativement restrictive (cf Figure <a href="GLM.html#fig:log">9.1</a>). Il convient donc de se placer dans un cadre plus général afin de pouvoir faire face à des problèmes plus variés.</p>
+<div class="figure"><span id="fig:log"></span>
+<img src="Bookdown-poly_files/figure-html/log-1.png" alt="\label{log} Exemple d'observations pour un modèle de type binaire" width="672" />
+<p class="caption">
+Figure 9.1:  Exemple d’observations pour un modèle de type binaire
+</p>
+</div>
+<p>De manière plus générale, la méthode des moindres carrés introduite dans la partie précédente ne peut être implémentée. Bien souvent, le problème d’optimisation associé n’est en effet pas convexe. Une première “parade” consiste à utiliser l’estimateur du maximum de vraisemblance… mais dans la plupart des cas, ce dernier n’est pas calculable analytiquement. Il est cependant possible d’utiliser un algorithme itératif inspiré de la méthode de Newton-Raphson permettant d’approcher le maximum de vraisemblance. Sous certaines conditions, cet algorithme propose des résultats tout à fait satisfaisants.</p>
+</div>
+<div id="caractérisation-dun-modèle-linéaire-généralisé" class="section level2">
+<h2><span class="header-section-number">9.2</span> Caractérisation d’un modèle linéaire généralisé</h2>
+<p>L’objet de cette section est d’introduire le cadre théorique global permettant de regrouper tous les modèles (linéaire gaussien, logistique, log-linéaire) de ce cours qui cherchent à modéliser l’espérance d’une variable réponse <span class="math inline">\(Y\)</span> en fonction d’une combinaison linéaire de variables explicatives. Le <strong>modèle linéaire généralisé</strong> développé initialement en 1972 par Nelder et Wedderburn et dont on trouvera des exposés détaillés dans <span class="citation">McCullagh (<a href="#ref-McCullagh" role="doc-biblioref">2018</a>)</span>, <span class="citation">Agresti (<a href="#ref-Agresti" role="doc-biblioref">2003</a>)</span> ou <span class="citation">Antoniadis, Berruyer, and Carmona (<a href="#ref-Antoniadis" role="doc-biblioref">1992</a>)</span>, n’est ici qu’esquissé afin de définir les concepts communs à ces modèles : famille exponentielle, estimation par maximum de vraisemblance, tests, …</p>
+<p>Le modèle linéaire généralisé est caractérisé par trois quantités :</p>
+<ol style="list-style-type: decimal">
+<li>La variable réponse <span class="math inline">\(Y\)</span>, composante aléatoire à laquelle est associée une loi de probabilité</li>
+<li>les variables explicatives <span class="math inline">\(\textbf{x}^{(1)},\ldots,\textbf{x}^{(p)}\)</span> (prédicteurs)</li>
+<li>le lien qui décrit la relation fonctionnelle entre la combinaison linéaire des <span class="math inline">\(\textbf{x}^{(1)},\ldots,\textbf{x}^{(p)}\)</span> et l’espérance de la variable réponse <span class="math inline">\(Y\)</span>.</li>
+</ol>
+<p>Nous allons par la suite détailler ces différentes quantités.</p>
+<div id="loi-de-la-variable-réponse-y" class="section level3">
+<h3><span class="header-section-number">9.2.1</span> Loi de la variable réponse <span class="math inline">\(Y\)</span></h3>
+<p>La composante aléatoire identifie la distribution de probabilité de la variable à expliquer <span class="math inline">\(Y\)</span>. On suppose que l’échantillon statistique est constitué de <span class="math inline">\(n\)</span> variables aléatoires <span class="math inline">\((Y_i)_{i=1,\cdots, n}\)</span> indépendantes admettant des distributions issues d’une structure de <strong>famille exponentielle</strong>.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-57" class="definition"><strong>Definition 9.1  </strong></span>Soit <span class="math inline">\(Y\)</span> une variable aléatoire unidimensionnelle. On dit que la loi de <span class="math inline">\(Y\)</span> appartient à une <strong>famille exponentielle</strong> si la loi de <span class="math inline">\(Y\)</span> est dominée par une mesure dite de référence et si la vraisemblance de <span class="math inline">\(Y\)</span> calculée en <span class="math inline">\(y\)</span> par rapport à cette mesure s’écrit de la façon suivante :
+<span class="math display" id="eq:famexp">\[\begin{equation}
+f_Y(y,\omega,\phi) = \exp \left[ \frac{y \omega -b(\omega)}{\gamma(\phi)}+c(y,\phi) \right].
+\tag{9.1}
+\end{equation}\]</span>
+Le paramètre <span class="math inline">\(\omega\)</span> est appelé le <strong>paramètre naturel</strong> de la famille exponentielle.</p>
+</div>
+<p>Cette formulation inclut la plupart des lois usuelles comportant un ou deux paramètres : gaussienne, gaussienne inverse, gamma, Poisson, binomiale (cf Table <a href="#Tabfamilleexpon"><strong>??</strong></a>).
+Attention, la mesure de référence change d’une structure exponentielle à l’autre : la mesure de Lebesgue pour une loi continue, une mesure discrète combinaison de Dirac pour une loi discrète. Consulter <span class="citation">Antoniadis, Berruyer, and Carmona (<a href="#ref-Antoniadis" role="doc-biblioref">1992</a>)</span> pour une présentation générale de la famille exponentielle et des propriétés asymptotiques des estimateurs de leurs paramètres.</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-58" class="proposition"><strong>Proposition 9.1  </strong></span>Soit <span class="math inline">\(Y\)</span> une variable aléatoire dont la loi de probabilité appartient à la famille exponentielle alors
+<span class="math display">\[
+\mathbb{E}[Y]=b&#39;(\omega)
+\textrm{ et }
+\mbox{Var}(Y)=b&#39;&#39;(\omega)\gamma(\phi).
+\]</span></p>
+</div>
+<!--%L'expression de la variance justifie l'appellation de *paramètre de dispersion* pour $\phi$ lorsque $\gamma$ est la fonction identité.-->
+<div class="exercise">
+<p><span id="exr:unlabeled-div-59" class="exercise"><strong>Exercise 9.1  </strong></span>Pour démontrer cette proposition,</p>
+<ul>
+<li>pour évaluer <span class="math inline">\(\mathbb{E}[Y]\)</span> : calculer <span class="math inline">\(\frac{\partial }{\partial \omega} f_{Y}(y,\omega,\phi)\)</span> et intégrer par rapport à <span class="math inline">\(y\)</span></li>
+<li>pour évaluer <span class="math inline">\(\mbox{Var}(Y)\)</span> : calculer <span class="math inline">\(\frac{\partial^2 }{\partial \omega^2} f_{Y}(y,\omega,\phi)\)</span> et intégrer par rapport à <span class="math inline">\(y\)</span></li>
+</ul>
+</div>
+<p>Pour certaines lois, la fonction <span class="math inline">\(\gamma\)</span> est de la forme : <span class="math inline">\(\gamma(\phi)=\phi\)</span>. Dans ce cas,
+<span class="math inline">\(\phi\)</span> est appelé <strong>paramètre de dispersion</strong>, c’est un paramètre de nuisance intervenant par exemple lorsque les variances des lois gaussiennes sont inconnues, mais égal à 1 pour les lois à un paramètre (Poisson, Bernoulli). L’expression de la structure exponentielle se met alors sous la forme canonique :
+<span class="math display" id="eq:expo2">\[\begin{equation}
+\tag{9.2}
+f(y,\omega)=a(\omega)d(y)\exp[yQ(\omega)]
+\end{equation}\]</span>
+avec
+<span class="math inline">\(Q(\omega)= \frac{\omega}{\phi}\)</span>,
+<span class="math inline">\(a(\omega) = \exp\left(-\frac{b(\omega)}{\phi}\right)\)</span> et
+<span class="math inline">\(d(y)= \exp[c(y,\phi)]\)</span>.</p>
+<!--
+::: {.exercise} Exemples dans la famille exponentielle :
+
+- Loi gaussienne : 
+Montrez que la loi $\mathcal{N}(\mu,\sigma^2)$ est dans la famille exponentielle de paramètre de dispersion $\phi=\sigma^2$ et de paramètre naturel 
+$\omega=\mu$. 
+- Loi de Bernoulli : 
+Montrez que la loi de Bernoulli $\mathcal B(\pi)$ est dans la famille exponentielle, de  paramètre naturel 
+$\omega=\ln(\frac{\pi}{1-\pi}).$ 
+La loi binomiale conduit à des résultats identiques en considérant la somme de $n$ (connu) variables de Bernoulli.
+- Loi  de Poisson :
+Montrez que la loi de Poisson de paramètre $\lambda$ est dans la famille exponentielle, de paramètre naturel $\omega=\ln(\lambda)$. 
+:::
+-->
+<div class="example">
+<p><span id="exm:unlabeled-div-60" class="example"><strong>Example 9.3  </strong></span>Exemples dans la famille exponentielle :</p>
+<ul>
+<li>Loi gaussienne : La densité de la loi <span class="math inline">\(\mathcal{N}(\mu,\sigma^2)\)</span> s’écrit :
+<span class="math display">\[\begin{eqnarray*}
+f(y, \mu,\sigma^2)&amp;=&amp;\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{-\frac{(y-\mu)^2}{2\sigma^2}\right\}\\
+   &amp;=&amp; \exp\left[\frac{y \mu - \mu^2 /2}{\sigma^2}    -  \left(\frac{1}{2}\frac{y^2}{\sigma^2} + \frac{1}{2}\ln(2\pi\sigma^2) \right)\right] \\
+   &amp;=&amp;\exp\left\{-\frac{1}{2}\frac{\mu^2}{\sigma^2}\right\}\exp\left\{-\frac{1}{2}\frac{y^2}{\sigma^2}-\frac{1}{2}\ln(2\pi\sigma^2) \right\}\exp\left\{y\frac{\mu}{\sigma^2} \right\}.
+\end{eqnarray*}\]</span></li>
+</ul>
+<p>La famille gaussienne est une famille exponentielle de paramètre de dispersion <span class="math inline">\(\phi=\sigma^2\)</span> et de paramètre naturel <span class="math inline">\(\omega=\mathbb{E}[Y]=\mu\)</span>.</p>
+<ul>
+<li>Loi de Bernoulli : Soit <span class="math inline">\(Y\)</span> une variable aléatoire de loi de Bernoulli <span class="math inline">\(\mathcal B(\pi)\)</span>, alors
+<span class="math display">\[
+f(y, \pi)=\pi^{y}(1-\pi)^{1-y}=(1-\pi)\exp\left\{y\ln\frac{\pi}{1-\pi}\right\},
+\]</span>
+qui est la forme d’une structure exponentielle de paramètre naturel
+<span class="math inline">\(\omega=\ln(\frac{\pi}{1-\pi}).\)</span></li>
+</ul>
+<p>La loi binomiale conduit à des résultats identiques en considérant la somme de <span class="math inline">\(n\)</span> (connu) variables de Bernoulli.</p>
+<ul>
+<li>Loi de Poisson :
+On considère une variable <span class="math inline">\(Y\)</span> de loi de Poisson de paramètre <span class="math inline">\(\lambda\)</span>. Alors
+<span class="math display">\[
+f(y, \lambda)=\frac{\lambda^{y}e^{-\lambda}}{y!}=\exp\left\{-\lambda\right\}\frac{1}{y!}\exp\left\{y \ln\lambda\right\} = \exp\left [y \ln(\lambda)-\lambda - \ln(y!)\right]
+\]</span>
+qui est issue d’une structure exponentielle et, mise sous la forme canonique, de paramètre naturel <span class="math inline">\(\omega=\ln(\lambda)\)</span>.</li>
+</ul>
+</div>
+<table>
+<colgroup>
+<col width="11%" />
+<col width="8%" />
+<col width="11%" />
+<col width="13%" />
+<col width="17%" />
+<col width="37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Distribution</th>
+<th><span class="math inline">\(\omega\)</span></th>
+<th><span class="math inline">\(b(\omega)\)</span></th>
+<th><span class="math inline">\(\gamma(\phi)\)</span></th>
+<th><span class="math inline">\(\mathbb{E}[Y]=b&#39;(\omega)\)</span></th>
+<th><span class="math inline">\(\mbox{Var}(Y)=b^{&#39;&#39;}(\omega)\gamma(\phi)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Gaussienne <span class="math inline">\(\mathcal N(\mu,\sigma^2)\)</span></td>
+<td><span class="math inline">\(\mu\)</span></td>
+<td><span class="math inline">\(\frac{\omega^2}{2}\)</span></td>
+<td><span class="math inline">\(\phi = \sigma^2\)</span></td>
+<td><span class="math inline">\(\mu=\omega\)</span></td>
+<td><span class="math inline">\(\sigma^2\)</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Bernoulli <span class="math inline">\(\mathcal B(p)\)</span></td>
+<td><span class="math inline">\(\ln(p/1-p)\)</span></td>
+<td><span class="math inline">\(\ln(1+e^\omega)\)</span></td>
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(p=\frac{e^\omega}{1+e^\omega}\)</span></td>
+<td><span class="math inline">\(p(1-p)\)</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Poisson <span class="math inline">\(\mathcal P(\lambda)\)</span></td>
+<td><span class="math inline">\(\ln(\lambda)\)</span></td>
+<td><span class="math inline">\(\lambda=e^{\omega}\)</span></td>
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(\lambda=e^{\omega}\)</span></td>
+<td><span class="math inline">\(\lambda=e^{\omega}\)</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Gamma <span class="math inline">\(\mathcal G(\mu,\nu)\)</span></td>
+<td><span class="math inline">\(-\frac{1}{\mu}\)</span></td>
+<td><span class="math inline">\(-\ln(-\omega)\)</span></td>
+<td><span class="math inline">\(\frac{1}{\nu}\)</span></td>
+<td><span class="math inline">\(\mu=-\frac{1}{\omega}\)</span></td>
+<td><span class="math inline">\(\frac{\mu^2}{\nu}\)</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Inverse Gaussienne <span class="math inline">\(IG(\mu,\sigma^2)\)</span></td>
+<td><span class="math inline">\(-\frac{1}{2\mu^2}\)</span></td>
+<td><span class="math inline">\(-\sqrt{-2\omega}\)</span></td>
+<td><span class="math inline">\(\sigma^2\)</span></td>
+<td><span class="math inline">\(\mu=(\sqrt{-2\omega})^{-1}\)</span></td>
+<td><span class="math inline">\(\mu^3 \sigma^2\)</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!--
+\begin{tabular}{|c |c| c| c| c| c|}
+\hline
+Distribution                        & $\omega$        & $b(\omega)$                     & $\gamma(\phi)$      & $\E[Y]=b'(\omega)$      & $\mbox{Var}(Y) = $ \\
+& & & & & $b^{''}(\omega) \gamma(\phi)$\\
+\hline
+Gaussienne    & $\mu$               & $\frac{\omega^2}{2}$               & $\phi = \sigma^2$    & $\mu=\omega$               &  $\sigma^2$ \\
+$\mathcal N(\mu,\sigma^2)$ & & & & & \\
+\hline
+Bernoulli                  & $\ln(p/1-p)$      & $ \ln(1+e^\omega)$  & $1$               & $p=\frac{e^\omega}{1+e^\omega}$ & $p(1-p)$\\
+$\mathcal B(p)$& & & & & \\
+\hline
+Poisson        & $\ln(\lambda)$  & $\lambda=e^{\omega}$            & $1$                 & $\lambda=e^{\omega}$ & $\lambda=e^{\omega}$\\
+$\mathcal P(\lambda)$& & & & & \\
+\hline
+Gamma            & $-\frac{1}{\mu}$ & $-\ln(-\omega)$                        & $\frac{1}{\nu}$        & $\mu=-\frac{1}{\omega}$ & $\frac{\mu^2}{\nu}$ \\
+$\mathcal G(\mu,\nu)$& & & & & \\
+\hline
+Inverse Gamma& $-\frac{1}{2\mu^2}$ & $-\sqrt{-2\omega}$             & $\sigma^2$            & $\mu=(\sqrt{-2\omega})^{-1}$ &$ \mu^3 \sigma^2$\\
+$IG(\mu,\sigma^2)$& & & & & \\
+\hline
+\end{tabular}
+\caption{Exemples de lois de probabilité appartenant à la famille exponentielle}
+\label{Tabfamilleexpon}
+\end{table}
+-->
+</div>
+<div id="prédicteur-linéaire" class="section level3">
+<h3><span class="header-section-number">9.2.2</span> Prédicteur linéaire</h3>
+<p>Les observations planifiées des variables explicatives sont organisées dans la matrice <span class="math inline">\(\mathbf{X}\)</span> de planification d’expérience (design matrix). Soit <span class="math inline">\(\theta\)</span> un vecteur de <span class="math inline">\(k\)</span> (<span class="math inline">\(=p+1\)</span>) paramètres. Le <strong>prédicteur linéaire</strong>, composante déterministe du modèle est le vecteur à <span class="math inline">\(n\)</span> composantes défini par
+<span class="math display">\[\eta = \mathbf{X}\theta.\]</span></p>
+</div>
+<div id="fonction-de-lien" class="section level3">
+<h3><span class="header-section-number">9.2.3</span> Fonction de lien</h3>
+<p>Cette troisième quantité exprime une <em>relation fonctionnelle</em> entre la composante aléatoire et le prédicteur linéaire. Soit <span class="math inline">\(\mu_i=\mathbb{E}[Y_i] \, ; \, i=1,\cdots,n\)</span>. On pose
+<span class="math display">\[\forall i=1,\cdots,n, \, \eta_i=g(\mu_i)\]</span>
+où <span class="math inline">\(g\)</span>, appelée <strong>fonction de lien</strong>, est supposée monotone et différentiable. Ceci revient donc à écrire un modèle dans lequel une fonction de la moyenne appartient au sous-espace vectoriel engendré par les variables explicatives :
+<span class="math display">\[\forall i=1,\cdots, n, \, g(\mu_i)=\mathbf{x}_i\theta.\]</span>
+La fonction de lien qui associe la moyenne <span class="math inline">\(\mu_i\)</span> au paramètre naturel <span class="math inline">\(\omega_i\)</span> est appelée <strong>fonction de lien canonique</strong>. Dans ce cas,
+<span class="math display">\[\forall i=1,\cdots, n, \, g(\mu_i)=\omega_i=\mathbf{x}_i\theta.\]</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-61" class="example"><strong>Example 9.4  </strong></span>La fonction de lien canonique pour</p>
+<ul>
+<li>la loi gaussienne est l’identité : <span class="math inline">\(\omega_i = \mu_i\)</span></li>
+<li>la loi de Poisson est le logarithme <span class="math inline">\(\omega_i = \ln(\mu_i)\)</span></li>
+<li>la loi de Bernoulli est la fonction logit <span class="math inline">\(\omega_i = \ln\left(\frac{\mu_i}{1-\mu_i}\right)\)</span></li>
+</ul>
+<p>Dans le cas d’une variable réponse binaire <span class="math inline">\(Y\)</span>, on peut aussi considérer la fonction de lien <strong>probit</strong> :
+<span class="math display">\[
+\eta_i = g(\pi_i) = \Phi^{-1}(\pi_i)
+\]</span>
+où <span class="math inline">\(\Phi(.)\)</span> est la fonction de répartition de la loi normale <span class="math inline">\(\mathcal N(0,1)\)</span>.</p>
+</div>
+<p>Dans le cadre de l’étude d’une variable réponse <span class="math inline">\(Y\)</span> suivant une loi binomiale et considérant la fonction de lien logit, le modèle linéaire généralisé est appelé <strong>régression logistique</strong>.
+Dans le cadre de l’étude d’une variable réponse <span class="math inline">\(Y\)</span> suivant une loi de Poisson et considérant la fonction de lien logarithme, le modèle linéaire généralisé est appelé <strong>modèle log-linéaire</strong>.</p>
+</div>
+</div>
+<div id="EstimMLG" class="section level2">
+<h2><span class="header-section-number">9.3</span> Estimation</h2>
+<p>Le modèle étant posé, on souhaite maintenant estimer le vecteur des paramètres <span class="math inline">\(\theta=(\theta_1,\ldots,\theta_k)&#39;\)</span> et le paramètre de dispersion <span class="math inline">\(\phi\)</span>. Comme ce dernier paramètre n’apparait pas dans l’espérance, ce n’est pas le paramètre d’intérêt. Pour simplifier, on va supposer par la suite que <span class="math inline">\(\phi\)</span> est fixé (ou estimé préalablement), seul <span class="math inline">\(\theta\)</span> reste à estimer.</p>
+<div id="estimation-par-maximum-de-vraisemblance" class="section level3">
+<h3><span class="header-section-number">9.3.1</span> Estimation par maximum de vraisemblance</h3>
+<p>La méthode des moindres carrés n’est pas applicable dans un grand nombre de situations pour le modèle linéaire généralisé (excepté pour des fonctions de lien canonique, i.e. identité).
+Pour ce problème d’estimation, on utilise donc la méthode d’estimation du maximum de vraisemblance (EMV). On va donc maximiser la log-vraisemblance du modèle linéaire généralisé.</p>
+<p>Par indépendance des observations, la vraisemblance du n-échantillon <span class="math inline">\(\underline{Y}=(Y_1,\ldots,Y_n)\)</span> s’écrit <span class="math inline">\(\theta\mapsto L(\underline{Y};\theta)\)</span> telle que
+<span class="math display">\[\theta \mapsto L(\underline{y}; \theta) = \prod_{i=1}^n f_{Y_i}(y_i; \omega_i)\]</span>
+et la log-vraisemblance vaut <span class="math inline">\(\theta\mapsto l(Y;\theta)\)</span> avec
+<span class="math display">\[\theta\mapsto l(\underline{y}; \theta) = \sum_{i=1}^n \ln[f_{Y_i}(y_i; \omega_i)],\]</span>
+où <span class="math inline">\(\theta\)</span>, <span class="math inline">\(\eta\)</span>, <span class="math inline">\(\mu\)</span> et <span class="math inline">\(\omega\)</span> sont liés par le modèle.
+L’EMV associé vérifie donc
+<span class="math display">\[\widehat{\theta}_{\scriptsize MV} \in \mathrm{arg} \max_{\theta} L(\underline{Y}; \theta) = \mathrm{arg} \max_{\theta} l(\underline{Y}; \theta).\]</span>
+En particulier, si la fonction de lien <span class="math inline">\(g\)</span> est celle du lien canonique, on a <span class="math inline">\(\omega_i=\textbf{x}_i \theta\)</span> et donc
+<span class="math display">\[l(\underline{y}; \theta) =  \sum_{i=1}^n  \frac{y_i \textbf{x}_i \theta -b(\textbf{x}_i \theta)}{\gamma(\phi)}+c(y_i,\phi).\]</span></p>
+<p>Afin d’obtenir une expression de l’EMV, on s’intéresse au score
+<span class="math display">\[S(\underline{Y};\theta) = \left( \frac{\partial}{\partial \theta_1} l(\underline{Y};\theta), \dots , \frac{\partial}{\partial \theta_k} l(\underline{Y}; \theta)\right)&#39;.\]</span>
+L’estimateur du maximum de vraisemblance vérifie donc
+<span class="math display" id="eq:score">\[\begin{equation}
+S(\underline{Y};\widehat{\theta}_{\scriptsize MV})=0_k.
+\tag{9.3}
+\end{equation}\]</span>
+Dans le cas particulier où <span class="math inline">\(g\)</span> est le lien canonique, on a
+<span class="math display">\[
+\forall j=1,\ldots,k,\  \frac{\partial}{\partial \theta_j} l(\underline{y};\theta) = \sum_{i=1}^n  \frac{1}{\gamma(\phi)} x_i^{(j)} [y_i - b&#39;(\textbf{x}_i \theta)] = 0  \Leftrightarrow  \sum_{i=1}^n   [y_i - b&#39;(\textbf{x}_i \theta)]   \frac{\textbf{x}_i}{\gamma(\phi)} = 0_k
+\]</span>
+On peut constater que ce système n’est linéaire que si <span class="math inline">\(b&#39;(a)=a\)</span>, c’est-à-dire si on est dans le cas du modèle linéaire. Pour tous les autres modèles linéaires généralisés, <a href="GLM.html#eq:score">(9.3)</a> est un système non linéaire en <span class="math inline">\(\theta\)</span> et il n’existe pas de formule analytique pour cet estimateur. Il est cependant possible de montrer que le problème associé à la détermination de <span class="math inline">\(\hat\theta_{\scriptsize MV}\)</span> est un problème d’optimisation convexe qui peut donc être traité par un algorithme de type Newton-Raphson, adapté à un cadre statistique, cf l’Annexe des rappels <a href="rappels-de-probabilités-statistiques-et-doptimisation.html#Newton-Raphson">A.3</a> pour les détails de cet algorithme.</p>
+</div>
+<div id="algorithmes-de-newton-raphson-et-fisher-scoring" class="section level3">
+<h3><span class="header-section-number">9.3.2</span> Algorithmes de Newton-Raphson et Fisher-scoring</h3>
+<p>L’algorithme de Newton-Raphson est un algorithme itératif basé sur le développement de Taylor à l’ordre 1 du score. <!--(cf Figure \@ref(fig:AlgoNR))-->
+Il fait donc intervenir la matrice Hessienne de la log-vraisemblance
+<span class="math display">\[\mathcal{J}_{j\ell} =  \frac{\partial^2  l(\underline{y};\theta)}{\partial\theta_j \partial\theta_\ell}.\]</span> Il faut que <span class="math inline">\(\mathcal{J}\)</span> soit inversible et comme elle dépend de <span class="math inline">\(\theta\)</span>, il convient de mettre à jour cette matrice à chaque étape de cet algorithme itératif.
+Cet algorithme est implémenté dans la plupart des logiciels statistiques.</p>
+<div class="algobox">
+<p><strong>Algorithme de Newton-Raphson</strong></p>
+<ul>
+<li>Initialisation: <span class="math inline">\(u^{(0)}\)</span>.</li>
+<li>Pour tout entier <span class="math inline">\(h\)</span>
+<span class="math display" id="eq:iteration">\[\begin{equation}
+\tag{9.4}
+u^{(h)} = u^{(h-1)} - [\mathcal{J}^{(h-1)}]^{-1} S(\underline{Y};u^{(h-1)}).
+\end{equation}\]</span></li>
+<li>Arrêt quand
+<span class="math display">\[| u^{(h)} - u^{(h-1)}| \leq \Delta.\]</span></li>
+<li>on pose <span class="math inline">\(\hat\theta_{\scriptsize MV}=u^{(h)}\)</span>.</li>
+</ul>
+</div>
+<p>Parfois, au lieu d’utiliser la matrice hessienne, on utilise la matrice d’information de Fisher
+<span class="math display">\[
+\mathcal{I}_n(\theta)_{j,\ell} = -\mathbb{E}\left[ \frac{\partial^2}{\partial\theta_j \partial\theta_\ell} l(\underline{Y};\theta)  \right].
+\]</span>
+C’est l’algorithme de Fisher-scoring. Ici aussi, on a besoin que <span class="math inline">\(\mathcal{I}_n(\theta)\)</span> soit inversible, quitte à imposer des contraintes sur <span class="math inline">\(\theta\)</span>.
+Cette solution peut permettre d’éviter des problèmes de non inversibilité de la hessienne.</p>
+</div>
+<div id="equations-de-vraisemblance" class="section level3">
+<h3><span class="header-section-number">9.3.3</span> Equations de vraisemblance</h3>
+<p>Les algorithmes de type Newton-Raphson précédents nécessitent d’évaluer le score et la matrice d’information de Fisher.</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-62" class="proposition"><strong>Proposition 9.2  </strong></span>Soit le score <span class="math inline">\(S(\underline{Y};\theta) = \left(S_1,\ldots,S_k\right)&#39;\)</span> avec <span class="math inline">\(S_j= \frac{\partial}{\partial \theta_j} l(\underline{Y};\theta)\)</span>.
+Alors pour <span class="math inline">\(j\in\{1,\ldots,k\}\)</span>,
+<span class="math display" id="eq:Sj">\[\begin{equation}
+S_j =  \sum_{i=1}^n \frac{(Y_i-\mu_i)x_{i}^{(j)}}{\text{Var}(Y_i)}\ \frac{\partial\mu_i}{\partial\eta_i}
+\tag{9.5}
+\end{equation}\]</span>
+et <span class="math inline">\(\mathbb{E}[S_j]=0\)</span>.</p>
+</div>
+<p>La preuve est donnée en annexe <a href="preuves-de-quelques-résultats-du-cours.html#annexe:Sj">B.6</a>.</p>
+<div class="proposition">
+<p><span id="prp:Intheta" class="proposition"><strong>Proposition 9.3  </strong></span>La matrice d’information de Fisher s’écrit
+<span class="math display">\[
+\mathcal{I}_n(\theta)=\mathbf{X&#39;WX}
+\]</span>
+où <span class="math inline">\(\mathbf{W}\)</span> est la matrice diagonale de “pondération” :
+<span class="math display">\[
+[\mathbf{W}]_{ii}=\frac{1}{\text{Var}(Y_i)}\left(\frac{\partial\mu_i}{\partial\eta_i}\right)^2.
+\]</span></p>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-63" class="exercise"><strong>Exercise 9.2  </strong></span>On rappelle que <span class="math inline">\(\mathcal{I}_n(\theta)\)</span> est la matrice de variance-covariance de <span class="math inline">\(S(\underline{Y};\theta)\)</span> donc <span class="math inline">\(\left(\mathcal{I}_n(\theta)\right)_{j\ell}=\mathbb{E}[S_j S_\ell]\)</span>. En utilisant <a href="GLM.html#eq:Sj">(9.5)</a>, démontrez la Proposition <a href="GLM.html#prp:Intheta">9.3</a>.</p>
+</div>
+<div class="corollary">
+<p><span id="cor:unlabeled-div-64" class="corollary"><strong>Corollary 9.1  </strong></span>Dans le cas particulier où la fonction lien est le lien canonique associé à la structure exponentielle alors <span class="math inline">\(\eta_i = \omega_i=\mathbf{x}_i\theta\)</span>. On obtient donc les simplifications suivantes :
+<span class="math display">\[
+\frac{\partial\mu_i}{\partial\eta_i} = \frac{\partial\mu_i}{\partial\omega_i}=b&#39;&#39;(\omega_i) = \frac{Var(Y_i)}{\gamma(\phi)}.
+\]</span>
+Ainsi,
+<span class="math display">\[
+S_j =\sum_{i=1}^n \frac{(Y_i-\mu_i)}{\gamma(\phi)}x_{i}^{(j)} \textrm{ et } W_{ii}=\frac{Var(Y_i)}{\gamma(\phi)^2}.
+\]</span>
+En particulier, comme <span class="math inline">\(\mathcal{I}_n(\theta)\)</span> ne dépend plus de <span class="math inline">\(Y_i\)</span>, la hessienne est égale à la matrice d’information de Fisher et donc les méthodes de résolution du score de Fisher et de Newton-Raphson coïncident.</p>
+<p>Si de plus <span class="math inline">\(\gamma(\phi)\)</span> est une constante pour les observations,
+<span class="math display">\[
+S_j = \frac{1}{\gamma(\phi)} \underset{i=1}{\stackrel{n}{\sum}} (Y_i - \mu_i) x_i^{(j)} = 0\ \forall j   \iff  X&#39; Y = X&#39; \mu.
+\]</span>
+Dans le cas gaussien, comme <span class="math inline">\(\mu=X\theta\)</span> avec la fonction de lien canonique identité, on retrouve la solution <span class="math inline">\((X&#39;X)^{-1} X&#39;Y = \theta\)</span> qui coincide avec celle obtenue par minimisation des moindres carrés.</p>
+</div>
+</div>
+</div>
+<div id="NormalitéAsymptotique" class="section level2">
+<h2><span class="header-section-number">9.4</span> Loi asymptotique de l’EMV et inférence</h2>
+<p>De part la complexité du modèle linéaire généralisé, l’obtention d’un intervalle de confiance va nécessiter un peu plus de travail que dans un cadre de statistique paramétrique usuel.</p>
+<p>Le théorème suivant donne des propriétés sur l’estimateur du maximum de vraisemblance <span class="math inline">\(\hat \theta_{\scriptsize MV}\)</span>.</p>
+<div class="theorem">
+<p><span id="thm:loiEMV" class="theorem"><strong>Theorem 9.1  </strong></span>Sous certaines conditions de régularité de la densité de probabilité, l’EMV vérifie les propriétés suivantes :</p>
+<ul>
+<li><span class="math inline">\(\hat \theta_{\scriptsize MV}\)</span> converge en probabilité vers <span class="math inline">\(\theta\in\mathbb{R}^k\)</span></li>
+<li><span class="math inline">\(\hat \theta_{\scriptsize MV}\)</span> converge en loi vers une loi gaussienne :
+<span class="math display">\[\mathcal{I}_n(\theta)^{1/2} (\hat \theta_{\scriptsize MV} - \theta)  \underset{n\rightarrow +\infty}{\stackrel{\mathcal{L}}{\longrightarrow}} \mathcal{N}(0_k,I_k)\]</span></li>
+<li>La <strong>statistique de Wald</strong> <span class="math inline">\(\mathcal{W}\)</span> vérifie
+<span class="math display">\[\mathcal{W}:=(\hat\theta_{\scriptsize MV} - \theta)&#39;  \mathcal{I}_n(\theta) (\hat\theta_{\scriptsize MV} - \theta) \underset{n\rightarrow +\infty}{\stackrel{\mathcal{L}}{\longrightarrow}} \chi^2(k).\]</span></li>
+</ul>
+</div>
+<div class="{remark}">
+<p>Dans le cas particulier où la distribution des <span class="math inline">\(Y_i\)</span> est gaussienne et la fonction de lien est canonique, il est possible de montrer que l’estimateur du maximum de vraisemblance est lui aussi gaussien et ce sans avoir recours à l’approximation <span class="math inline">\(\hat \theta_{\scriptsize MV} - \theta \stackrel{\mathcal{L}}{\simeq} \mathcal{N}(0_k,\mathcal{I}_n(\theta)^{-1})\)</span> quand <span class="math inline">\(n\rightarrow +\infty\)</span>. Si maintenant les erreurs ne sont pas gaussiennes, le résultat précédent propose une alternative intéressante aux tests de Fisher. Ce théorème permet déjà de répondre à des problèmes intéressants comme la construction d’intervalles de confiance pour les <span class="math inline">\(\theta_j\)</span>, tests sur des valeurs de <span class="math inline">\(\theta\)</span>,…. D’autres approches complémentaires sont disponibles pour ce type de modèle, la plus connue étant basée sur le test du rapport de vraisemblance.</p>
+</div>
+<p>A noter qu’un tel résultat n’est pas utilisable tel quel puisque la matrice <span class="math inline">\(\mathcal{I}_n(\theta)\)</span> est inconnue. Mais en remplaçant <span class="math inline">\(\mathcal{I}_n(\theta)\)</span> par <span class="math inline">\(\mathcal{I}_n(\hat\theta_{\scriptsize MV})\)</span> avec <span class="math inline">\(\hat \theta_{\scriptsize MV}\)</span> converge en probabilité vers <span class="math inline">\(\theta\)</span>, on obtient que</p>
+<p><span class="math display">\[
+     \mathcal{I}_n(\hat \theta_{\scriptsize MV})^{1/2} (\hat \theta_{\scriptsize MV} - \theta)  \underset{n\rightarrow +\infty}{\stackrel{\mathcal{L}}{\longrightarrow}} \mathcal{N}(0_k,I_k)
+\]</span>
+et
+<span class="math display">\[
+(\hat\theta_{\scriptsize MV} - \theta)&#39;  \mathcal{I}_n(\hat \theta_{\scriptsize MV}) (\hat\theta_{\scriptsize MV} - \theta) \underset{n\rightarrow +\infty}{\stackrel{\mathcal{L}}{\longrightarrow}} \chi^2(k).
+\]</span></p>
+</div>
+<div id="tests-dhypothèses-2" class="section level2">
+<h2><span class="header-section-number">9.5</span> Tests d’hypothèses</h2>
+<p>Contrairement au cas du modèle linéaire, la loi de l’estimateur du maximum de vraisemblance dans le cadre du modèle linéaire généralisé n’est connue qu’asymptotiquement. Aussi les procédures de test vont être menées dans un cadre asymptotique. Nous allons dans la suite considérer plusieurs problèmes de test qui permettent d’examiner la qualités du modèle, de déterminer si les différentes variables explicatives du modèles sont pertinentes ou pas, ….</p>
+<div id="test-de-modèles-emboîtés" class="section level3">
+<h3><span class="header-section-number">9.5.1</span> Test de modèles emboîtés</h3>
+<p>Le test de comparaison des modèles emboîtés permet de déterminer si un sous-ensemble de variables explicatives est suffisant pour expliquer la réponse <span class="math inline">\(Y\)</span> comme dans le cas du modèle linéaire.</p>
+<p>On considère deux modèles emboîtés <span class="math inline">\(M_1\)</span> et <span class="math inline">\(M_0\)</span>, définis par <span class="math inline">\(g(\mu)=X_1\theta_1\)</span> et <span class="math inline">\(g(\mu)=X_0\theta_0\)</span> respectivement, avec <span class="math inline">\(M_0\)</span> sous-modèle de <span class="math inline">\(M_1\)</span>.
+<!--On veut tester $\mathcal H_0 : M_0$ contre $\mathcal H_1: M_1$. --></p>
+<div id="test-du-rapport-de-vraisemblance" class="section level4">
+<h4><span class="header-section-number">9.5.1.1</span> Test du rapport de vraisemblance</h4>
+<p>Pour traiter ce problème, on peut considérer le <strong>test du rapport de vraisemblance</strong>.</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-65" class="proposition"><strong>Proposition 9.4  </strong></span>La statistique de test du <strong>test du rapport de vraisemblance</strong> est définie par
+<span class="math display">\[
+T=-2 \ln\left[\frac{L(\underline{Y};\hat \theta_0)}{L(\underline{Y};\hat \theta_1)}\right] = -2 \left[l(\underline{Y};\hat \theta_0) - l(\underline{Y};\hat \theta_1)\right]
+\]</span>
+où <span class="math inline">\(\hat \theta_0\)</span> et <span class="math inline">\(\hat \theta_1\)</span> sont les EMV de <span class="math inline">\(\theta\)</span> dans le modèle <span class="math inline">\(M_0\)</span> et <span class="math inline">\(M_1\)</span> respectivement.</p>
+<p>Sous certaines conditions, on peut montrer que
+<span class="math display">\[
+T\underset{n\rightarrow +\infty}{\stackrel{\mathcal{L}}{\rightarrow}} \chi^2(k_1-k_0)
+\]</span>
+où <span class="math inline">\(k_0\)</span> et <span class="math inline">\(k_1\)</span> sont les dimensions des sous-espaces engendrés par les colonnes de <span class="math inline">\(X_0\)</span> et <span class="math inline">\(X_1\)</span> respectivement.</p>
+<p>La zone de rejet est alors définie par
+<span class="math display">\[
+\mathcal{R}_\alpha = \{T&gt; v_{1-\alpha,k_1-k_0}\}
+\]</span>
+où <span class="math inline">\(v_{1-\alpha,k_1-k_0}\)</span> est le <span class="math inline">\((1-\alpha)\)</span>- quantile de la loi du <span class="math inline">\(\chi^2\)</span> à <span class="math inline">\(k_1-k_0\)</span> degrés de liberté.</p>
+</div>
+<p>Ce test est parfois présenté de façon un peu différente en faisant intervenir la <strong>déviance</strong>.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-66" class="definition"><strong>Definition 9.2  </strong></span>La déviance d’un modèle d’intérêt <span class="math inline">\(M\)</span> est l’écart entre la log-vraisemblance du modèle <span class="math inline">\(M\)</span> et celle du modèle le plus complet possible <span class="math inline">\(M_{sat}\)</span>, appelé modèle saturé.
+Le modèle saturé est le modèle comportant <span class="math inline">\(n\)</span> paramètres, c’est à dire autant que d’observations. La déviance de <span class="math inline">\(M\)</span> est définie par :
+<span class="math display">\[
+\mathcal{D}(M)= -2\left[l(\underline{Y}; \hat \theta) - l(\underline{Y}; \hat \theta_{sat})\right]. 
+\]</span></p>
+</div>
+<p>Ainsi la statistique de test <span class="math inline">\(T\)</span> peut se réécrire avec la déviance sous la forme
+<span class="math display">\[
+T = \mathcal D(M_0) - \mathcal D(M_1). 
+\]</span></p>
+<!--Le test global consiste à tester $\mathcal H_0: g(\mu_i)=a$ contre $\mathcal H_1: g(\mu_i)=\textbf{x}_i\theta$ avec le test du rapport de vraisemblance. Il consiste donc à tester si toutes les variables sont inutiles pour expliquer la réponse $Y$.-->
+</div>
+<div id="TestWald" class="section level4">
+<h4><span class="header-section-number">9.5.1.2</span> Test de Wald</h4>
+<p>Comme dans le modèle linéaire, on peut reformuler les hypothèses et vouloir tester</p>
+<p><span class="math display">\[
+\mathcal H_0:  C \theta = 0_q \textrm{ contre } \mathcal H_1: C \theta \neq 0_q
+\]</span>
+où <span class="math inline">\(C\in \mathcal M_{qk}(\mathbb{R})\)</span> (définie l’ensemble <span class="math inline">\(\mathcal{H}_0\)</span> des hypothèses à tester sur les paramètres correspondant à <span class="math inline">\(q\)</span> contraintes).</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-67" class="proposition"><strong>Proposition 9.5  </strong></span>Connaissant la loi asymptotique de <span class="math inline">\(\hat \theta_{\scriptsize MV}\)</span>, on obtient que
+<span class="math display">\[
+\left[C \mathcal{I}_n(\hat\theta_{\scriptsize MV})^{-1} C&#39; \right]^{-1/2} (C\hat \theta_{\scriptsize MV} - C\theta)  \underset{n\rightarrow +\infty}{\stackrel{\mathcal L}{\longrightarrow}} \mathcal N(0_q,I_q)
+\]</span>
+et
+<span class="math display">\[
+(C\hat \theta_{\scriptsize MV} - C\theta)&#39; \left[C \mathcal{I}_n(\hat\theta_{\scriptsize MV})^{-1} C&#39;\right]^{-1} (C\hat \theta_{\scriptsize MV} - C\theta)  \underset{n\rightarrow +\infty}{\stackrel{\mathcal L}{\longrightarrow}} \mathcal \chi^2(q).
+\]</span>
+On considère donc la zone de rejet
+<span class="math display">\[\mathcal R_\alpha = \{ (C\hat \theta_{\scriptsize MV} )&#39; \left[C \mathcal{I}_n(\hat\theta_{\scriptsize MV})^{-1} C&#39;\right]^{-1} (C\hat \theta_{\scriptsize MV}) &gt; v_{1-\alpha,q}  \}\]</span>
+où
+<span class="math inline">\(v_{1-\alpha,q}\)</span> est le <span class="math inline">\((1-\alpha)\)</span> quantile d’un <span class="math inline">\(\chi^2(q)\)</span>.</p>
+<p>Ce test est appelé <strong>test de Wald</strong>.</p>
+</div>
+<p>Le <strong>test de Wald</strong> est basé sur la forme quadratique faisant intervenir la matrice de covariance des paramètres, l’inverse de la matrice d’information observée <span class="math inline">\((X&#39;WX)^{-1}\)</span>. Cette matrice généralise la matrice <span class="math inline">\((X&#39;X)^{-1}\)</span> utilisée dans le cas du modèle linéaire gaussien en faisant intervenir une matrice <span class="math inline">\(W\)</span> de pondération. Ainsi, les test de Wald et test de Fisher sont équivalents dans le cas particulier du modèle gaussien.
+Attention, le test de Wald peut ne pas être précis si le nombre d’observations est faible.</p>
+</div>
+</div>
+<div id="TestParamMLG" class="section level3">
+<h3><span class="header-section-number">9.5.2</span> Test d’un paramètre <span class="math inline">\(\theta_j\)</span></h3>
+<p>On s’intéresse ici à tester quelles sont les variables qui ont une influence. On revient au problème général de vouloir tester
+<span class="math inline">\(\mathcal H_0: \theta_j = a\)</span> contre <span class="math inline">\(\mathcal H_0: \theta_j \neq a\)</span>, où <span class="math inline">\(a\)</span> est une valeur définie a priori (souvent <span class="math inline">\(a=0\)</span>).</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-68" class="proposition"><strong>Proposition 9.6  </strong></span>D’après le théorème <a href="GLM.html#thm:loiEMV">9.1</a>, on peut faire l’approximation de loi suivante sous <span class="math inline">\(\mathcal{H}_0\)</span> :
+<span class="math display">\[
+ (\hat \theta_{\scriptsize MV})_j  - a  \underset{\mathcal{H}_0}{\stackrel{\mathcal L}{\simeq}}   \mathcal{N}\left(0,[\mathcal{I}_{n}(\hat \theta_{\scriptsize MV})^{-1}]_{jj}\right).
+\]</span>
+On va donc rejeter <span class="math inline">\(\mathcal{H}_0\)</span> si
+<span class="math display">\[
+T_j := \left|  (\hat \theta_{\scriptsize MV})_j  - a  \right| / \sqrt{[\mathcal{I}_{n}(\hat \theta_{\scriptsize MV})^{-1}]_{jj}}   &gt; z_{1-\alpha/2}
+\]</span>
+où <span class="math inline">\(z_{1-\alpha/2}\)</span> est le <span class="math inline">\(1-\alpha/2\)</span> quantile de la loi <span class="math inline">\(\mathcal N(0,1)\)</span>.</p>
+<p>Ce test est appelé le <strong>Z-test</strong>.</p>
+</div>
+<div class="remark">
+<p><span id="unlabeled-div-69" class="remark"><em>Remark</em>. </span>Ce test est équivalent au test de Wald : on rejette <span class="math inline">\(\mathcal{H}_0\)</span> si
+<span class="math display">\[
+\left[ (\hat \theta_{\scriptsize MV})_j  - a  \right]^2  / [\mathcal{I}_{n}(\hat \theta_{\scriptsize MV})^{-1}]_{jj}  &gt; v_{1-\alpha,1}
+\]</span><br />
+où <span class="math inline">\(v_{1-\alpha,1}\)</span> est le <span class="math inline">\(1-\alpha\)</span> quantile de la loi <span class="math inline">\(\chi^2(1)\)</span>.</p>
+</div>
+</div>
+</div>
+<div id="MLGIC" class="section level2">
+<h2><span class="header-section-number">9.6</span> Intervalle de confiance pour <span class="math inline">\(\theta_j\)</span></h2>
+<div id="par-wald" class="section level3">
+<h3><span class="header-section-number">9.6.1</span> Par Wald</h3>
+<p>D’après le théorème <a href="GLM.html#thm:loiEMV">9.1</a>, on peut faire l’approximation de loi suivante :
+<span class="math display">\[
+\left[ (\hat \theta_{\scriptsize MV})_j  - \theta_j \right] /  \sqrt{[\mathcal{I}_{n}(\hat\theta_{\scriptsize MV})^{-1}]_{jj}} 
+\underset{n\rightarrow +\infty}{\stackrel{\mathcal L}{\longrightarrow}}  \mathcal{N}\left(0, 1 \right).
+\]</span>
+On peut donc construire l’intervalle de confiance asymptotique pour <span class="math inline">\(\theta_j\)</span> au niveau de confiance <span class="math inline">\(1-\alpha\)</span> suivant :
+<span class="math display">\[
+IC_{1-\alpha}(\theta_j) = \left [ (\hat \theta_{\scriptsize MV})_j  \pm  z_{1-\alpha/2} \sqrt{[\mathcal{I}_{n}(\hat\theta_{\scriptsize MV})^{-1}]_{jj}} \right]  
+\]</span>
+où <span class="math inline">\(z_{1-\alpha/2}\)</span> est le <span class="math inline">\(1-\alpha/2\)</span> quantile de la loi <span class="math inline">\(\mathcal N(0,1)\)</span>.</p>
+</div>
+<div id="fondé-sur-le-rapport-de-vraisemblances" class="section level3">
+<h3><span class="header-section-number">9.6.2</span> Fondé sur le rapport de vraisemblances</h3>
+<p>La <strong>fonction de vraisemblance profil</strong> de <span class="math inline">\(\theta_j\)</span> est définie par
+<span class="math display">\[
+l^\star(\underline{Y};  \theta_j) = \underset{\tilde\theta}{\max}\ l(\underline{Y}; \tilde\theta)
+\]</span>
+où <span class="math inline">\(\tilde\theta\)</span> est le vecteur <span class="math inline">\(\theta\)</span> avec le <span class="math inline">\(j\)</span>ème élément fixé à <span class="math inline">\(\theta_j\)</span>. Si <span class="math inline">\(\theta_j\)</span> est la vraie valeur du paramètre alors
+<span class="math display">\[
+2 \left[  l(\underline{Y}; \hat\theta_{\scriptsize MV}) -  l^\star(\underline{Y}; \theta_j)  \right]  \underset{n\rightarrow +\infty}{\stackrel{\mathcal L}{\longrightarrow}} \chi^2(1).
+\]</span>
+Ainsi, si on considère l’ensemble
+<span class="math display">\[
+\mathcal G=\left\{u;  2 \left[  l(\underline{Y}; \hat\theta_{\scriptsize MV}) -  l^\star(\underline{Y}; u)  \right] \leq v_{1-\alpha,1}  \right\},
+\]</span>
+on obtient que <span class="math inline">\(\mathbb{P}(\theta_j\in\mathcal G) \underset{n\rightarrow +\infty}{\longrightarrow} 1-\alpha\)</span>. Ainsi <span class="math inline">\(\mathcal G\)</span> est un intervalle de confiance asymptotique pour <span class="math inline">\(\theta_j\)</span> au niveau de confiance <span class="math inline">\(1-\alpha\)</span>.</p>
+</div>
+</div>
+<div id="qualité-dajustement-1" class="section level2">
+<h2><span class="header-section-number">9.7</span> Qualité d’ajustement</h2>
+<div id="le-pseudo-r2" class="section level3">
+<h3><span class="header-section-number">9.7.1</span> Le pseudo <span class="math inline">\(R^2\)</span></h3>
+<div class="definition">
+<p><span id="def:unlabeled-div-70" class="definition"><strong>Definition 9.3  </strong></span>Le pseudo-<span class="math inline">\(R^2\)</span> d’un modèle d’intérêt <span class="math inline">\(M\)</span> est défini par
+<span class="math display">\[
+pseudoR^2 = \frac{\mathcal D(M_0)-\mathcal D(M)}{\mathcal D(M_0)}.
+\]</span>
+où <span class="math inline">\(M_0\)</span> est le modèle nul (juste un intercept).</p>
+</div>
+<p>Cette définition est obtenue par analogie avec le <span class="math inline">\(R^2=1-\frac{SSR}{SST}\)</span> utilisé dans le cadre du modèle linéaire. En effet, on rappelle que <span class="math inline">\(SST\)</span> est la somme des carrés des résidus pour le modèle nul <span class="math inline">\(M_0\)</span>. Ce pseudo-<span class="math inline">\(R^2\)</span> varie entre <span class="math inline">\(0\)</span> et <span class="math inline">\(1\)</span>. Plus il est proche de <span class="math inline">\(1\)</span>, meilleur est l’ajustement du modèle.</p>
+</div>
+<div id="le-chi2-de-pearson-généralisé" class="section level3">
+<h3><span class="header-section-number">9.7.2</span> Le <span class="math inline">\(\chi^2\)</span> de Pearson généralisé</h3>
+<p>Le <span class="math inline">\(\chi^2\)</span> de Pearson généralisé est la statistique définie par
+<span class="math display">\[
+Z^2=\sum_{i=1}^{n}\frac{(Y_i-\hat \mu_i)^2}{\mbox{Var}_{\widehat\mu_i}(Y_i)}
+\]</span>
+où <span class="math inline">\(\hat \mu_i= g^{-1}(\textbf{x}_i\hat \theta_{\scriptsize MV})\)</span> et <span class="math inline">\(\mbox{Var}_{\widehat\mu_i}(Y_i)= \mbox{Var}_{\mu}(Y_i)|_{\mu=\widehat\mu_i}\)</span> ( la variance théorique de <span class="math inline">\(Y_i\)</span> évaluée en <span class="math inline">\(\hat \mu_i\)</span>).</p>
+<p>Sous l’hypothèse que le modèle étudié est le bon modèle et si l’approximation asymptotique est valable, alors la loi de <span class="math inline">\(Z^2\)</span> est approchée par <span class="math inline">\(\chi^2(n-k)\)</span>.
+On rejette donc le modèle étudié au niveau <span class="math inline">\(\alpha\)</span> si la valeur observée de <span class="math inline">\(Z^2\)</span> est supérieure au <span class="math inline">\((1-\alpha)\)</span> quantile de la loi <span class="math inline">\(\chi^2(n-k)\)</span>.</p>
+</div>
+</div>
+<div id="ResidusGLM" class="section level2">
+<h2><span class="header-section-number">9.8</span> Diagnostic, résidus</h2>
+<p>Dans le modèle linéaire généralisé, la définition la plus naturelle pour le résidu consiste à quantifier l’écart entre <span class="math inline">\(Y_i\)</span> et sa prédiction par le modèle <span class="math inline">\(\hat \mu_i\)</span>. On définit ainsi les résidus bruts <span class="math inline">\(\varepsilon_i = Y_i - \hat \mu_i\)</span>. Mais ces résidus n’ayant pas toujours la même variance, il est difficile de les comparer à un comportement type attendu. Par exemple dans le cas d’un modèle de Poisson, l’écart-type d’un effectif est <span class="math inline">\(\sqrt{\hat \mu_i}\)</span>, de grosses différences tendent à apparaitre quand <span class="math inline">\(\mu_i\)</span> prend des valeurs élevées. En normalisant les résidus bruts par une variance estimée, on obtient les résidus “standardisés” de Pearson :
+<span class="math display">\[
+r_{Pi} = \frac{Y_i - \hat \mu_i}{\sqrt{Var_{\hat\mu_i}(Y_i)}}.
+\]</span>
+On remarque que la somme des carrés des <span class="math inline">\(r_{Pi}\)</span> correspond au <span class="math inline">\(\chi^2\)</span> de Pearson généralisé.</p>
+<p>On peut également étudier les résidus déviance définis par :
+<span class="math display">\[
+r_{Di}=\sqrt{d_i}\  sgn(Y_i - \hat \mu_i)
+\]</span>
+où <span class="math inline">\(d_i\)</span> représente la contribution de l’observation <span class="math inline">\(i\)</span> à la déviance <span class="math inline">\(\mathcal D\)</span>.</p>
+<p>Du fait que les résidus sont calculés sur les données de l’échantillon qui ont permis de construire le modèle, on risque de sous-estimer les résidus. En notant <span class="math inline">\(h_i\)</span> le levier associé à l’observation <span class="math inline">\(i\)</span>, <span class="math inline">\(i\)</span>ème terme diagonal de la matrice <span class="math inline">\(H=\mathbf{W}^{1/2}\mathbf{X(X&#39;WX)}^{-1}\mathbf{X&#39;}\mathbf{W}^{1/2}\)</span>, on définit alors :</p>
+<ul>
+<li>le résidu de Pearson normalisé : <span class="math display">\[r_{Pi}^\star =  \frac{Y_i - \hat \mu_i}{\sqrt{Var_{\hat\mu_i}(Y_i)(1-h_i)}}\]</span></li>
+<li>le résidu déviance normalisé : <span class="math display">\[r_{Di}^\star = \frac{\sqrt{d_i}\ sgn(Y_i - \hat \mu_i)}{\phi(1-h_i)}\]</span></li>
+<li>le résidu vraisemblance normalisé : <span class="math display">\[r_{Gi}=sgn(Y_i-\hat\mu_i) \sqrt{(1-h_i) r_{Di}^{\star\ 2} + h_i r_{Pi}^{\star\ 2}}\]</span></li>
+</ul>
+</div>
+<div id="en-résumé-7" class="section level2">
+<h2><span class="header-section-number">9.9</span> En résumé</h2>
+<div class="summarybox">
+<ul>
+<li>Savoir modéliser un MLG en précisant bien les 3 parties (compo. aléatoire, compo. linéaire, fonction de lien)</li>
+<li>Savoir montrer qu’une loi fait partie de la famille exponentielle (la définition n’est pas à connaitre, elle sera rappelée si besoin)</li>
+<li>Connaitre la fonction de lien canonique pour les lois gaussienne, Bernoulli et Poisson</li>
+<li>Comprendre l’esprit général pour déterminer un estimateur du vecteur des paramètres en MLG</li>
+<li>Connaitre le théorème sur la loi de l’estimateur <span class="math inline">\(\hat\theta_{{\scriptsize MV}}\)</span> en MLG</li>
+<li>Savoir construire un test de modèles emboités, un test de Wald et un <span class="math inline">\(Z\)</span>-test</li>
+<li>Construire un IC pour <span class="math inline">\(\theta_j\)</span> par Wald</li>
+<li>Connaitre la définition du pseudo-<span class="math inline">\(R^2\)</span></li>
+</ul>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Agresti">
+<p>Agresti, Alan. 2003. <em>Categorical Data Analysis</em>. Vol. 482. John Wiley &amp; Sons.</p>
+</div>
+<div id="ref-Antoniadis">
+<p>Antoniadis, Anestis, Jacques Berruyer, and René Carmona. 1992. <em>Régression Non Linéaire et Applications</em>. Economica.</p>
+</div>
+<div id="ref-McCullagh">
+<p>McCullagh, Peter. 2018. <em>Generalized Linear Models</em>. Routledge.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ANCOVA.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="RegLogistique.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Bookdown-poly.pdf", "Bookdown-poly.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
