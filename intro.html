@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 1 Introduction | Modèle linéaire général et modèle linéaire généralisé</title>
+  <meta name="description" content="Chapitre 1 Introduction | Modèle linéaire général et modèle linéaire généralisé" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 1 Introduction | Modèle linéaire général et modèle linéaire généralisé" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 1 Introduction | Modèle linéaire général et modèle linéaire généralisé" />
+  
+  
+  
+
+<meta name="author" content="Cathy Maugis-Rabusseau (INSA Toulouse / IMT)" />
+
+
+<meta name="date" content="2021-10-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="DefML.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">UF Elements de modélisation statistique</a></li>
+<li>      <img src="image/LogoInsaToulouse.jpg" height="20px" align="right"/>      </li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Préface</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#modélisation-dune-réponse-quantitative"><i class="fa fa-check"></i><b>1.1</b> Modélisation d’une réponse quantitative</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#jeu-de-données-illustratif"><i class="fa fa-check"></i><b>1.1.1</b> Jeu de données illustratif</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#régression-linéaire"><i class="fa fa-check"></i><b>1.1.2</b> Régression linéaire</a></li>
+<li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#analyse-de-la-variance-anova"><i class="fa fa-check"></i><b>1.1.3</b> Analyse de la variance (ANOVA)</a></li>
+<li class="chapter" data-level="1.1.4" data-path="intro.html"><a href="intro.html#analyse-de-covariance-ancova"><i class="fa fa-check"></i><b>1.1.4</b> Analyse de covariance (ANCOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#modélisation-dune-variable-binaire-de-comptage"><i class="fa fa-check"></i><b>1.2</b> Modélisation d’une variable binaire, de comptage, …</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#objectifs-du-cours"><i class="fa fa-check"></i><b>1.3</b> Objectifs du cours</a></li>
+</ul></li>
+<li class="part"><span><b>I Le modèle linéaire général</b></span></li>
+<li class="chapter" data-level="2" data-path="DefML.html"><a href="DefML.html"><i class="fa fa-check"></i><b>2</b> Définitions générales</a><ul>
+<li class="chapter" data-level="2.1" data-path="DefML.html"><a href="DefML.html#modlinreg"><i class="fa fa-check"></i><b>2.1</b> Modèle linéaire régulier</a></li>
+<li class="chapter" data-level="2.2" data-path="DefML.html"><a href="DefML.html#exemples-de-modèle-linéaire-gaussien"><i class="fa fa-check"></i><b>2.2</b> Exemples de modèle linéaire gaussien</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="DefML.html"><a href="DefML.html#le-modèle-de-régression-linéaire"><i class="fa fa-check"></i><b>2.2.1</b> Le modèle de régression linéaire</a></li>
+<li class="chapter" data-level="2.2.2" data-path="DefML.html"><a href="DefML.html#le-modèle-danalyse-de-la-variance"><i class="fa fa-check"></i><b>2.2.2</b> Le modèle d’analyse de la variance</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="DefML.html"><a href="DefML.html#en-résumé"><i class="fa fa-check"></i><b>2.3</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="EstML.html"><a href="EstML.html"><i class="fa fa-check"></i><b>3</b> Estimation des paramètres</a><ul>
+<li class="chapter" data-level="3.1" data-path="EstML.html"><a href="EstML.html#estimation-de-theta"><i class="fa fa-check"></i><b>3.1</b> Estimation de <span class="math inline">\(\theta\)</span></a></li>
+<li class="chapter" data-level="3.2" data-path="EstML.html"><a href="EstML.html#valeurs-ajustées-et-résidus"><i class="fa fa-check"></i><b>3.2</b> Valeurs ajustées et résidus</a></li>
+<li class="chapter" data-level="3.3" data-path="EstML.html"><a href="EstML.html#estimation-de-sigma2"><i class="fa fa-check"></i><b>3.3</b> Estimation de <span class="math inline">\(\sigma^2\)</span></a></li>
+<li class="chapter" data-level="3.4" data-path="EstML.html"><a href="EstML.html#erreurs-standards"><i class="fa fa-check"></i><b>3.4</b> Erreurs standards</a></li>
+<li class="chapter" data-level="3.5" data-path="EstML.html"><a href="EstML.html#intervalle-de-confiance-de-theta_j-de-xtheta_i-et-de-x_0theta"><i class="fa fa-check"></i><b>3.5</b> Intervalle de confiance de <span class="math inline">\(\theta_j\)</span>, de <span class="math inline">\((X\theta)_i\)</span> et de <span class="math inline">\(X_0\theta\)</span></a><ul>
+<li class="chapter" data-level="3.5.1" data-path="EstML.html"><a href="EstML.html#ICthetaj"><i class="fa fa-check"></i><b>3.5.1</b> Intervalle de confiance de <span class="math inline">\(\theta_j\)</span></a></li>
+<li class="chapter" data-level="3.5.2" data-path="EstML.html"><a href="EstML.html#ICXthetai"><i class="fa fa-check"></i><b>3.5.2</b> Intervalle de confiance de <span class="math inline">\((X\theta)_i\)</span></a></li>
+<li class="chapter" data-level="3.5.3" data-path="EstML.html"><a href="EstML.html#ICX0theta"><i class="fa fa-check"></i><b>3.5.3</b> Intervalle de confiance de <span class="math inline">\(X_0\theta\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="EstML.html"><a href="EstML.html#ICpredit"><i class="fa fa-check"></i><b>3.6</b> Intervalles de prédiction</a></li>
+<li class="chapter" data-level="3.7" data-path="EstML.html"><a href="EstML.html#qualité-dajustement"><i class="fa fa-check"></i><b>3.7</b> Qualité d’ajustement</a></li>
+<li class="chapter" data-level="3.8" data-path="EstML.html"><a href="EstML.html#en-résumé-1"><i class="fa fa-check"></i><b>3.8</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Test.html"><a href="Test.html"><i class="fa fa-check"></i><b>4</b> Test de Fisher-Snedecor</a><ul>
+<li class="chapter" data-level="4.1" data-path="Test.html"><a href="Test.html#hypothèses-testées"><i class="fa fa-check"></i><b>4.1</b> Hypothèses testées</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="Test.html"><a href="Test.html#première-écriture"><i class="fa fa-check"></i><b>4.1.1</b> Première écriture</a></li>
+<li class="chapter" data-level="4.1.2" data-path="Test.html"><a href="Test.html#seconde-écriture"><i class="fa fa-check"></i><b>4.1.2</b> Seconde écriture</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="Test.html"><a href="Test.html#le-test-de-fisher-snedecor"><i class="fa fa-check"></i><b>4.2</b> Le test de Fisher-Snedecor</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="Test.html"><a href="Test.html#principe"><i class="fa fa-check"></i><b>4.2.1</b> Principe</a></li>
+<li class="chapter" data-level="4.2.2" data-path="Test.html"><a href="Test.html#comblinconjointes"><i class="fa fa-check"></i><b>4.2.2</b> La statistique de test</a></li>
+<li class="chapter" data-level="4.2.3" data-path="Test.html"><a href="Test.html#règle-de-décision"><i class="fa fa-check"></i><b>4.2.3</b> Règle de décision</a></li>
+<li class="chapter" data-level="4.2.4" data-path="Test.html"><a href="Test.html#comblin"><i class="fa fa-check"></i><b>4.2.4</b> Cas particulier où <span class="math inline">\(q=1\)</span> : Test de Student</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="Test.html"><a href="Test.html#intervalle-région-de-confiance-pour-ctheta"><i class="fa fa-check"></i><b>4.3</b> Intervalle (région) de confiance pour <span class="math inline">\(C\theta\)</span></a><ul>
+<li class="chapter" data-level="4.3.1" data-path="Test.html"><a href="Test.html#ic-pour-ctheta-in-mathbbr"><i class="fa fa-check"></i><b>4.3.1</b> IC pour <span class="math inline">\(C\theta \in \mathbb{R}\)</span></a></li>
+<li class="chapter" data-level="4.3.2" data-path="Test.html"><a href="Test.html#région-de-confiance-pour-ctheta-in-mathbbrq"><i class="fa fa-check"></i><b>4.3.2</b> Région de confiance pour <span class="math inline">\(C\theta \in \mathbb{R}^q\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="Test.html"><a href="Test.html#en-résumé-2"><i class="fa fa-check"></i><b>4.4</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="singulier.html"><a href="singulier.html"><i class="fa fa-check"></i><b>5</b> Modèles singuliers, orthogonalité et importance des hypothèses sur les erreurs</a><ul>
+<li class="chapter" data-level="5.1" data-path="singulier.html"><a href="singulier.html#quand-h1-h4-ne-sont-pas-respectées"><i class="fa fa-check"></i><b>5.1</b> Quand H1-H4 ne sont pas respectées…</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="singulier.html"><a href="singulier.html#propriétés-de-lestimateur-des-moindres-carrés-widehattheta"><i class="fa fa-check"></i><b>5.1.1</b> Propriétés de l’estimateur des moindres carrés <span class="math inline">\(\widehat{\theta}\)</span></a></li>
+<li class="chapter" data-level="5.1.2" data-path="singulier.html"><a href="singulier.html#propriétés-de-lestimateur-des-moindres-carrés-widehatsigma2"><i class="fa fa-check"></i><b>5.1.2</b> Propriétés de l’estimateur des moindres carrés <span class="math inline">\(\widehat{\sigma}^2\)</span></a></li>
+<li class="chapter" data-level="5.1.3" data-path="singulier.html"><a href="singulier.html#modèles-avec-corrélations"><i class="fa fa-check"></i><b>5.1.3</b> Modèles avec corrélations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="singulier.html"><a href="singulier.html#ModSingulier"><i class="fa fa-check"></i><b>5.2</b> Modèles singuliers</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="singulier.html"><a href="singulier.html#contraintes-didentifiabilité"><i class="fa fa-check"></i><b>5.2.1</b> Contraintes d’identifiabilité</a></li>
+<li class="chapter" data-level="5.2.2" data-path="singulier.html"><a href="singulier.html#fonctions-estimables-et-contrastes"><i class="fa fa-check"></i><b>5.2.2</b> Fonctions estimables et contrastes</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="singulier.html"><a href="singulier.html#orthogonalité"><i class="fa fa-check"></i><b>5.3</b> Orthogonalité</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="singulier.html"><a href="singulier.html#orthogonalité-pour-les-modèles-réguliers"><i class="fa fa-check"></i><b>5.3.1</b> Orthogonalité pour les modèles réguliers</a></li>
+<li class="chapter" data-level="5.3.2" data-path="singulier.html"><a href="singulier.html#orthogonalité-pour-les-modèles-non-réguliers"><i class="fa fa-check"></i><b>5.3.2</b> Orthogonalité pour les modèles non-réguliers</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="singulier.html"><a href="singulier.html#en-résumé-3"><i class="fa fa-check"></i><b>5.4</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>6</b> La régression linéaire</a><ul>
+<li class="chapter" data-level="6.1" data-path="regression.html"><a href="regression.html#introduction"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="regression.html"><a href="regression.html#exemple-illustratif"><i class="fa fa-check"></i><b>6.1.1</b> Exemple illustratif</a></li>
+<li class="chapter" data-level="6.1.2" data-path="regression.html"><a href="regression.html#problématique"><i class="fa fa-check"></i><b>6.1.2</b> Problématique</a></li>
+<li class="chapter" data-level="6.1.3" data-path="regression.html"><a href="regression.html#le-modèle-de-régression-linéaire-simple"><i class="fa fa-check"></i><b>6.1.3</b> Le modèle de régression linéaire simple</a></li>
+<li class="chapter" data-level="6.1.4" data-path="regression.html"><a href="regression.html#le-modèle-de-régression-linéaire-multiple"><i class="fa fa-check"></i><b>6.1.4</b> Le modèle de régression linéaire multiple</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="regression.html"><a href="regression.html#estimation"><i class="fa fa-check"></i><b>6.2</b> Estimation</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="regression.html"><a href="regression.html#résultats-généraux"><i class="fa fa-check"></i><b>6.2.1</b> Résultats généraux</a></li>
+<li class="chapter" data-level="6.2.2" data-path="regression.html"><a href="regression.html#propriétés-en-régression-linéaire-simple"><i class="fa fa-check"></i><b>6.2.2</b> Propriétés en régression linéaire simple</a></li>
+<li class="chapter" data-level="6.2.3" data-path="regression.html"><a href="regression.html#le-coefficient-r2"><i class="fa fa-check"></i><b>6.2.3</b> Le coefficient <span class="math inline">\(R^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="regression.html"><a href="regression.html#tests-et-intervalles-de-confiance"><i class="fa fa-check"></i><b>6.3</b> Tests et intervalles de confiance</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="regression.html"><a href="regression.html#test-de-nullité-dun-paramètre-du-modèle"><i class="fa fa-check"></i><b>6.3.1</b> Test de nullité d’un paramètre du modèle</a></li>
+<li class="chapter" data-level="6.3.2" data-path="regression.html"><a href="regression.html#test-de-nullité-de-quelques-paramètres-du-modèle"><i class="fa fa-check"></i><b>6.3.2</b> Test de nullité de quelques paramètres du modèle</a></li>
+<li class="chapter" data-level="6.3.3" data-path="regression.html"><a href="regression.html#test-de-nullité-de-tous-les-paramètres-du-modèle"><i class="fa fa-check"></i><b>6.3.3</b> Test de nullité de tous les paramètres du modèle</a></li>
+<li class="chapter" data-level="6.3.4" data-path="regression.html"><a href="regression.html#intervalle-de-confiance-de-theta_j-de-xtheta_i-et-de-x_0theta-1"><i class="fa fa-check"></i><b>6.3.4</b> Intervalle de confiance de <span class="math inline">\(\theta_j\)</span>, de <span class="math inline">\((X\theta)_i\)</span> et de <span class="math inline">\(X_0\theta\)</span></a></li>
+<li class="chapter" data-level="6.3.5" data-path="regression.html"><a href="regression.html#intervalle-de-prédiction"><i class="fa fa-check"></i><b>6.3.5</b> Intervalle de prédiction</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="regression.html"><a href="regression.html#sélection-des-variables-explicatives"><i class="fa fa-check"></i><b>6.4</b> Sélection des variables explicatives</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="regression.html"><a href="regression.html#cadre-général-de-sélection-de-modèles"><i class="fa fa-check"></i><b>6.4.1</b> Cadre général de sélection de modèles</a></li>
+<li class="chapter" data-level="6.4.2" data-path="regression.html"><a href="regression.html#quelques-critères-pour-sélectionner-un-modèle"><i class="fa fa-check"></i><b>6.4.2</b> Quelques critères pour sélectionner un modèle</a></li>
+<li class="chapter" data-level="6.4.3" data-path="regression.html"><a href="regression.html#algorithmes-de-sélection-de-variables"><i class="fa fa-check"></i><b>6.4.3</b> Algorithmes de sélection de variables</a></li>
+<li class="chapter" data-level="6.4.4" data-path="regression.html"><a href="regression.html#illustration-sur-lexemple"><i class="fa fa-check"></i><b>6.4.4</b> Illustration sur l’exemple</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="regression.html"><a href="regression.html#régression-linéaire-régularisée"><i class="fa fa-check"></i><b>6.5</b> Régression linéaire régularisée</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="regression.html"><a href="regression.html#régression-ridge"><i class="fa fa-check"></i><b>6.5.1</b> Régression ridge</a></li>
+<li class="chapter" data-level="6.5.2" data-path="regression.html"><a href="regression.html#régression-lasso"><i class="fa fa-check"></i><b>6.5.2</b> Régression Lasso</a></li>
+<li class="chapter" data-level="6.5.3" data-path="regression.html"><a href="regression.html#régression-elastic-net"><i class="fa fa-check"></i><b>6.5.3</b> Régression Elastic-Net</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="regression.html"><a href="regression.html#ValidationMod"><i class="fa fa-check"></i><b>6.6</b> Validation du modèle</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="regression.html"><a href="regression.html#contrôle-graphique-a-posteriori"><i class="fa fa-check"></i><b>6.6.1</b> Contrôle graphique a posteriori</a></li>
+<li class="chapter" data-level="6.6.2" data-path="regression.html"><a href="regression.html#pour-vérifier-les-hypothèses-h1-et-h2-adéquation-et-homoscédasticité"><i class="fa fa-check"></i><b>6.6.2</b> Pour vérifier les hypothèses H1 et H2 : adéquation et homoscédasticité</a></li>
+<li class="chapter" data-level="6.6.3" data-path="regression.html"><a href="regression.html#pour-vérifier-lhypothèse-h3-indépendance"><i class="fa fa-check"></i><b>6.6.3</b> Pour vérifier l’hypothèse H3 : indépendance</a></li>
+<li class="chapter" data-level="6.6.4" data-path="regression.html"><a href="regression.html#pour-vérifier-lhypothèse-h4-gaussianité"><i class="fa fa-check"></i><b>6.6.4</b> Pour vérifier l’hypothèse H4 : gaussianité</a></li>
+<li class="chapter" data-level="6.6.5" data-path="regression.html"><a href="regression.html#détection-de-données-aberrantes"><i class="fa fa-check"></i><b>6.6.5</b> Détection de données aberrantes</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="regression.html"><a href="regression.html#en-résumé-4"><i class="fa fa-check"></i><b>6.7</b> En résumé</a></li>
+<li class="chapter" data-level="6.8" data-path="regression.html"><a href="regression.html#quelques-codes-python"><i class="fa fa-check"></i><b>6.8</b> Quelques codes python</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ANOVA.html"><a href="ANOVA.html"><i class="fa fa-check"></i><b>7</b> Analyse de variance (ANOVA)</a><ul>
+<li class="chapter" data-level="7.1" data-path="ANOVA.html"><a href="ANOVA.html#vocabulaire"><i class="fa fa-check"></i><b>7.1</b> Vocabulaire</a></li>
+<li class="chapter" data-level="7.2" data-path="ANOVA.html"><a href="ANOVA.html#analyse-de-variance-à-un-facteur"><i class="fa fa-check"></i><b>7.2</b> Analyse de variance à un facteur</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="ANOVA.html"><a href="ANOVA.html#exemple-et-notations"><i class="fa fa-check"></i><b>7.2.1</b> Exemple et notations</a></li>
+<li class="chapter" data-level="7.2.2" data-path="ANOVA.html"><a href="ANOVA.html#modèle-régulier"><i class="fa fa-check"></i><b>7.2.2</b> Modèle régulier</a></li>
+<li class="chapter" data-level="7.2.3" data-path="ANOVA.html"><a href="ANOVA.html#modèle-singulier"><i class="fa fa-check"></i><b>7.2.3</b> Modèle singulier</a></li>
+<li class="chapter" data-level="7.2.4" data-path="ANOVA.html"><a href="ANOVA.html#prédictions-résidus-et-variance"><i class="fa fa-check"></i><b>7.2.4</b> Prédictions, résidus et variance</a></li>
+<li class="chapter" data-level="7.2.5" data-path="ANOVA.html"><a href="ANOVA.html#intervalle-de-confiance-et-test-sur-leffet-facteur"><i class="fa fa-check"></i><b>7.2.5</b> Intervalle de confiance et test sur l’effet facteur</a></li>
+<li class="chapter" data-level="7.2.6" data-path="ANOVA.html"><a href="ANOVA.html#test-deffet-du-facteur"><i class="fa fa-check"></i><b>7.2.6</b> Test d’effet du facteur</a></li>
+<li class="chapter" data-level="7.2.7" data-path="ANOVA.html"><a href="ANOVA.html#tableau-danalyse-de-la-variance-à-un-facteur"><i class="fa fa-check"></i><b>7.2.7</b> Tableau d’analyse de la variance à un facteur</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="ANOVA.html"><a href="ANOVA.html#analyse-de-variance-à-deux-facteurs"><i class="fa fa-check"></i><b>7.3</b> Analyse de variance à deux facteurs</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="ANOVA.html"><a href="ANOVA.html#notations-et-exemple"><i class="fa fa-check"></i><b>7.3.1</b> Notations et exemple</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ANOVA.html"><a href="ANOVA.html#modélisation"><i class="fa fa-check"></i><b>7.3.2</b> Modélisation</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ANOVA.html"><a href="ANOVA.html#estimation-des-paramètres"><i class="fa fa-check"></i><b>7.3.3</b> Estimation des paramètres</a></li>
+<li class="chapter" data-level="7.3.4" data-path="ANOVA.html"><a href="ANOVA.html#prédiction-résidus-et-variance"><i class="fa fa-check"></i><b>7.3.4</b> Prédiction, résidus et variance</a></li>
+<li class="chapter" data-level="7.3.5" data-path="ANOVA.html"><a href="ANOVA.html#décomposition-de-la-variabilité"><i class="fa fa-check"></i><b>7.3.5</b> Décomposition de la variabilité</a></li>
+<li class="chapter" data-level="7.3.6" data-path="ANOVA.html"><a href="ANOVA.html#le-diagramme-dinteractions"><i class="fa fa-check"></i><b>7.3.6</b> Le diagramme d’interactions</a></li>
+<li class="chapter" data-level="7.3.7" data-path="ANOVA.html"><a href="ANOVA.html#tests-dhypothèses"><i class="fa fa-check"></i><b>7.3.7</b> Tests d’hypothèses</a></li>
+<li class="chapter" data-level="7.3.8" data-path="ANOVA.html"><a href="ANOVA.html#test-dabsence-deffet-du-facteur-b"><i class="fa fa-check"></i><b>7.3.8</b> Test d’absence d’effet du facteur <span class="math inline">\(B\)</span></a></li>
+<li class="chapter" data-level="7.3.9" data-path="ANOVA.html"><a href="ANOVA.html#tableau-danalyse-de-variance-à-deux-facteurs-croisés-dans-le-cas-dun-plan-orthogonal"><i class="fa fa-check"></i><b>7.3.9</b> Tableau d’analyse de variance à deux facteurs croisés dans le cas d’un plan orthogonal</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ANOVA.html"><a href="ANOVA.html#en-résumé-5"><i class="fa fa-check"></i><b>7.4</b> En résumé</a></li>
+<li class="chapter" data-level="7.5" data-path="ANOVA.html"><a href="ANOVA.html#quelques-codes-en-python"><i class="fa fa-check"></i><b>7.5</b> Quelques codes en python</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="ANOVA.html"><a href="ANOVA.html#exemple-danova-à-un-facteur"><i class="fa fa-check"></i><b>7.5.1</b> Exemple d’ANOVA à un facteur</a></li>
+<li class="chapter" data-level="7.5.2" data-path="ANOVA.html"><a href="ANOVA.html#exemple-danova-à-deux-facteurs"><i class="fa fa-check"></i><b>7.5.2</b> Exemple d’ANOVA à deux facteurs</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ANCOVA.html"><a href="ANCOVA.html"><i class="fa fa-check"></i><b>8</b> Analyse de covariance (ANCOVA)</a><ul>
+<li class="chapter" data-level="8.1" data-path="ANCOVA.html"><a href="ANCOVA.html#les-données"><i class="fa fa-check"></i><b>8.1</b> Les données</a></li>
+<li class="chapter" data-level="8.2" data-path="ANCOVA.html"><a href="ANCOVA.html#modélisation-1"><i class="fa fa-check"></i><b>8.2</b> Modélisation</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="ANCOVA.html"><a href="ANCOVA.html#modélisation-régulière"><i class="fa fa-check"></i><b>8.2.1</b> Modélisation régulière</a></li>
+<li class="chapter" data-level="8.2.2" data-path="ANCOVA.html"><a href="ANCOVA.html#modélisation-singulière"><i class="fa fa-check"></i><b>8.2.2</b> Modélisation singulière</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="ANCOVA.html"><a href="ANCOVA.html#estimation-des-paramètres-1"><i class="fa fa-check"></i><b>8.3</b> Estimation des paramètres</a></li>
+<li class="chapter" data-level="8.4" data-path="ANCOVA.html"><a href="ANCOVA.html#tests-dhypothèses-1"><i class="fa fa-check"></i><b>8.4</b> Tests d’hypothèses</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="ANCOVA.html"><a href="ANCOVA.html#absence-de-tout-effet"><i class="fa fa-check"></i><b>8.4.1</b> Absence de tout effet</a></li>
+<li class="chapter" data-level="8.4.2" data-path="ANCOVA.html"><a href="ANCOVA.html#test-dabsence-dinteraction"><i class="fa fa-check"></i><b>8.4.2</b> Test d’absence d’interaction</a></li>
+<li class="chapter" data-level="8.4.3" data-path="ANCOVA.html"><a href="ANCOVA.html#test-dabsence-de-leffet-de-la-covariable-z"><i class="fa fa-check"></i><b>8.4.3</b> Test d’absence de l’effet de la covariable z</a></li>
+<li class="chapter" data-level="8.4.4" data-path="ANCOVA.html"><a href="ANCOVA.html#test-dabsence-de-leffet-facteur-t"><i class="fa fa-check"></i><b>8.4.4</b> Test d’absence de l’effet facteur T</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ANCOVA.html"><a href="ANCOVA.html#en-résumé-6"><i class="fa fa-check"></i><b>8.5</b> En résumé</a></li>
+<li class="chapter" data-level="8.6" data-path="ANCOVA.html"><a href="ANCOVA.html#quelques-codes-en-python-1"><i class="fa fa-check"></i><b>8.6</b> Quelques codes en python</a></li>
+</ul></li>
+<li class="part"><span><b>II Le modèle linéaire généralisé</b></span></li>
+<li class="chapter" data-level="9" data-path="GLM.html"><a href="GLM.html"><i class="fa fa-check"></i><b>9</b> Principe du modèle linéaire généralisé</a><ul>
+<li class="chapter" data-level="9.1" data-path="GLM.html"><a href="GLM.html#introduction-1"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="GLM.html"><a href="GLM.html#caractérisation-dun-modèle-linéaire-généralisé"><i class="fa fa-check"></i><b>9.2</b> Caractérisation d’un modèle linéaire généralisé</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="GLM.html"><a href="GLM.html#loi-de-la-variable-réponse-y"><i class="fa fa-check"></i><b>9.2.1</b> Loi de la variable réponse <span class="math inline">\(Y\)</span></a></li>
+<li class="chapter" data-level="9.2.2" data-path="GLM.html"><a href="GLM.html#prédicteur-linéaire"><i class="fa fa-check"></i><b>9.2.2</b> Prédicteur linéaire</a></li>
+<li class="chapter" data-level="9.2.3" data-path="GLM.html"><a href="GLM.html#fonction-de-lien"><i class="fa fa-check"></i><b>9.2.3</b> Fonction de lien</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="GLM.html"><a href="GLM.html#EstimMLG"><i class="fa fa-check"></i><b>9.3</b> Estimation</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="GLM.html"><a href="GLM.html#estimation-par-maximum-de-vraisemblance"><i class="fa fa-check"></i><b>9.3.1</b> Estimation par maximum de vraisemblance</a></li>
+<li class="chapter" data-level="9.3.2" data-path="GLM.html"><a href="GLM.html#algorithmes-de-newton-raphson-et-fisher-scoring"><i class="fa fa-check"></i><b>9.3.2</b> Algorithmes de Newton-Raphson et Fisher-scoring</a></li>
+<li class="chapter" data-level="9.3.3" data-path="GLM.html"><a href="GLM.html#equations-de-vraisemblance"><i class="fa fa-check"></i><b>9.3.3</b> Equations de vraisemblance</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="GLM.html"><a href="GLM.html#NormalitéAsymptotique"><i class="fa fa-check"></i><b>9.4</b> Loi asymptotique de l’EMV et inférence</a></li>
+<li class="chapter" data-level="9.5" data-path="GLM.html"><a href="GLM.html#tests-dhypothèses-2"><i class="fa fa-check"></i><b>9.5</b> Tests d’hypothèses</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="GLM.html"><a href="GLM.html#test-de-modèles-emboîtés"><i class="fa fa-check"></i><b>9.5.1</b> Test de modèles emboîtés</a></li>
+<li class="chapter" data-level="9.5.2" data-path="GLM.html"><a href="GLM.html#TestParamMLG"><i class="fa fa-check"></i><b>9.5.2</b> Test d’un paramètre <span class="math inline">\(\theta_j\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="GLM.html"><a href="GLM.html#MLGIC"><i class="fa fa-check"></i><b>9.6</b> Intervalle de confiance pour <span class="math inline">\(\theta_j\)</span></a><ul>
+<li class="chapter" data-level="9.6.1" data-path="GLM.html"><a href="GLM.html#par-wald"><i class="fa fa-check"></i><b>9.6.1</b> Par Wald</a></li>
+<li class="chapter" data-level="9.6.2" data-path="GLM.html"><a href="GLM.html#fondé-sur-le-rapport-de-vraisemblances"><i class="fa fa-check"></i><b>9.6.2</b> Fondé sur le rapport de vraisemblances</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="GLM.html"><a href="GLM.html#qualité-dajustement-1"><i class="fa fa-check"></i><b>9.7</b> Qualité d’ajustement</a><ul>
+<li class="chapter" data-level="9.7.1" data-path="GLM.html"><a href="GLM.html#le-pseudo-r2"><i class="fa fa-check"></i><b>9.7.1</b> Le pseudo <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="9.7.2" data-path="GLM.html"><a href="GLM.html#le-chi2-de-pearson-généralisé"><i class="fa fa-check"></i><b>9.7.2</b> Le <span class="math inline">\(\chi^2\)</span> de Pearson généralisé</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="GLM.html"><a href="GLM.html#ResidusGLM"><i class="fa fa-check"></i><b>9.8</b> Diagnostic, résidus</a></li>
+<li class="chapter" data-level="9.9" data-path="GLM.html"><a href="GLM.html#en-résumé-7"><i class="fa fa-check"></i><b>9.9</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="RegLogistique.html"><a href="RegLogistique.html"><i class="fa fa-check"></i><b>10</b> Régression logistique</a><ul>
+<li class="chapter" data-level="10.1" data-path="RegLogistique.html"><a href="RegLogistique.html#introduction-2"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="RegLogistique.html"><a href="RegLogistique.html#pourquoi-des-modèles-particuliers"><i class="fa fa-check"></i><b>10.2</b> Pourquoi des modèles particuliers ?</a></li>
+<li class="chapter" data-level="10.3" data-path="RegLogistique.html"><a href="RegLogistique.html#odds-et-odds-ratio"><i class="fa fa-check"></i><b>10.3</b> Odds et odds ratio</a></li>
+<li class="chapter" data-level="10.4" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-logistique-simple"><i class="fa fa-check"></i><b>10.4</b> Régression logistique simple</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="RegLogistique.html"><a href="RegLogistique.html#subquanti"><i class="fa fa-check"></i><b>10.4.1</b> Avec une variable explicative quantitative</a></li>
+<li class="chapter" data-level="10.4.2" data-path="RegLogistique.html"><a href="RegLogistique.html#sect1expquali"><i class="fa fa-check"></i><b>10.4.2</b> Avec une variable explicative qualitative</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-logistique-multiple"><i class="fa fa-check"></i><b>10.5</b> Régression logistique multiple</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="RegLogistique.html"><a href="RegLogistique.html#modèle-sans-interaction"><i class="fa fa-check"></i><b>10.5.1</b> Modèle sans interaction</a></li>
+<li class="chapter" data-level="10.5.2" data-path="RegLogistique.html"><a href="RegLogistique.html#modèle-avec-interactions"><i class="fa fa-check"></i><b>10.5.2</b> Modèle avec interactions</a></li>
+<li class="chapter" data-level="10.5.3" data-path="RegLogistique.html"><a href="RegLogistique.html#etude-complémentaire-du-modèle-retenu"><i class="fa fa-check"></i><b>10.5.3</b> Etude complémentaire du modèle retenu</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="RegLogistique.html"><a href="RegLogistique.html#quelques-codes-avec-python"><i class="fa fa-check"></i><b>10.6</b> Quelques codes avec python</a></li>
+<li class="chapter" data-level="10.7" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-polytomique"><i class="fa fa-check"></i><b>10.7</b> Régression polytomique</a><ul>
+<li class="chapter" data-level="10.7.1" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-multinomiale-ou-polytomique-non-ordonnée"><i class="fa fa-check"></i><b>10.7.1</b> Régression multinomiale ou polytomique non-ordonnée</a></li>
+<li class="chapter" data-level="10.7.2" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-polytomique-ordonnée"><i class="fa fa-check"></i><b>10.7.2</b> Régression polytomique ordonnée</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="RegLogLin.html"><a href="RegLogLin.html"><i class="fa fa-check"></i><b>11</b> Régression de Poisson / régression loglinéaire</a><ul>
+<li class="chapter" data-level="11.1" data-path="RegLogLin.html"><a href="RegLogLin.html#modèle-de-régression-loglinéaire"><i class="fa fa-check"></i><b>11.1</b> Modèle de régression loglinéaire</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="RegLogLin.html"><a href="RegLogLin.html#pourquoi-un-modèle-particulier"><i class="fa fa-check"></i><b>11.1.1</b> Pourquoi un modèle particulier ?</a></li>
+<li class="chapter" data-level="11.1.2" data-path="RegLogLin.html"><a href="RegLogLin.html#estimation-des-paramètres-3"><i class="fa fa-check"></i><b>11.1.2</b> Estimation des paramètres</a></li>
+<li class="chapter" data-level="11.1.3" data-path="RegLogLin.html"><a href="RegLogLin.html#ajustement-et-prédiction"><i class="fa fa-check"></i><b>11.1.3</b> Ajustement et prédiction</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="RegLogLin.html"><a href="RegLogLin.html#exemple-de-régression-loglinéaire-avec-r"><i class="fa fa-check"></i><b>11.2</b> Exemple de régression loglinéaire avec R</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="RegLogLin.html"><a href="RegLogLin.html#régression-loglinéaire-simple"><i class="fa fa-check"></i><b>11.2.1</b> Régression loglinéaire simple</a></li>
+<li class="chapter" data-level="11.2.2" data-path="RegLogLin.html"><a href="RegLogLin.html#régression-loglinéaire-multiple"><i class="fa fa-check"></i><b>11.2.2</b> Régression loglinéaire multiple</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="RegLogLin.html"><a href="RegLogLin.html#sur-dispersion-et-modèle-binomial-négatif"><i class="fa fa-check"></i><b>11.3</b> Sur-dispersion et modèle binomial négatif</a></li>
+<li class="chapter" data-level="11.4" data-path="RegLogLin.html"><a href="RegLogLin.html#quelques-codes-avec-python-1"><i class="fa fa-check"></i><b>11.4</b> Quelques codes avec python</a></li>
+</ul></li>
+<li class="appendix"><span><b>Annexes</b></span></li>
+<li class="chapter" data-level="A" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html"><i class="fa fa-check"></i><b>A</b> Rappels de probabilités, statistiques et d’optimisation</a><ul>
+<li class="chapter" data-level="A.1" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#rappels-sur-les-échantillons-gaussiens"><i class="fa fa-check"></i><b>A.1</b> Rappels sur les échantillons gaussiens</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#la-loi-normale"><i class="fa fa-check"></i><b>A.1.1</b> La loi normale</a></li>
+<li class="chapter" data-level="A.1.2" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#vecteurs-gaussiens"><i class="fa fa-check"></i><b>A.1.2</b> Vecteurs gaussiens</a></li>
+<li class="chapter" data-level="A.1.3" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#loi-du-khi-deux-loi-de-student-loi-de-fisher"><i class="fa fa-check"></i><b>A.1.3</b> Loi du khi-deux, loi de Student, loi de Fisher</a></li>
+<li class="chapter" data-level="A.1.4" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#estimation-de-la-moyenne-et-de-la-variance-dun-échantillon-gaussien"><i class="fa fa-check"></i><b>A.1.4</b> Estimation de la moyenne et de la variance d’un échantillon gaussien</a></li>
+<li class="chapter" data-level="A.1.5" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#construction-dintervalles-de-confiance"><i class="fa fa-check"></i><b>A.1.5</b> Construction d’intervalles de confiance</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#estimation-sans-biais-de-variance-minimale"><i class="fa fa-check"></i><b>A.2</b> Estimation sans biais de variance minimale</a></li>
+<li class="chapter" data-level="A.3" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#Newton-Raphson"><i class="fa fa-check"></i><b>A.3</b> La méthode de Newton-Raphson</a></li>
+<li class="chapter" data-level="A.4" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#théorème-central-limite-condition-de-lindeberg"><i class="fa fa-check"></i><b>A.4</b> Théorème central limite: condition de Lindeberg</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html"><i class="fa fa-check"></i><b>B</b> Preuves de quelques résultats du cours</a><ul>
+<li class="chapter" data-level="B.1" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#ProofFisher"><i class="fa fa-check"></i><b>B.1</b> Preuve pour le test de Fisher</a></li>
+<li class="chapter" data-level="B.2" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:ortho"><i class="fa fa-check"></i><b>B.2</b> Preuve de la proposition @ref(prp:Proportho)</a></li>
+<li class="chapter" data-level="B.3" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:risque"><i class="fa fa-check"></i><b>B.3</b> Preuve de la proposition @ref(prp:risque)</a></li>
+<li class="chapter" data-level="B.4" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:KL"><i class="fa fa-check"></i><b>B.4</b> Preuve de la proposition @ref(prp:KL)</a></li>
+<li class="chapter" data-level="B.5" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:Mallows"><i class="fa fa-check"></i><b>B.5</b> Critère du <span class="math inline">\(C_p\)</span> de Mallows</a></li>
+<li class="chapter" data-level="B.6" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:Sj"><i class="fa fa-check"></i><b>B.6</b> Preuve de la proposition @ref(prp:eqSj)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li>Cathy Maugis-Rabusseau</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modèle linéaire général et modèle linéaire généralisé</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">Chapitre 1</span> Introduction</h1>
+<blockquote>
+<p>Documents associés à ce chapitre :</p>
+<ul>
+<li>Les slides associés à ce chapitre sont disponibles ici: <a href="???">SlidesIntro.pdf</a></li>
+<li>Le jeu de données utilisé est <a href="Data/ronfletabac.csv"><code>ronfletabac.csv</code></a></li>
+</ul>
+</blockquote>
+<p>Dans ce chapitre nous allons introduire à travers plusieurs exemples les différents types de modèles linéaires (général et généralisé) que nous allons aborder dans ce cours.</p>
+<!--
+Pour ce chapitre, vous pouvez utiliser le script *ExIntro.Rmd* et le jeu de données *ronfletabac.csv* disponibles sur la page moodle du cours pour reproduire l'étude sous R et l'approfondir.
+-->
+<!--
+Pour illustrer la démarche statistique et les problématiques auxquelles peuvent répondre les modèles
+linéaires et linéaires généralisés, nous présentons dans cette partie une analyse
+statistique sur des exemples simples. Cette feuille de bord, constituée de tableaux et de graphiques, a pour objectif de
+rappeler les principaux outils de statistique descriptive univariée et d'introduire les différents types
+de modèles linéaires que nous verrons par la suite. 
+-->
+<div id="modélisation-dune-réponse-quantitative" class="section level2">
+<h2><span class="header-section-number">1.1</span> Modélisation d’une réponse quantitative</h2>
+<div id="jeu-de-données-illustratif" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> Jeu de données illustratif</h3>
+<p>On considère le jeu de données <a href="Data/ronfletabac.csv"><code>ronfletabac.csv</code></a>.
+Pour 100 individus, on dispose de leur taille, leur poids, leur âge et leur sexe (75 hommes et 25 femmes). On sait également si ce sont des fumeurs ou non; s’ils ronflent la nuit ou non. On appelle <code>don</code> le jeu de données chargé sous R.</p>
+<p>Un extrait des données est présenté ci-dessous :</p>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["age"],"name":[1],"type":["int"],"align":["right"]},{"label":["weight"],"name":[2],"type":["int"],"align":["right"]},{"label":["height"],"name":[3],"type":["int"],"align":["right"]},{"label":["sex"],"name":[4],"type":["fct"],"align":["left"]},{"label":["snore"],"name":[5],"type":["fct"],"align":["left"]},{"label":["tobacco"],"name":[6],"type":["fct"],"align":["left"]}],"data":[{"1":"47","2":"71","3":"158","4":"H","5":"N","6":"O","_rn_":"1"},{"1":"56","2":"58","3":"164","4":"H","5":"O","6":"N","_rn_":"2"},{"1":"46","2":"116","3":"208","4":"H","5":"N","6":"O","_rn_":"3"},{"1":"70","2":"96","3":"186","4":"H","5":"N","6":"O","_rn_":"4"},{"1":"51","2":"91","3":"195","4":"H","5":"O","6":"O","_rn_":"5"},{"1":"46","2":"88","3":"188","4":"F","5":"N","6":"N","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>On obtient le résumé suivant des données :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="intro.html#cb1-1"></a><span class="kw">summary</span>(don)</span></code></pre></div>
+<pre><code>      age            weight           height      sex    snore  tobacco
+ Min.   :23.00   Min.   : 42.00   Min.   :158.0   F:25   N:65   N:36   
+ 1st Qu.:43.00   1st Qu.: 75.50   1st Qu.:166.0   H:75   O:35   O:64   
+ Median :52.00   Median : 92.00   Median :186.0                        
+ Mean   :52.27   Mean   : 88.83   Mean   :181.1                        
+ 3rd Qu.:62.25   3rd Qu.:104.25   3rd Qu.:194.0                        
+ Max.   :74.00   Max.   :120.00   Max.   :208.0                        </code></pre>
+<p>Ce jeu de données est donc composé de 3 variables quantitatives et 3 variables qualitatives.
+Pour les variables quantitatives <em>age</em>, <em>weights</em> et <em>height</em>, leur distribution est résumée en Figure <a href="intro.html#fig:BoxplotHisto">1.1</a>.</p>
+<!--Les variables sont analysées différemment selon leur nature : quantitative ou qualitative. Les
+variables quantitatives sont résumées sous forme d'indicateurs (moyenne, écart-type, ....), comme
+dans le tableau en Figure~\ref{TabResum}, et sont présentées graphiquement sous forme d'histogramme (quantitative continue), de
+boîtes à moustache ou de diagramme en bâton (quantitative discrète) (Figure \ref{BoxplotHisto}).-->
+<div class="figure"><span id="fig:BoxplotHisto"></span>
+<img src="Bookdown-poly_files/figure-html/BoxplotHisto-1.png" alt="\label{fig:BoxplotHisto}Représentations graphiques de la distribution des variables quantitatives : l'âge, le poids et la taille." width="672" />
+<p class="caption">
+Figure 1.1: Représentations graphiques de la distribution des variables quantitatives : l’âge, le poids et la taille.
+</p>
+</div>
+<p>Pour les variables qualitatives <em>sex</em>, <em>tobacco</em> et <em>snore</em>, on résume les données sous forme de tableau de fréquences (Table <a href="intro.html#tab:TabFreq">1.1</a>) et on les présente graphiquement par des diagrammes en bâtons (Figure <a href="intro.html#fig:DiagBatons">1.2</a>).</p>
+<table>
+<caption>
+<span id="tab:TabFreq">Table 1.1: </span>Tableau des fréquences pour les variables sex, tobacco et snore
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Modalités
+</th>
+<th style="text-align:right;">
+Fréquence en %
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Sex
+</td>
+<td style="text-align:left;">
+Féminin
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Masculin
+</td>
+<td style="text-align:right;">
+75
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tobacco
+</td>
+<td style="text-align:left;">
+Oui
+</td>
+<td style="text-align:right;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:right;">
+36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Snore
+</td>
+<td style="text-align:left;">
+Oui
+</td>
+<td style="text-align:right;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:right;">
+65
+</td>
+</tr>
+</tbody>
+</table>
+<!--\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+Variable & Modalités & Fréquence en $\%$ \\
+\hline
+Sexe & Féminin  & 25 \\
+         & Masculin  & 75 \\
+\hline
+Tabac & Oui &64\\
+         & Non & 36\\
+\hline
+Ronfle & Oui &35 \\
+         & Non & 65\\
+\hline
+\end{tabular}
+\caption{Tableau de fréquences par sexe, tabac et ronfle}
+\label{ref:TabFreq}
+\end{table}-->
+<div class="figure"><span id="fig:DiagBatons"></span>
+<img src="Bookdown-poly_files/figure-html/DiagBatons-1.png" alt="\label{fig:DiagBatons}Diagrammes en bâtons représentant la distribution des variables qualitatives : sexe, tabac et ronfle." width="672" />
+<p class="caption">
+Figure 1.2: Diagrammes en bâtons représentant la distribution des variables qualitatives : sexe, tabac et ronfle.
+</p>
+</div>
+</div>
+<div id="régression-linéaire" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> Régression linéaire</h3>
+<p>Pour étudier la relation entre deux variables quantitatives (par exemple, entre le poids et la taille, ou entre le poids et l’âge), on peut tracer un nuage de points
+(Figure <a href="intro.html#fig:RegressionSimple">1.3</a>) et calculer le coefficient de corrélation linéaire entre ces deux variables (Table <a href="intro.html#tab:CoefPearson">1.2</a>).</p>
+<!--
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=10cm]{Image/Intro/images/RegressionSimple-1.pdf}
+\end{center}
+\caption{Nuage de points représentant la relation entre le poids et la taille (à gauche), entre le poids et l'âge (à droite).}
+\label{RegressionSimple}
+\end{figure}
+-->
+<div class="figure"><span id="fig:RegressionSimple"></span>
+<img src="Bookdown-poly_files/figure-html/RegressionSimple-1.png" alt="\label{fig:RegressionSimple}Nuage de points représentant la relation entre le poids et la taille (à gauche), entre le poids et l'âge (à droite)." width="672" />
+<p class="caption">
+Figure 1.3: Nuage de points représentant la relation entre le poids et la taille (à gauche), entre le poids et l’âge (à droite).
+</p>
+</div>
+<!--
+\begin{table}[h]
+    \centering
+        \begin{tabular}{|c|c|c|}
+        \hline
+         & taille & age \\
+        \hline
+        weight & 0.92 & -0.004 \\
+        $p$-valeur & $<2.2\ 10^{-16}$& 0.9687\\
+        \hline
+        \end{tabular}
+    \caption{Coefficient de corrélation linéaire de Pearson et test de nullité de ce coefficient}
+    \label{CoefPearson}
+\end{table}
+-->
+<p>Nous remarquons que le coefficient de corrélation linéaire est significativement différent de 0 entre le poids et la taille. Ce n’est pas le cas entre le poids et l’âge.</p>
+<table>
+<caption>
+<span id="tab:CoefPearson">Table 1.2: </span>Coefficient de corrélation linéaire de Pearson et test de nullité de ce coefficient
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+height
+</th>
+<th style="text-align:left;">
+age
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+weight
+</td>
+<td style="text-align:left;">
+0.92
+</td>
+<td style="text-align:left;">
+-0.004
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pvaleur
+</td>
+<td style="text-align:left;">
+&lt;2.2e-16
+</td>
+<td style="text-align:left;">
+0.9687
+</td>
+</tr>
+</tbody>
+</table>
+<div id="régression-linéaire-simple" class="section level4">
+<h4><span class="header-section-number">1.1.2.1</span> Régression linéaire simple</h4>
+<p>Le nuage de points peut être résumé par une droite que l’on appellera <strong>la droite de régression linéaire simple</strong>. C’est le cas le plus simple de modèle linéaire, qui permet d’expliquer une variable quantitative en fonction d’une autre variable quantitative. Par exemple, la droite de régression
+linéaire résumant la relation entre le <em>poids</em> et la <em>taille</em> a pour équation :
+<span class="math display">\[\begin{equation}
+weight_i= a + b \times height_i + \varepsilon_i, \, i=1,\cdots, 100
+\label{eq:eqreglin}
+\end{equation}\]</span>
+où <span class="math inline">\(\varepsilon_i\)</span> désigne l’erreur associée à chaque observation. Généralement, ces erreurs sont supposées être des variables indépendantes gaussiennes centrées de variance constante <span class="math inline">\(\sigma^2\)</span> à estimer.</p>
+<p>Le modèle statistique sous-jacent à l’équation  peut aussi être présenté sous une forme matricielle :
+<!--
+En considérant les vecteurs suivants : 
+$$weight = (weight_1, \ldots, weight_{100})'   \hspace{0.5cm}  \theta=(a,b)'  \hspace{0.5cm}  \varepsilon=(\varepsilon_1,\ldots,\varepsilon_{100})' ,$$
+le modèle peut s'écrire sous la forme
+\begin{equation}
+weight=X\theta + \varepsilon.
+(\#eq:MLG1)
+\end{equation}
+où $X$ est une matrice à préciser.--></p>
+<p><span class="math display" id="eq:MLG1">\[\begin{equation}
+\underbrace{\left(\begin{array}{c}weight_1 \\   \vdots \\   weight_{100}\end{array} \right)}_{weight} 
+=
+\underbrace{\left( \begin{array}{cc}
+                    1 &amp; height_1 \\
+                    \vdots &amp; \vdots\\
+                    1 &amp; height_{100}
+                    \end{array} \right)}_{X}  \underbrace{\left( \begin{array}{c} a \\ b \end{array} \right)}_{\theta}
++ \underbrace{\left( \begin{array}{c}
+                    \varepsilon_1 \\
+                    \vdots \\
+                    \varepsilon_{100}
+                    \end{array} \right)}_{\varepsilon}
+\tag{1.1}
+\end{equation}\]</span></p>
+
+<p>Dans le modèle <a href="intro.html#eq:MLG1">(1.1)</a>, <span class="math inline">\(\theta=(a,b)&#39;\)</span> et <span class="math inline">\(\sigma^2\)</span> sont inconnus. Afin d’estimer les paramètres <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span>, nous utilisons la <strong>méthode des moindres carrés</strong>. Nous choisissons ainsi le couple <span class="math inline">\((\hat a, \hat b)\)</span> vérifiant :
+<span class="math display">\[(\hat a, \hat b)= \mathrm{arg} \underset{(\alpha,\beta)}{\mathrm{min} } \sum_{i=1}^{100} \left( weight_i - \alpha\ - \beta\ height_i \right)^2=\mathrm{arg} \underset{(\alpha,\beta)}{\mathrm{min} }\ || weight -\alpha \mathbb{1}_{100} - \beta\  height ||^2.\]</span></p>
+<p>Dans le chapitre dédié à la régression linéaire, nous déterminerons l’expression explicite de ces estimateurs et étudierons leurs propriétés. A l’aide de la fonction <code>lm()</code> sous R, on peut facilement ajuster ce modèle de régression linéaire sur les données :</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="intro.html#cb3-1"></a>reg1&lt;-<span class="kw">lm</span>(weight<span class="op">~</span>height,<span class="dt">data=</span>don)</span>
+<span id="cb3-2"><a href="intro.html#cb3-2"></a><span class="kw">summary</span>(reg1)</span></code></pre></div>
+<pre><code>
+Call:
+lm(formula = weight ~ height, data = don)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-20.7482  -3.8787   0.6629   4.1182  17.0261 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -146.16586   10.35384  -14.12   &lt;2e-16 ***
+height         1.29760    0.05702   22.76   &lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 7.583 on 98 degrees of freedom
+Multiple R-squared:  0.8409,    Adjusted R-squared:  0.8393 
+F-statistic: 517.9 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>En pratique nous obtenons les estimations suivantes :</p>
+<ul>
+<li><span class="math inline">\(\left(\widehat{b}\right)^{obs} =\)</span> 1.298 : estimation de la pente de la droite de régression
+= estimation de la variation moyenne du poids par rapport à la taille</li>
+<li><span class="math inline">\(\left(\widehat{a}\right)^{obs} =\)</span> -146.166 : estimation de l’ordonnée à l’origine de la droite de régression</li>
+<li><span class="math inline">\(\left(\widehat{\sigma^2}\right)^{obs}=\)</span> (7.583)<span class="math inline">\(^2\)</span></li>
+</ul>
+<p>L’estimation de la pente égale à 1.298 est significativement différente de 0, montrant que le <em>poids</em> et la <em>taille</em> sont liés de façon significative.</p>
+<p>Ces résultats préliminaires ne donnent qu’une approximation du modèle linéaire sous-jacent. Dans bien des situations, il reste à mener une étude approfondie permettant de “valider” le modèle et de l’exploiter (construction de tests, d’intervalles de confiance, …) Nous reviendrons plus en détails sur ces notions dans les chapitres suivants.</p>
+</div>
+<div id="régression-linéaire-multiple" class="section level4">
+<h4><span class="header-section-number">1.1.2.2</span> Régression linéaire multiple</h4>
+<p>Il peut être également intéressant de modéliser une variable en fonction de plusieurs autres variables quantitatives, par un modèle de <strong>régression linéaire multiple</strong>. Par exemple, on peut modéliser le poids en fonction de la taille et de l’âge, ce qui donne l’équation suivante :
+<span class="math display">\[weight_i = a_0 + a_1 \times height_i + a_2 \times age_i + \varepsilon_i,\]</span>
+où les <span class="math inline">\(\varepsilon_i\)</span>, <span class="math inline">\(i=1,\ldots,100\)</span> désignent des variables indépendantes gaussiennes centrées de variance constante <span class="math inline">\(\sigma^2\)</span>.</p>
+<!--\begin{Exo}
+En considérant les vecteurs 
+$$ poids = (poids_1, \ldots, poids_{100})'   \hspace{0.5cm}  \theta=(a_0,a_1,a_2)'  \hspace{0.5cm}  \varepsilon=(\varepsilon_1,\ldots,\varepsilon_{100})'  ,$$
+montrez que le modèle peut s'écrire sous la forme 
+\begin{equation}
+poids=X\theta + \varepsilon.
+\label{MLG2}
+\end{equation}
+où $X$ est une matrice à préciser.
+\end{Exo}-->
+<p>Dans ce cas, le modèle statistique peut s’écrire de la façon suivante :</p>
+<p><span class="math display" id="eq:MLG2">\[\begin{equation}
+\underbrace{\left( \begin{array}{c}
+    weight_1 \\
+    \vdots \\
+    weight_{100}
+ \end{array} \right)}_{weight}
+=\underbrace{\left( \begin{array}{ccc}
+    1 &amp; height_1 &amp; age_1\\
+    \vdots &amp; \vdots &amp; \vdots  \\
+    1 &amp; height_{100} &amp;  age_{100}
+    \end{array} \right)}_{X}  
+   \underbrace{\left( \begin{array}{c} \theta_0 \\ \theta_1 \\\theta_2  \end{array} \right)}_{\theta}
++\underbrace{\left( \begin{array}{c}
+    \varepsilon_1 \\
+    \vdots \\
+    \varepsilon_{100}
+ \end{array} \right)}_{\varepsilon}
+\tag{1.2}
+\end{equation}\]</span></p>
+<p>cette formule pouvant à nouveau être écrite de la façon suivante :
+<span class="math inline">\(weight=X\theta + \varepsilon\)</span>.</p>
+<p>On peut remarquer en regardant les équations <a href="intro.html#eq:MLG1">(1.1)</a> et <a href="intro.html#eq:MLG2">(1.2)</a> que les deux modèles de régression linéaire considérés précédemment s’écrivent sous une “même forme” matricielle.</p>
+</div>
+</div>
+<div id="analyse-de-la-variance-anova" class="section level3">
+<h3><span class="header-section-number">1.1.3</span> Analyse de la variance (ANOVA)</h3>
+<p>Il est possible d’étudier la relation entre une variable quantitative et une variable qualitative,
+par exemple entre le <em>poids</em> et le <em>sexe</em>, ou entre le <em>poids</em> et le <em>tabac</em>. Cette relation est représentée graphiquement par des violin plots (ou boxplots) parallèles (Figure <a href="intro.html#fig:BoxplotsParal">1.4</a>).</p>
+<div class="figure"><span id="fig:BoxplotsParal"></span>
+<img src="Bookdown-poly_files/figure-html/BoxplotsParal-1.png" alt="\label{fig:BoxplotsParal}Boxplots parallèles représentant la relation entre le poids et le sexe (à gauche); entre le poids et le tabac (à droite)." width="672" />
+<p class="caption">
+Figure 1.4: Boxplots parallèles représentant la relation entre le poids et le sexe (à gauche); entre le poids et le tabac (à droite).
+</p>
+</div>
+<!--
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=10cm]{Image/Intro/images/BoxplotAnalyseVariance-1.pdf}
+\end{center}
+\caption{Boxplots parallèles représentant la relation entre le poids et le sexe (à gauche); entre le poids et le tabac (à droite).}
+\label{BoxplotsParal}
+\end{figure}
+-->
+<div id="anova-à-un-facteur" class="section level4">
+<h4><span class="header-section-number">1.1.3.1</span> ANOVA à un facteur</h4>
+<p>Intuitivement, pour comparer le poids des hommes et celui des femmes, nous allons calculer le poids
+moyen pour chaque groupe. Statistiquement, nous modélisons le poids en fonction du sexe en mettant en oeuvre un modèle
+d’<strong>analyse de variance à un facteur</strong> qui s’écrit sous la forme :
+<span class="math display">\[weight_i = \mu_1 \mathbb{1}_{sex_i=F} + \mu_2\mathbb{1}_{sex_i=H} +\varepsilon_i,\]</span>
+où les <span class="math inline">\(\varepsilon_i, \, i=1,\ldots,100\)</span> désignent des variables indépendantes gaussiennes centrées de variance constante <span class="math inline">\(\sigma^2\)</span>.
+Dans ce cas, en réordonnant les observations selon le facteur sexe, le modèle peut être écrit sous la forme matricielle suivante :
+<span class="math display">\[\underbrace{\left( \begin{array}{c}
+     weight_{11} \\ \vdots \\ weight_{1n_1} \\ weight_{21} \\ \vdots \\ weight_{2n_2} 
+          \end{array} \right)}_{weight} 
+= 
+\underbrace{\left( \begin{array}{cc}
+     1 &amp; 0 \\
+     \vdots &amp; \vdots \\
+     1 &amp; 0 \\
+     0 &amp; 1 \\
+     \vdots &amp; \vdots \\
+     0 &amp; 1 
+          \end{array} \right)}_{X}   
+  \underbrace{\left( \begin{array}{c} \mu_1 \\ \mu_2 \end{array} \right) }_{\theta}
++\underbrace{ \left( \begin{array}{c} \varepsilon_{11} \\ \vdots \\ \varepsilon_{1n_1} \\ \varepsilon_{21} \\ \vdots \\ \varepsilon_{2n_2} \end{array} \right)}_{\varepsilon},\]</span>
+où <span class="math inline">\(weight_{ij}\)</span> désigne le poids de l’individu <span class="math inline">\(j\)</span> de sexe <span class="math inline">\(i=F\)</span> ou H avec <span class="math inline">\(j\)</span> variant de <span class="math inline">\(1\)</span> à <span class="math inline">\(n_i\)</span>.</p>
+<p>En pratique, on utilise la méthode des moindres carrés pour estimer les paramètres inconnus. Toujours à l’aide de la fonction <code>lm()</code> de R, on obtient les résultats suivants :</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="intro.html#cb5-1"></a>anova1&lt;-<span class="kw">lm</span>(weight<span class="op">~</span>sex<span class="dv">-1</span>,<span class="dt">data=</span>don)</span>
+<span id="cb5-2"><a href="intro.html#cb5-2"></a><span class="kw">summary</span>(anova1)</span></code></pre></div>
+<pre><code>
+Call:
+lm(formula = weight ~ sex - 1, data = don)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-48.77 -13.44   4.00  16.23  29.23 
+
+Coefficients:
+     Estimate Std. Error t value Pr(&gt;|t|)    
+sexF   83.000      3.741   22.19   &lt;2e-16 ***
+sexH   90.773      2.160   42.03   &lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 18.7 on 98 degrees of freedom
+Multiple R-squared:  0.9584,    Adjusted R-squared:  0.9576 
+F-statistic:  1129 on 2 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Nous obtenons donc <span class="math inline">\(\left(\widehat{ \mu_1}\right)^{obs} =\)</span> 83 et <span class="math inline">\(\left(\widehat{ \mu_2}\right)^{obs}=\)</span> 90.773 qui représentent le poids moyen des femmes et celui des hommes respectivement.</p>
+</div>
+<div id="anova-à-deux-facteurs" class="section level4">
+<h4><span class="header-section-number">1.1.3.2</span> ANOVA à deux facteurs</h4>
+<p>Il est également possible d’étudier l’effet conjoint du sexe et du tabac sur le poids.
+Intuitivement, on peut étudier les moyennes par classe, en croisant les deux variables qualitatives.
+Pour étudier l’effet combiné du sexe et du tabac sur le poids, nous mettons en oeuvre
+un modèle d’<strong>analyse de variance à deux facteurs croisés</strong>. Ce modèle s’écrit de la façon suivante :</p>
+<p><span class="math display">\[weight_{ijk} = \mu + \alpha_i + \beta_j + \gamma_{ij} + \varepsilon_{ijk},\  \varepsilon_{ijk}\underset{i.i.d}{\sim}\mathcal N (0,\sigma^2)\]</span>
+où <span class="math inline">\(weight_{ijk}\)</span> désigne le poids de l’individu <span class="math inline">\(k\)</span> tel que <span class="math inline">\(sexe = i\in\{H,F\}\)</span> et <span class="math inline">\(tabac=j\in\{0,N\}\)</span>. Les variables <span class="math inline">\(\varepsilon_{ijk}\)</span> sont supposées être des variables indépendantes gaussiennes centrées et de variance constante <span class="math inline">\(\sigma^2\)</span>. Nous pouvons également écrire ce modèle sous forme matricielle de la forme
+<span class="math display">\[weight=X\theta +\varepsilon.\]</span>
+Ce modèle nous permettra d’étudier l’effet de chaque facteur (sexe et tabac) sur le poids, mais aussi de détecter des combinaisons (interactions) entre le sexe et le tabac qui donneraient un poids particulièrement différent des autres classes.</p>
+</div>
+</div>
+<div id="analyse-de-covariance-ancova" class="section level3">
+<h3><span class="header-section-number">1.1.4</span> Analyse de covariance (ANCOVA)</h3>
+<p>Sur notre exemple, nous pouvons tenter d’expliquer le poids selon la taille (variable quantitative)
+et le sexe (variable qualitative). Dans ce cas, nous pouvons représenter deux nuages de points entre
+le poids et la taille, l’un pour les femmes et l’autre pour les hommes, comme le montre la
+Figure <a href="intro.html#fig:Nuage2">1.5</a>.</p>
+<div class="figure"><span id="fig:Nuage2"></span>
+<img src="Bookdown-poly_files/figure-html/Nuage2-1.png" alt="\label{fig:Nuage2}Nuages de points représentant la relation entre le poids et la taille selon le sexe." width="672" />
+<p class="caption">
+Figure 1.5: Nuages de points représentant la relation entre le poids et la taille selon le sexe.
+</p>
+</div>
+<p><strong>Le modèle d’analyse de covariance</strong> s’écrit de la façon suivante :
+<span class="math display">\[
+weight_{ij}=a_i + b_i \  height_{ij} + \varepsilon_{ij}, i\in\{H,F\} \mbox{ et } j=1, \cdots, n_i
+\]</span>
+où <span class="math inline">\(weight_{ij}\)</span> désigne le poids de l’individu <span class="math inline">\(j\)</span> de sexe <span class="math inline">\(i\)</span> et les erreurs <span class="math inline">\(\varepsilon_{ij}\)</span> sont supposées gaussiennes centrées indépendantes et de variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>Nous pouvons ainsi comparer l’effet de la taille sur le poids, selon le sexe en mettant en oeuvre un modèle d’<strong>analyse de la covariance</strong>. En pratique cela correspond à estimer, pour chaque modalité de la variable sexe, une droite de régression du poids en fonction de la taille.</p>
+<p>En conclusion, dans les divers problèmes évoqués dans ce paragraphe, à savoir la régression linéaire, l’analyse de variance et l’analyse de covariance, nous avons utilisé :</p>
+<ul>
+<li>le même type de modélisation matricielle,</li>
+<li>le même type d’hypothèses sur les erreurs,</li>
+<li>l’estimateur des moindres carrés.</li>
+</ul>
+<p>En fait, ces différents problèmes ne sont pas si éloignés qu’ils le paraissent a priori car les modèles utilisés font partie d’une même famille de modèles : <strong>le modèle linéaire général</strong>.</p>
+</div>
+</div>
+<div id="modélisation-dune-variable-binaire-de-comptage" class="section level2">
+<h2><span class="header-section-number">1.2</span> Modélisation d’une variable binaire, de comptage, …</h2>
+<p>On se place maintenant dans le cas où la variable réponse <span class="math inline">\(Y\)</span> est qualitative (ou des comptages) et on souhaite expliquer cette variable <span class="math inline">\(Y\)</span> en fonction de plusieurs régresseurs <span class="math inline">\(z^{(1)},\dots,z^{(m)}\)</span>.</p>
+<p>Voici quelques exemples illustratifs :</p>
+<blockquote>
+<p><strong>Exemple 1</strong> Une compagnie d’assurance cherche à détecter les dossiers frauduleux. Elle dispose pour cela d’un panel de <span class="math inline">\(n\)</span> dossiers. À chacun de ces dossiers est associé la valeur <span class="math inline">\(0\)</span> (pour dossier frauduleux) ou <span class="math inline">\(1\)</span>. Après avoir sélectionné les caractéristiques les plus intéressantes (endettement du foyer, milieu social, lieu de résidence, …), elle cherche à savoir dans quelle mesure ces dernières variables influencent la probabilité d’existence d’une fraude. Elle espère pouvoir ainsi à l’avenir détecter d’éventuels dossiers “sensibles”. On est dans le cas d’une variable réponse <span class="math inline">\(Y\)</span> binaire.</p>
+</blockquote>
+<blockquote>
+<p><strong>Exemple 2</strong> On souhaite expliquer le nombre d’espèces de plantes qui se développent dans différents lieux en
+fonction de la biomasse de ces différents lieux et du pH du sol. La variable réponse <span class="math inline">\(Y\)</span> prend ici ses valeurs dans <span class="math inline">\(\mathbb{N}\)</span>.</p>
+</blockquote>
+<p>Dans le cas d’une variable réponse binaire, on dispose d’un vecteur <span class="math inline">\(Y=(Y_1,\dots,Y_n)&#39;\)</span> où <span class="math inline">\(Y_i \sim \mathcal{B}(\pi_i)\)</span> pour tout <span class="math inline">\(i\in\lbrace 1,\dots, n \rbrace\)</span> et de <span class="math inline">\(m\)</span> régresseurs <span class="math inline">\(z^{(1)},\dots,z^{(m)}\)</span>.
+Il semblerait assez naturel d’utiliser la modélisation suivante :
+<span class="math display">\[\mathbb{E}[Y_i] = \pi_i = a_1 z_i^{(1)} + a_2 z_i^{(2)} + \dots + a_m z_i^{(m)}, \ i=1, \dots ,n.\]</span>
+Cependant, comme on cherche à modéliser et prédire des probabilités, cette approche semble peu recommandée dans la mesure où certaines valeurs prédites pourraient ne pas appartenir à l’intervalle <span class="math inline">\([0,1]\)</span>. On va donc plutôt chercher à modéliser linéairement une fonction des <span class="math inline">\(\pi\)</span>. Par exemple dans le cadre de la <strong>régression logistique</strong>, on considère la <strong>fonction de lien</strong> <span class="math inline">\(g: ]0,1[ \rightarrow \mathbb{R}\)</span> définie par
+<span class="math display">\[ g(t) = \ln\left( \frac{t}{1-t} \right), \ \forall t\in ]0,1[\]</span>
+et on modélise
+<span class="math display">\[ g(\pi_i)= a_1 z_i^{(1)} + \dots + a_m z_i^{(m)}, \ \forall i \in \lbrace 1,\dots,n \rbrace.\]</span></p>
+<p>De manière plus générale, il est possible d’envisager de considérer d’autres distributions pour la variable <span class="math inline">\(Y\)</span> et d’autres fonctions de lien. À ce titre, on pourra remarquer que le modèle de régression abordé au début de ce chapitre correspond à une distribution gaussienne et à une fonction de lien canonique (identité). Nous verrons qu’il est possible d’étudier tous ces modèles à travers un même cheminement : <strong>le modèle linéaire généralisé</strong>.</p>
+</div>
+<div id="objectifs-du-cours" class="section level2">
+<h2><span class="header-section-number">1.3</span> Objectifs du cours</h2>
+<p>Nous verrons que les modèles de régression linéaire (simple ou multiple), d’analyse de variance et d’analyse de covariance peuvent être rassemblés sous un même formalisme : on parle alors de <strong>modèle linéaire général</strong>. Un cran au-dessus, nous pouvons encore rassembler le modèle linéaire général et par exemple la régression logistique sous une même bannière : le <strong>modèle linéaire généralisé</strong>. Les possibilités offertes par ces différentes modélisations ne s’arrêtent pas à une simple écriture commune. C’est en fait tout le traitement et l’exploitation des données qui peuvent être abordés de manière unifiée.</p>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="DefML.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Bookdown-poly.pdf", "Bookdown-poly.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

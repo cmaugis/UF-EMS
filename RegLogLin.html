@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 11 Régression de Poisson / régression loglinéaire | Modèle linéaire général et modèle linéaire généralisé</title>
+  <meta name="description" content="Chapitre 11 Régression de Poisson / régression loglinéaire | Modèle linéaire général et modèle linéaire généralisé" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 11 Régression de Poisson / régression loglinéaire | Modèle linéaire général et modèle linéaire généralisé" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 11 Régression de Poisson / régression loglinéaire | Modèle linéaire général et modèle linéaire généralisé" />
+  
+  
+  
+
+<meta name="author" content="Cathy Maugis-Rabusseau (INSA Toulouse / IMT)" />
+
+
+<meta name="date" content="2021-10-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="RegLogistique.html"/>
+<link rel="next" href="rappels-de-probabilités-statistiques-et-doptimisation.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">UF Elements de modélisation statistique</a></li>
+<li>      <img src="image/LogoInsaToulouse.jpg" height="20px" align="right"/>      </li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Préface</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#modélisation-dune-réponse-quantitative"><i class="fa fa-check"></i><b>1.1</b> Modélisation d’une réponse quantitative</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#jeu-de-données-illustratif"><i class="fa fa-check"></i><b>1.1.1</b> Jeu de données illustratif</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#régression-linéaire"><i class="fa fa-check"></i><b>1.1.2</b> Régression linéaire</a></li>
+<li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#analyse-de-la-variance-anova"><i class="fa fa-check"></i><b>1.1.3</b> Analyse de la variance (ANOVA)</a></li>
+<li class="chapter" data-level="1.1.4" data-path="intro.html"><a href="intro.html#analyse-de-covariance-ancova"><i class="fa fa-check"></i><b>1.1.4</b> Analyse de covariance (ANCOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#modélisation-dune-variable-binaire-de-comptage"><i class="fa fa-check"></i><b>1.2</b> Modélisation d’une variable binaire, de comptage, …</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#objectifs-du-cours"><i class="fa fa-check"></i><b>1.3</b> Objectifs du cours</a></li>
+</ul></li>
+<li class="part"><span><b>I Le modèle linéaire général</b></span></li>
+<li class="chapter" data-level="2" data-path="DefML.html"><a href="DefML.html"><i class="fa fa-check"></i><b>2</b> Définitions générales</a><ul>
+<li class="chapter" data-level="2.1" data-path="DefML.html"><a href="DefML.html#modlinreg"><i class="fa fa-check"></i><b>2.1</b> Modèle linéaire régulier</a></li>
+<li class="chapter" data-level="2.2" data-path="DefML.html"><a href="DefML.html#exemples-de-modèle-linéaire-gaussien"><i class="fa fa-check"></i><b>2.2</b> Exemples de modèle linéaire gaussien</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="DefML.html"><a href="DefML.html#le-modèle-de-régression-linéaire"><i class="fa fa-check"></i><b>2.2.1</b> Le modèle de régression linéaire</a></li>
+<li class="chapter" data-level="2.2.2" data-path="DefML.html"><a href="DefML.html#le-modèle-danalyse-de-la-variance"><i class="fa fa-check"></i><b>2.2.2</b> Le modèle d’analyse de la variance</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="DefML.html"><a href="DefML.html#en-résumé"><i class="fa fa-check"></i><b>2.3</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="EstML.html"><a href="EstML.html"><i class="fa fa-check"></i><b>3</b> Estimation des paramètres</a><ul>
+<li class="chapter" data-level="3.1" data-path="EstML.html"><a href="EstML.html#estimation-de-theta"><i class="fa fa-check"></i><b>3.1</b> Estimation de <span class="math inline">\(\theta\)</span></a></li>
+<li class="chapter" data-level="3.2" data-path="EstML.html"><a href="EstML.html#valeurs-ajustées-et-résidus"><i class="fa fa-check"></i><b>3.2</b> Valeurs ajustées et résidus</a></li>
+<li class="chapter" data-level="3.3" data-path="EstML.html"><a href="EstML.html#estimation-de-sigma2"><i class="fa fa-check"></i><b>3.3</b> Estimation de <span class="math inline">\(\sigma^2\)</span></a></li>
+<li class="chapter" data-level="3.4" data-path="EstML.html"><a href="EstML.html#erreurs-standards"><i class="fa fa-check"></i><b>3.4</b> Erreurs standards</a></li>
+<li class="chapter" data-level="3.5" data-path="EstML.html"><a href="EstML.html#intervalle-de-confiance-de-theta_j-de-xtheta_i-et-de-x_0theta"><i class="fa fa-check"></i><b>3.5</b> Intervalle de confiance de <span class="math inline">\(\theta_j\)</span>, de <span class="math inline">\((X\theta)_i\)</span> et de <span class="math inline">\(X_0\theta\)</span></a><ul>
+<li class="chapter" data-level="3.5.1" data-path="EstML.html"><a href="EstML.html#ICthetaj"><i class="fa fa-check"></i><b>3.5.1</b> Intervalle de confiance de <span class="math inline">\(\theta_j\)</span></a></li>
+<li class="chapter" data-level="3.5.2" data-path="EstML.html"><a href="EstML.html#ICXthetai"><i class="fa fa-check"></i><b>3.5.2</b> Intervalle de confiance de <span class="math inline">\((X\theta)_i\)</span></a></li>
+<li class="chapter" data-level="3.5.3" data-path="EstML.html"><a href="EstML.html#ICX0theta"><i class="fa fa-check"></i><b>3.5.3</b> Intervalle de confiance de <span class="math inline">\(X_0\theta\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="EstML.html"><a href="EstML.html#ICpredit"><i class="fa fa-check"></i><b>3.6</b> Intervalles de prédiction</a></li>
+<li class="chapter" data-level="3.7" data-path="EstML.html"><a href="EstML.html#qualité-dajustement"><i class="fa fa-check"></i><b>3.7</b> Qualité d’ajustement</a></li>
+<li class="chapter" data-level="3.8" data-path="EstML.html"><a href="EstML.html#en-résumé-1"><i class="fa fa-check"></i><b>3.8</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Test.html"><a href="Test.html"><i class="fa fa-check"></i><b>4</b> Test de Fisher-Snedecor</a><ul>
+<li class="chapter" data-level="4.1" data-path="Test.html"><a href="Test.html#hypothèses-testées"><i class="fa fa-check"></i><b>4.1</b> Hypothèses testées</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="Test.html"><a href="Test.html#première-écriture"><i class="fa fa-check"></i><b>4.1.1</b> Première écriture</a></li>
+<li class="chapter" data-level="4.1.2" data-path="Test.html"><a href="Test.html#seconde-écriture"><i class="fa fa-check"></i><b>4.1.2</b> Seconde écriture</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="Test.html"><a href="Test.html#le-test-de-fisher-snedecor"><i class="fa fa-check"></i><b>4.2</b> Le test de Fisher-Snedecor</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="Test.html"><a href="Test.html#principe"><i class="fa fa-check"></i><b>4.2.1</b> Principe</a></li>
+<li class="chapter" data-level="4.2.2" data-path="Test.html"><a href="Test.html#comblinconjointes"><i class="fa fa-check"></i><b>4.2.2</b> La statistique de test</a></li>
+<li class="chapter" data-level="4.2.3" data-path="Test.html"><a href="Test.html#règle-de-décision"><i class="fa fa-check"></i><b>4.2.3</b> Règle de décision</a></li>
+<li class="chapter" data-level="4.2.4" data-path="Test.html"><a href="Test.html#comblin"><i class="fa fa-check"></i><b>4.2.4</b> Cas particulier où <span class="math inline">\(q=1\)</span> : Test de Student</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="Test.html"><a href="Test.html#intervalle-région-de-confiance-pour-ctheta"><i class="fa fa-check"></i><b>4.3</b> Intervalle (région) de confiance pour <span class="math inline">\(C\theta\)</span></a><ul>
+<li class="chapter" data-level="4.3.1" data-path="Test.html"><a href="Test.html#ic-pour-ctheta-in-mathbbr"><i class="fa fa-check"></i><b>4.3.1</b> IC pour <span class="math inline">\(C\theta \in \mathbb{R}\)</span></a></li>
+<li class="chapter" data-level="4.3.2" data-path="Test.html"><a href="Test.html#région-de-confiance-pour-ctheta-in-mathbbrq"><i class="fa fa-check"></i><b>4.3.2</b> Région de confiance pour <span class="math inline">\(C\theta \in \mathbb{R}^q\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="Test.html"><a href="Test.html#en-résumé-2"><i class="fa fa-check"></i><b>4.4</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="singulier.html"><a href="singulier.html"><i class="fa fa-check"></i><b>5</b> Modèles singuliers, orthogonalité et importance des hypothèses sur les erreurs</a><ul>
+<li class="chapter" data-level="5.1" data-path="singulier.html"><a href="singulier.html#quand-h1-h4-ne-sont-pas-respectées"><i class="fa fa-check"></i><b>5.1</b> Quand H1-H4 ne sont pas respectées…</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="singulier.html"><a href="singulier.html#propriétés-de-lestimateur-des-moindres-carrés-widehattheta"><i class="fa fa-check"></i><b>5.1.1</b> Propriétés de l’estimateur des moindres carrés <span class="math inline">\(\widehat{\theta}\)</span></a></li>
+<li class="chapter" data-level="5.1.2" data-path="singulier.html"><a href="singulier.html#propriétés-de-lestimateur-des-moindres-carrés-widehatsigma2"><i class="fa fa-check"></i><b>5.1.2</b> Propriétés de l’estimateur des moindres carrés <span class="math inline">\(\widehat{\sigma}^2\)</span></a></li>
+<li class="chapter" data-level="5.1.3" data-path="singulier.html"><a href="singulier.html#modèles-avec-corrélations"><i class="fa fa-check"></i><b>5.1.3</b> Modèles avec corrélations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="singulier.html"><a href="singulier.html#ModSingulier"><i class="fa fa-check"></i><b>5.2</b> Modèles singuliers</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="singulier.html"><a href="singulier.html#contraintes-didentifiabilité"><i class="fa fa-check"></i><b>5.2.1</b> Contraintes d’identifiabilité</a></li>
+<li class="chapter" data-level="5.2.2" data-path="singulier.html"><a href="singulier.html#fonctions-estimables-et-contrastes"><i class="fa fa-check"></i><b>5.2.2</b> Fonctions estimables et contrastes</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="singulier.html"><a href="singulier.html#orthogonalité"><i class="fa fa-check"></i><b>5.3</b> Orthogonalité</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="singulier.html"><a href="singulier.html#orthogonalité-pour-les-modèles-réguliers"><i class="fa fa-check"></i><b>5.3.1</b> Orthogonalité pour les modèles réguliers</a></li>
+<li class="chapter" data-level="5.3.2" data-path="singulier.html"><a href="singulier.html#orthogonalité-pour-les-modèles-non-réguliers"><i class="fa fa-check"></i><b>5.3.2</b> Orthogonalité pour les modèles non-réguliers</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="singulier.html"><a href="singulier.html#en-résumé-3"><i class="fa fa-check"></i><b>5.4</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>6</b> La régression linéaire</a><ul>
+<li class="chapter" data-level="6.1" data-path="regression.html"><a href="regression.html#introduction"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="regression.html"><a href="regression.html#exemple-illustratif"><i class="fa fa-check"></i><b>6.1.1</b> Exemple illustratif</a></li>
+<li class="chapter" data-level="6.1.2" data-path="regression.html"><a href="regression.html#problématique"><i class="fa fa-check"></i><b>6.1.2</b> Problématique</a></li>
+<li class="chapter" data-level="6.1.3" data-path="regression.html"><a href="regression.html#le-modèle-de-régression-linéaire-simple"><i class="fa fa-check"></i><b>6.1.3</b> Le modèle de régression linéaire simple</a></li>
+<li class="chapter" data-level="6.1.4" data-path="regression.html"><a href="regression.html#le-modèle-de-régression-linéaire-multiple"><i class="fa fa-check"></i><b>6.1.4</b> Le modèle de régression linéaire multiple</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="regression.html"><a href="regression.html#estimation"><i class="fa fa-check"></i><b>6.2</b> Estimation</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="regression.html"><a href="regression.html#résultats-généraux"><i class="fa fa-check"></i><b>6.2.1</b> Résultats généraux</a></li>
+<li class="chapter" data-level="6.2.2" data-path="regression.html"><a href="regression.html#propriétés-en-régression-linéaire-simple"><i class="fa fa-check"></i><b>6.2.2</b> Propriétés en régression linéaire simple</a></li>
+<li class="chapter" data-level="6.2.3" data-path="regression.html"><a href="regression.html#le-coefficient-r2"><i class="fa fa-check"></i><b>6.2.3</b> Le coefficient <span class="math inline">\(R^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="regression.html"><a href="regression.html#tests-et-intervalles-de-confiance"><i class="fa fa-check"></i><b>6.3</b> Tests et intervalles de confiance</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="regression.html"><a href="regression.html#test-de-nullité-dun-paramètre-du-modèle"><i class="fa fa-check"></i><b>6.3.1</b> Test de nullité d’un paramètre du modèle</a></li>
+<li class="chapter" data-level="6.3.2" data-path="regression.html"><a href="regression.html#test-de-nullité-de-quelques-paramètres-du-modèle"><i class="fa fa-check"></i><b>6.3.2</b> Test de nullité de quelques paramètres du modèle</a></li>
+<li class="chapter" data-level="6.3.3" data-path="regression.html"><a href="regression.html#test-de-nullité-de-tous-les-paramètres-du-modèle"><i class="fa fa-check"></i><b>6.3.3</b> Test de nullité de tous les paramètres du modèle</a></li>
+<li class="chapter" data-level="6.3.4" data-path="regression.html"><a href="regression.html#intervalle-de-confiance-de-theta_j-de-xtheta_i-et-de-x_0theta-1"><i class="fa fa-check"></i><b>6.3.4</b> Intervalle de confiance de <span class="math inline">\(\theta_j\)</span>, de <span class="math inline">\((X\theta)_i\)</span> et de <span class="math inline">\(X_0\theta\)</span></a></li>
+<li class="chapter" data-level="6.3.5" data-path="regression.html"><a href="regression.html#intervalle-de-prédiction"><i class="fa fa-check"></i><b>6.3.5</b> Intervalle de prédiction</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="regression.html"><a href="regression.html#sélection-des-variables-explicatives"><i class="fa fa-check"></i><b>6.4</b> Sélection des variables explicatives</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="regression.html"><a href="regression.html#cadre-général-de-sélection-de-modèles"><i class="fa fa-check"></i><b>6.4.1</b> Cadre général de sélection de modèles</a></li>
+<li class="chapter" data-level="6.4.2" data-path="regression.html"><a href="regression.html#quelques-critères-pour-sélectionner-un-modèle"><i class="fa fa-check"></i><b>6.4.2</b> Quelques critères pour sélectionner un modèle</a></li>
+<li class="chapter" data-level="6.4.3" data-path="regression.html"><a href="regression.html#algorithmes-de-sélection-de-variables"><i class="fa fa-check"></i><b>6.4.3</b> Algorithmes de sélection de variables</a></li>
+<li class="chapter" data-level="6.4.4" data-path="regression.html"><a href="regression.html#illustration-sur-lexemple"><i class="fa fa-check"></i><b>6.4.4</b> Illustration sur l’exemple</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="regression.html"><a href="regression.html#régression-linéaire-régularisée"><i class="fa fa-check"></i><b>6.5</b> Régression linéaire régularisée</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="regression.html"><a href="regression.html#régression-ridge"><i class="fa fa-check"></i><b>6.5.1</b> Régression ridge</a></li>
+<li class="chapter" data-level="6.5.2" data-path="regression.html"><a href="regression.html#régression-lasso"><i class="fa fa-check"></i><b>6.5.2</b> Régression Lasso</a></li>
+<li class="chapter" data-level="6.5.3" data-path="regression.html"><a href="regression.html#régression-elastic-net"><i class="fa fa-check"></i><b>6.5.3</b> Régression Elastic-Net</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="regression.html"><a href="regression.html#ValidationMod"><i class="fa fa-check"></i><b>6.6</b> Validation du modèle</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="regression.html"><a href="regression.html#contrôle-graphique-a-posteriori"><i class="fa fa-check"></i><b>6.6.1</b> Contrôle graphique a posteriori</a></li>
+<li class="chapter" data-level="6.6.2" data-path="regression.html"><a href="regression.html#pour-vérifier-les-hypothèses-h1-et-h2-adéquation-et-homoscédasticité"><i class="fa fa-check"></i><b>6.6.2</b> Pour vérifier les hypothèses H1 et H2 : adéquation et homoscédasticité</a></li>
+<li class="chapter" data-level="6.6.3" data-path="regression.html"><a href="regression.html#pour-vérifier-lhypothèse-h3-indépendance"><i class="fa fa-check"></i><b>6.6.3</b> Pour vérifier l’hypothèse H3 : indépendance</a></li>
+<li class="chapter" data-level="6.6.4" data-path="regression.html"><a href="regression.html#pour-vérifier-lhypothèse-h4-gaussianité"><i class="fa fa-check"></i><b>6.6.4</b> Pour vérifier l’hypothèse H4 : gaussianité</a></li>
+<li class="chapter" data-level="6.6.5" data-path="regression.html"><a href="regression.html#détection-de-données-aberrantes"><i class="fa fa-check"></i><b>6.6.5</b> Détection de données aberrantes</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="regression.html"><a href="regression.html#en-résumé-4"><i class="fa fa-check"></i><b>6.7</b> En résumé</a></li>
+<li class="chapter" data-level="6.8" data-path="regression.html"><a href="regression.html#quelques-codes-python"><i class="fa fa-check"></i><b>6.8</b> Quelques codes python</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ANOVA.html"><a href="ANOVA.html"><i class="fa fa-check"></i><b>7</b> Analyse de variance (ANOVA)</a><ul>
+<li class="chapter" data-level="7.1" data-path="ANOVA.html"><a href="ANOVA.html#vocabulaire"><i class="fa fa-check"></i><b>7.1</b> Vocabulaire</a></li>
+<li class="chapter" data-level="7.2" data-path="ANOVA.html"><a href="ANOVA.html#analyse-de-variance-à-un-facteur"><i class="fa fa-check"></i><b>7.2</b> Analyse de variance à un facteur</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="ANOVA.html"><a href="ANOVA.html#exemple-et-notations"><i class="fa fa-check"></i><b>7.2.1</b> Exemple et notations</a></li>
+<li class="chapter" data-level="7.2.2" data-path="ANOVA.html"><a href="ANOVA.html#modèle-régulier"><i class="fa fa-check"></i><b>7.2.2</b> Modèle régulier</a></li>
+<li class="chapter" data-level="7.2.3" data-path="ANOVA.html"><a href="ANOVA.html#modèle-singulier"><i class="fa fa-check"></i><b>7.2.3</b> Modèle singulier</a></li>
+<li class="chapter" data-level="7.2.4" data-path="ANOVA.html"><a href="ANOVA.html#prédictions-résidus-et-variance"><i class="fa fa-check"></i><b>7.2.4</b> Prédictions, résidus et variance</a></li>
+<li class="chapter" data-level="7.2.5" data-path="ANOVA.html"><a href="ANOVA.html#intervalle-de-confiance-et-test-sur-leffet-facteur"><i class="fa fa-check"></i><b>7.2.5</b> Intervalle de confiance et test sur l’effet facteur</a></li>
+<li class="chapter" data-level="7.2.6" data-path="ANOVA.html"><a href="ANOVA.html#test-deffet-du-facteur"><i class="fa fa-check"></i><b>7.2.6</b> Test d’effet du facteur</a></li>
+<li class="chapter" data-level="7.2.7" data-path="ANOVA.html"><a href="ANOVA.html#tableau-danalyse-de-la-variance-à-un-facteur"><i class="fa fa-check"></i><b>7.2.7</b> Tableau d’analyse de la variance à un facteur</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="ANOVA.html"><a href="ANOVA.html#analyse-de-variance-à-deux-facteurs"><i class="fa fa-check"></i><b>7.3</b> Analyse de variance à deux facteurs</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="ANOVA.html"><a href="ANOVA.html#notations-et-exemple"><i class="fa fa-check"></i><b>7.3.1</b> Notations et exemple</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ANOVA.html"><a href="ANOVA.html#modélisation"><i class="fa fa-check"></i><b>7.3.2</b> Modélisation</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ANOVA.html"><a href="ANOVA.html#estimation-des-paramètres"><i class="fa fa-check"></i><b>7.3.3</b> Estimation des paramètres</a></li>
+<li class="chapter" data-level="7.3.4" data-path="ANOVA.html"><a href="ANOVA.html#prédiction-résidus-et-variance"><i class="fa fa-check"></i><b>7.3.4</b> Prédiction, résidus et variance</a></li>
+<li class="chapter" data-level="7.3.5" data-path="ANOVA.html"><a href="ANOVA.html#décomposition-de-la-variabilité"><i class="fa fa-check"></i><b>7.3.5</b> Décomposition de la variabilité</a></li>
+<li class="chapter" data-level="7.3.6" data-path="ANOVA.html"><a href="ANOVA.html#le-diagramme-dinteractions"><i class="fa fa-check"></i><b>7.3.6</b> Le diagramme d’interactions</a></li>
+<li class="chapter" data-level="7.3.7" data-path="ANOVA.html"><a href="ANOVA.html#tests-dhypothèses"><i class="fa fa-check"></i><b>7.3.7</b> Tests d’hypothèses</a></li>
+<li class="chapter" data-level="7.3.8" data-path="ANOVA.html"><a href="ANOVA.html#test-dabsence-deffet-du-facteur-b"><i class="fa fa-check"></i><b>7.3.8</b> Test d’absence d’effet du facteur <span class="math inline">\(B\)</span></a></li>
+<li class="chapter" data-level="7.3.9" data-path="ANOVA.html"><a href="ANOVA.html#tableau-danalyse-de-variance-à-deux-facteurs-croisés-dans-le-cas-dun-plan-orthogonal"><i class="fa fa-check"></i><b>7.3.9</b> Tableau d’analyse de variance à deux facteurs croisés dans le cas d’un plan orthogonal</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ANOVA.html"><a href="ANOVA.html#en-résumé-5"><i class="fa fa-check"></i><b>7.4</b> En résumé</a></li>
+<li class="chapter" data-level="7.5" data-path="ANOVA.html"><a href="ANOVA.html#quelques-codes-en-python"><i class="fa fa-check"></i><b>7.5</b> Quelques codes en python</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="ANOVA.html"><a href="ANOVA.html#exemple-danova-à-un-facteur"><i class="fa fa-check"></i><b>7.5.1</b> Exemple d’ANOVA à un facteur</a></li>
+<li class="chapter" data-level="7.5.2" data-path="ANOVA.html"><a href="ANOVA.html#exemple-danova-à-deux-facteurs"><i class="fa fa-check"></i><b>7.5.2</b> Exemple d’ANOVA à deux facteurs</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ANCOVA.html"><a href="ANCOVA.html"><i class="fa fa-check"></i><b>8</b> Analyse de covariance (ANCOVA)</a><ul>
+<li class="chapter" data-level="8.1" data-path="ANCOVA.html"><a href="ANCOVA.html#les-données"><i class="fa fa-check"></i><b>8.1</b> Les données</a></li>
+<li class="chapter" data-level="8.2" data-path="ANCOVA.html"><a href="ANCOVA.html#modélisation-1"><i class="fa fa-check"></i><b>8.2</b> Modélisation</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="ANCOVA.html"><a href="ANCOVA.html#modélisation-régulière"><i class="fa fa-check"></i><b>8.2.1</b> Modélisation régulière</a></li>
+<li class="chapter" data-level="8.2.2" data-path="ANCOVA.html"><a href="ANCOVA.html#modélisation-singulière"><i class="fa fa-check"></i><b>8.2.2</b> Modélisation singulière</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="ANCOVA.html"><a href="ANCOVA.html#estimation-des-paramètres-1"><i class="fa fa-check"></i><b>8.3</b> Estimation des paramètres</a></li>
+<li class="chapter" data-level="8.4" data-path="ANCOVA.html"><a href="ANCOVA.html#tests-dhypothèses-1"><i class="fa fa-check"></i><b>8.4</b> Tests d’hypothèses</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="ANCOVA.html"><a href="ANCOVA.html#absence-de-tout-effet"><i class="fa fa-check"></i><b>8.4.1</b> Absence de tout effet</a></li>
+<li class="chapter" data-level="8.4.2" data-path="ANCOVA.html"><a href="ANCOVA.html#test-dabsence-dinteraction"><i class="fa fa-check"></i><b>8.4.2</b> Test d’absence d’interaction</a></li>
+<li class="chapter" data-level="8.4.3" data-path="ANCOVA.html"><a href="ANCOVA.html#test-dabsence-de-leffet-de-la-covariable-z"><i class="fa fa-check"></i><b>8.4.3</b> Test d’absence de l’effet de la covariable z</a></li>
+<li class="chapter" data-level="8.4.4" data-path="ANCOVA.html"><a href="ANCOVA.html#test-dabsence-de-leffet-facteur-t"><i class="fa fa-check"></i><b>8.4.4</b> Test d’absence de l’effet facteur T</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="ANCOVA.html"><a href="ANCOVA.html#en-résumé-6"><i class="fa fa-check"></i><b>8.5</b> En résumé</a></li>
+<li class="chapter" data-level="8.6" data-path="ANCOVA.html"><a href="ANCOVA.html#quelques-codes-en-python-1"><i class="fa fa-check"></i><b>8.6</b> Quelques codes en python</a></li>
+</ul></li>
+<li class="part"><span><b>II Le modèle linéaire généralisé</b></span></li>
+<li class="chapter" data-level="9" data-path="GLM.html"><a href="GLM.html"><i class="fa fa-check"></i><b>9</b> Principe du modèle linéaire généralisé</a><ul>
+<li class="chapter" data-level="9.1" data-path="GLM.html"><a href="GLM.html#introduction-1"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="GLM.html"><a href="GLM.html#caractérisation-dun-modèle-linéaire-généralisé"><i class="fa fa-check"></i><b>9.2</b> Caractérisation d’un modèle linéaire généralisé</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="GLM.html"><a href="GLM.html#loi-de-la-variable-réponse-y"><i class="fa fa-check"></i><b>9.2.1</b> Loi de la variable réponse <span class="math inline">\(Y\)</span></a></li>
+<li class="chapter" data-level="9.2.2" data-path="GLM.html"><a href="GLM.html#prédicteur-linéaire"><i class="fa fa-check"></i><b>9.2.2</b> Prédicteur linéaire</a></li>
+<li class="chapter" data-level="9.2.3" data-path="GLM.html"><a href="GLM.html#fonction-de-lien"><i class="fa fa-check"></i><b>9.2.3</b> Fonction de lien</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="GLM.html"><a href="GLM.html#EstimMLG"><i class="fa fa-check"></i><b>9.3</b> Estimation</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="GLM.html"><a href="GLM.html#estimation-par-maximum-de-vraisemblance"><i class="fa fa-check"></i><b>9.3.1</b> Estimation par maximum de vraisemblance</a></li>
+<li class="chapter" data-level="9.3.2" data-path="GLM.html"><a href="GLM.html#algorithmes-de-newton-raphson-et-fisher-scoring"><i class="fa fa-check"></i><b>9.3.2</b> Algorithmes de Newton-Raphson et Fisher-scoring</a></li>
+<li class="chapter" data-level="9.3.3" data-path="GLM.html"><a href="GLM.html#equations-de-vraisemblance"><i class="fa fa-check"></i><b>9.3.3</b> Equations de vraisemblance</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="GLM.html"><a href="GLM.html#NormalitéAsymptotique"><i class="fa fa-check"></i><b>9.4</b> Loi asymptotique de l’EMV et inférence</a></li>
+<li class="chapter" data-level="9.5" data-path="GLM.html"><a href="GLM.html#tests-dhypothèses-2"><i class="fa fa-check"></i><b>9.5</b> Tests d’hypothèses</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="GLM.html"><a href="GLM.html#test-de-modèles-emboîtés"><i class="fa fa-check"></i><b>9.5.1</b> Test de modèles emboîtés</a></li>
+<li class="chapter" data-level="9.5.2" data-path="GLM.html"><a href="GLM.html#TestParamMLG"><i class="fa fa-check"></i><b>9.5.2</b> Test d’un paramètre <span class="math inline">\(\theta_j\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="GLM.html"><a href="GLM.html#MLGIC"><i class="fa fa-check"></i><b>9.6</b> Intervalle de confiance pour <span class="math inline">\(\theta_j\)</span></a><ul>
+<li class="chapter" data-level="9.6.1" data-path="GLM.html"><a href="GLM.html#par-wald"><i class="fa fa-check"></i><b>9.6.1</b> Par Wald</a></li>
+<li class="chapter" data-level="9.6.2" data-path="GLM.html"><a href="GLM.html#fondé-sur-le-rapport-de-vraisemblances"><i class="fa fa-check"></i><b>9.6.2</b> Fondé sur le rapport de vraisemblances</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="GLM.html"><a href="GLM.html#qualité-dajustement-1"><i class="fa fa-check"></i><b>9.7</b> Qualité d’ajustement</a><ul>
+<li class="chapter" data-level="9.7.1" data-path="GLM.html"><a href="GLM.html#le-pseudo-r2"><i class="fa fa-check"></i><b>9.7.1</b> Le pseudo <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="9.7.2" data-path="GLM.html"><a href="GLM.html#le-chi2-de-pearson-généralisé"><i class="fa fa-check"></i><b>9.7.2</b> Le <span class="math inline">\(\chi^2\)</span> de Pearson généralisé</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="GLM.html"><a href="GLM.html#ResidusGLM"><i class="fa fa-check"></i><b>9.8</b> Diagnostic, résidus</a></li>
+<li class="chapter" data-level="9.9" data-path="GLM.html"><a href="GLM.html#en-résumé-7"><i class="fa fa-check"></i><b>9.9</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="RegLogistique.html"><a href="RegLogistique.html"><i class="fa fa-check"></i><b>10</b> Régression logistique</a><ul>
+<li class="chapter" data-level="10.1" data-path="RegLogistique.html"><a href="RegLogistique.html#introduction-2"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="RegLogistique.html"><a href="RegLogistique.html#pourquoi-des-modèles-particuliers"><i class="fa fa-check"></i><b>10.2</b> Pourquoi des modèles particuliers ?</a></li>
+<li class="chapter" data-level="10.3" data-path="RegLogistique.html"><a href="RegLogistique.html#odds-et-odds-ratio"><i class="fa fa-check"></i><b>10.3</b> Odds et odds ratio</a></li>
+<li class="chapter" data-level="10.4" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-logistique-simple"><i class="fa fa-check"></i><b>10.4</b> Régression logistique simple</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="RegLogistique.html"><a href="RegLogistique.html#subquanti"><i class="fa fa-check"></i><b>10.4.1</b> Avec une variable explicative quantitative</a></li>
+<li class="chapter" data-level="10.4.2" data-path="RegLogistique.html"><a href="RegLogistique.html#sect1expquali"><i class="fa fa-check"></i><b>10.4.2</b> Avec une variable explicative qualitative</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-logistique-multiple"><i class="fa fa-check"></i><b>10.5</b> Régression logistique multiple</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="RegLogistique.html"><a href="RegLogistique.html#modèle-sans-interaction"><i class="fa fa-check"></i><b>10.5.1</b> Modèle sans interaction</a></li>
+<li class="chapter" data-level="10.5.2" data-path="RegLogistique.html"><a href="RegLogistique.html#modèle-avec-interactions"><i class="fa fa-check"></i><b>10.5.2</b> Modèle avec interactions</a></li>
+<li class="chapter" data-level="10.5.3" data-path="RegLogistique.html"><a href="RegLogistique.html#etude-complémentaire-du-modèle-retenu"><i class="fa fa-check"></i><b>10.5.3</b> Etude complémentaire du modèle retenu</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="RegLogistique.html"><a href="RegLogistique.html#quelques-codes-avec-python"><i class="fa fa-check"></i><b>10.6</b> Quelques codes avec python</a></li>
+<li class="chapter" data-level="10.7" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-polytomique"><i class="fa fa-check"></i><b>10.7</b> Régression polytomique</a><ul>
+<li class="chapter" data-level="10.7.1" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-multinomiale-ou-polytomique-non-ordonnée"><i class="fa fa-check"></i><b>10.7.1</b> Régression multinomiale ou polytomique non-ordonnée</a></li>
+<li class="chapter" data-level="10.7.2" data-path="RegLogistique.html"><a href="RegLogistique.html#régression-polytomique-ordonnée"><i class="fa fa-check"></i><b>10.7.2</b> Régression polytomique ordonnée</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="RegLogLin.html"><a href="RegLogLin.html"><i class="fa fa-check"></i><b>11</b> Régression de Poisson / régression loglinéaire</a><ul>
+<li class="chapter" data-level="11.1" data-path="RegLogLin.html"><a href="RegLogLin.html#modèle-de-régression-loglinéaire"><i class="fa fa-check"></i><b>11.1</b> Modèle de régression loglinéaire</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="RegLogLin.html"><a href="RegLogLin.html#pourquoi-un-modèle-particulier"><i class="fa fa-check"></i><b>11.1.1</b> Pourquoi un modèle particulier ?</a></li>
+<li class="chapter" data-level="11.1.2" data-path="RegLogLin.html"><a href="RegLogLin.html#estimation-des-paramètres-3"><i class="fa fa-check"></i><b>11.1.2</b> Estimation des paramètres</a></li>
+<li class="chapter" data-level="11.1.3" data-path="RegLogLin.html"><a href="RegLogLin.html#ajustement-et-prédiction"><i class="fa fa-check"></i><b>11.1.3</b> Ajustement et prédiction</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="RegLogLin.html"><a href="RegLogLin.html#exemple-de-régression-loglinéaire-avec-r"><i class="fa fa-check"></i><b>11.2</b> Exemple de régression loglinéaire avec R</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="RegLogLin.html"><a href="RegLogLin.html#régression-loglinéaire-simple"><i class="fa fa-check"></i><b>11.2.1</b> Régression loglinéaire simple</a></li>
+<li class="chapter" data-level="11.2.2" data-path="RegLogLin.html"><a href="RegLogLin.html#régression-loglinéaire-multiple"><i class="fa fa-check"></i><b>11.2.2</b> Régression loglinéaire multiple</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="RegLogLin.html"><a href="RegLogLin.html#sur-dispersion-et-modèle-binomial-négatif"><i class="fa fa-check"></i><b>11.3</b> Sur-dispersion et modèle binomial négatif</a></li>
+<li class="chapter" data-level="11.4" data-path="RegLogLin.html"><a href="RegLogLin.html#quelques-codes-avec-python-1"><i class="fa fa-check"></i><b>11.4</b> Quelques codes avec python</a></li>
+</ul></li>
+<li class="appendix"><span><b>Annexes</b></span></li>
+<li class="chapter" data-level="A" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html"><i class="fa fa-check"></i><b>A</b> Rappels de probabilités, statistiques et d’optimisation</a><ul>
+<li class="chapter" data-level="A.1" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#rappels-sur-les-échantillons-gaussiens"><i class="fa fa-check"></i><b>A.1</b> Rappels sur les échantillons gaussiens</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#la-loi-normale"><i class="fa fa-check"></i><b>A.1.1</b> La loi normale</a></li>
+<li class="chapter" data-level="A.1.2" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#vecteurs-gaussiens"><i class="fa fa-check"></i><b>A.1.2</b> Vecteurs gaussiens</a></li>
+<li class="chapter" data-level="A.1.3" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#loi-du-khi-deux-loi-de-student-loi-de-fisher"><i class="fa fa-check"></i><b>A.1.3</b> Loi du khi-deux, loi de Student, loi de Fisher</a></li>
+<li class="chapter" data-level="A.1.4" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#estimation-de-la-moyenne-et-de-la-variance-dun-échantillon-gaussien"><i class="fa fa-check"></i><b>A.1.4</b> Estimation de la moyenne et de la variance d’un échantillon gaussien</a></li>
+<li class="chapter" data-level="A.1.5" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#construction-dintervalles-de-confiance"><i class="fa fa-check"></i><b>A.1.5</b> Construction d’intervalles de confiance</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#estimation-sans-biais-de-variance-minimale"><i class="fa fa-check"></i><b>A.2</b> Estimation sans biais de variance minimale</a></li>
+<li class="chapter" data-level="A.3" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#Newton-Raphson"><i class="fa fa-check"></i><b>A.3</b> La méthode de Newton-Raphson</a></li>
+<li class="chapter" data-level="A.4" data-path="rappels-de-probabilités-statistiques-et-doptimisation.html"><a href="rappels-de-probabilités-statistiques-et-doptimisation.html#théorème-central-limite-condition-de-lindeberg"><i class="fa fa-check"></i><b>A.4</b> Théorème central limite: condition de Lindeberg</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html"><i class="fa fa-check"></i><b>B</b> Preuves de quelques résultats du cours</a><ul>
+<li class="chapter" data-level="B.1" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#ProofFisher"><i class="fa fa-check"></i><b>B.1</b> Preuve pour le test de Fisher</a></li>
+<li class="chapter" data-level="B.2" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:ortho"><i class="fa fa-check"></i><b>B.2</b> Preuve de la proposition @ref(prp:Proportho)</a></li>
+<li class="chapter" data-level="B.3" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:risque"><i class="fa fa-check"></i><b>B.3</b> Preuve de la proposition @ref(prp:risque)</a></li>
+<li class="chapter" data-level="B.4" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:KL"><i class="fa fa-check"></i><b>B.4</b> Preuve de la proposition @ref(prp:KL)</a></li>
+<li class="chapter" data-level="B.5" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:Mallows"><i class="fa fa-check"></i><b>B.5</b> Critère du <span class="math inline">\(C_p\)</span> de Mallows</a></li>
+<li class="chapter" data-level="B.6" data-path="preuves-de-quelques-résultats-du-cours.html"><a href="preuves-de-quelques-résultats-du-cours.html#annexe:Sj"><i class="fa fa-check"></i><b>B.6</b> Preuve de la proposition @ref(prp:eqSj)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li>Cathy Maugis-Rabusseau</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modèle linéaire général et modèle linéaire généralisé</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="RegLogLin" class="section level1">
+<h1><span class="header-section-number">Chapitre 11</span> Régression de Poisson / régression loglinéaire</h1>
+<blockquote>
+<p>Les slides associés à la régression loglinéaire sont disponibles ici <a href="">ExSlidesMLG.pdf</a> (partie II)</p>
+<p>Le jeu de données utilisé dans ce chapitre est <strong>ShipAccident</strong> issu de la librairie <code>AER</code>.</p>
+</blockquote>
+<p>Dans ce chapitre, on s’intéresse au cas où la variable réponse <span class="math inline">\(Y\)</span> compte le nombre de fois qu’un certain évènement a lieu dans une période de temps donnée (e.g. nombre d’accidents de la route sur une année, nombre d’enfants par famille, le nombre de grèves d’une compagnie sur une période de trois ans, etc).
+Nous allons illustrer les différents points abordés dans ce chapitre avec l’exemple suivant.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-75" class="example"><strong>Example 11.1  </strong></span><strong>Nombre d’incidents maritimes</strong>
+On s’intéresse à la variable <em>incidents</em> comptant le nombre d’incidents par mois de mise en service d’un bateau. On considère ici un échantillon de 40 bateaux et l’on souhaite expliquer la variable <em>incidents</em> à l’aide des 4 variables suivantes :</p>
+<ul>
+<li><em>type</em> : il y a 5 types de bateaux, désignés par <em>A-B-C-D-E</em>. C’est une variable qualitative nominale, codée sous forme de facteur,</li>
+<li><em>construction</em> : période de construction du bateau, à savoir entre 1960 et 1979 par périodes de 5 ans,</li>
+<li><em>operation</em> : période de mise en service (entre 1960 et 1974 ou entre 1975 et 1979),</li>
+<li><em>service</em> : nombre total de mois de mise en service du bateau.</li>
+</ul>
+</div>
+<p>Comme dans le chapitre précédent, on considère des variables explicatives quantitatives et qualitatives. Le comportement de ces variables est résumé sur la Figure <a href="RegLogLin.html#fig:Figln1">11.1</a>, sauf la variable <em>type</em> pour laquelle chacune des modalités apparaît exactement 8 fois.</p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="RegLogLin.html#cb241-1"></a><span class="kw">data</span>(<span class="st">&quot;ShipAccidents&quot;</span>)</span>
+<span id="cb241-2"><a href="RegLogLin.html#cb241-2"></a><span class="kw">summary</span>(ShipAccidents)</span></code></pre></div>
+<pre><code> type   construction   operation     service          incidents   
+ A:8   1960-64: 9    1960-74:19   Min.   :    0.0   Min.   : 0.0  
+ B:8   1965-69:10    1975-79:21   1st Qu.:  175.8   1st Qu.: 0.0  
+ C:8   1970-74:10                 Median :  782.0   Median : 2.0  
+ D:8   1975-79:11                 Mean   : 4089.3   Mean   : 8.9  
+ E:8                              3rd Qu.: 2078.5   3rd Qu.:11.0  
+                                  Max.   :44882.0   Max.   :58.0  </code></pre>
+<div class="figure"><span id="fig:Figln1"></span>
+<img src="Bookdown-poly_files/figure-html/Figln1-1.png" alt="\label{Figln1} Résumé des différentes variables de l'exemple d'incidents maritimes." width="672" />
+<p class="caption">
+Figure 11.1:  Résumé des différentes variables de l’exemple d’incidents maritimes.
+</p>
+</div>
+<p>À première vue, il semblerait d’après l’histogramme que la variable réponse <em>incidents</em> suive une loi de Poisson de petit paramètre. En particulier, la probabilité d’observer peu d’incidents est très élevée, alors que la probabilité d’observer plusieurs incidents décroit exponentiellement. Notons toutefois que la distribution de Poisson est la loi la plus simple permettant de modéliser des données de comptage, mais ce n’est pas la seule.</p>
+<div id="modèle-de-régression-loglinéaire" class="section level2">
+<h2><span class="header-section-number">11.1</span> Modèle de régression loglinéaire</h2>
+<div id="pourquoi-un-modèle-particulier" class="section level3">
+<h3><span class="header-section-number">11.1.1</span> Pourquoi un modèle particulier ?</h3>
+<p>Dans la suite, on note <span class="math inline">\(Y=(Y_1,\ldots,Y_n)&#39;\ \)</span> le vecteur des réponses, et <span class="math inline">\(\textbf{x}_i\)</span> le vecteur ligne des variables explicatives considérées pour l’individu <span class="math inline">\(i\)</span> pour chaque <span class="math inline">\(i\)</span> dans <span class="math inline">\(\{1\ldots,n\}\)</span>.
+Les variables réponses à expliquer <span class="math inline">\(Y_i | \textbf{x}_i \sim \mathcal P(\lambda(\textbf{x}_i))\)</span> vérifient
+<span class="math display">\[
+\mathbb{E}[Y_i|\textbf{x}_i] = \lambda(\textbf{x}_i),
+\]</span>
+avec <span class="math inline">\(\lambda(\textbf{x}_i)&gt;0\)</span>. L’objectif est de construire un modèle pour reconstituer <span class="math inline">\(\lambda(\textbf{x}_i)\)</span> en fonction des variables explicatives.</p>
+<p>Si on utilise le modèle de régression usuel <span class="math inline">\(Y_i = \textbf{x}_i\theta +\varepsilon_i\)</span> pour expliquer le nombre d’incidents en fonction du nombre de mois de mise en service, on s’aperçoit d’une part que l’hypothèse de normalité des résidus n’est clairement pas réaliste (voir la figure <a href="#fig:reglin"><strong>??</strong></a>).</p>
+<div class="figure"><span id="fig:Figreglin"></span>
+<img src="Bookdown-poly_files/figure-html/Figreglin-1.png" alt="\label{reglin} Ajustement d'un modèle linéaire (à gauche) et graphique QQ-plot des résidus correspondants (à droite)" width="672" />
+<p class="caption">
+Figure 11.2:  Ajustement d’un modèle linéaire (à gauche) et graphique QQ-plot des résidus correspondants (à droite)
+</p>
+</div>
+<p>D’autre part, les variables <span class="math inline">\(\varepsilon_i\)</span> étant supposées centrées,
+<span class="math display">\[\lambda(\textbf{x}_i) = \mathbb{E}[Y_i|\textbf{x}_i] = \textbf{x}_i \theta.\]</span>
+Or rien n’indique que <span class="math inline">\(\textbf{x}_i \theta &gt;0\)</span>.
+Il est donc nécessaire de définir une fonction lien reliant <span class="math inline">\(\lambda(\textbf{x}_i)\)</span> au prédicteur linéaire <span class="math inline">\(\eta_i= \textbf{x}_i \theta\)</span>.
+Pour garantir que l’espérance conditionnelle <span class="math inline">\(\lambda(\textbf{x}_i)=\mathbb{E}[Y_i|\textbf{x}_i]\)</span> est bien strictement positive, on définit le modèle
+par
+<span class="math display">\[ \lambda(\textbf{x}_i)=\lambda_\theta ({\bf x}_i) = \exp({\bf x}_i \theta). \]</span>
+Cela revient à poser <span class="math inline">\(\ln(\lambda_\theta ({\bf x}_i))={\bf x}_i \theta\)</span>. On retrouve la fonction lien logarithmique, qui est le lien canonique associé à la loi de Poisson, d’où le terme générique de <strong>régression loglinéaire</strong>.
+Une fois le modèle posé, il reste à estimer le paramètre du modèle <span class="math inline">\(\theta\)</span> inconnu.</p>
+</div>
+<div id="estimation-des-paramètres-3" class="section level3">
+<h3><span class="header-section-number">11.1.2</span> Estimation des paramètres</h3>
+<p>Comme dans le cas binaire, il faut bien faire attention à la nature des variables explicatives, et définir pour les variables qualitatives des modalités de référence. On se place ici dans un cadre très général.</p>
+<p>Le paramètre <span class="math inline">\(\theta\)</span> est estimé par la méthode du maximum de vraisemblance.
+La vraisemblance des données <span class="math inline">\(\underline{Y}=(Y_1,\ldots, Y_n)&#39;\)</span> est définie par :
+<span class="math display">\[
+L(\underline{Y}; \theta) = \prod_{i=1}^n \left[\frac{\lambda_\theta ({\bf x}_i)^{Y_i}}{Y_i !} \exp(-\lambda_\theta ({\bf x}_i))\right],
+\]</span>
+et la log-vraisemblance par :
+<span class="math display">\[\begin{eqnarray*}
+l(\underline{Y}; \theta) 
+&amp;=&amp; \sum_{i=1}^n \left[Y_i \ln(\lambda_\theta ({\bf x}_i)) - \lambda_\theta ({\bf x}_i) - \ln(Y_i !) \right]\\
+&amp;=&amp; \sum_{i=1}^n \left[Y_i {\bf x}_i \theta - e^{{\bf x}_i \theta} - \ln(Y_i !) \right].
+%&amp;=&amp; \sum_{i=1}^n Y_i - F(\theta_0 + \theta_1 x_i). 
+\end{eqnarray*}\]</span>
+Comme dans les chapitres précédents, on cherche alors à annuler les dérivées partielles :
+<span class="math display">\[\frac{\partial l(\underline{Y}; \theta) }{\partial \theta_j} = \sum_{i=1}^n \left[x_i^{(j)} (Y_i - e^{{\bf x}_i \theta})\right].\]</span></p>
+<p>Encore une fois, le système obtenu n’admet généralement pas de solution calculable analytiquement. Un algorithme de type Newton-Raphson ou de Fisher-scoring est alors mis en place, nécessitant l’évaluation la matrice hessienne ou la matrice d’information de Fisher. Les dérivées d’ordre secondes sont obtenues de la manière suivante :
+<span class="math display">\[\frac{\partial ^2 l(\underline{Y};\theta)}{\partial \theta_j \partial\theta_k} = -\sum_{i=1}^n x_i^{(j)} x_i^{(k)} e^{{\bf x}_i \theta}, \]</span>
+d’où l’écriture matricielle de l’information de Fisher
+<span class="math display">\[\mathcal I_n(\theta) = X&#39; W X, \quad \mbox{avec} \quad W = \mbox{diag}[e^{{\bf x}_1 \theta},\ldots,e^{{\bf x}_n \theta}],\]</span>
+et <span class="math inline">\(X\)</span> la matrice de design dont les lignes sont composées des vecteurs <span class="math inline">\({\bf x}_i\)</span>.</p>
+<p>Remarquons encore une fois que cette matrice dépend du paramètre inconnu <span class="math inline">\(\theta\)</span> d’où la nécessité de mettre en place un algorithme itératif.
+Par ailleurs, notons que les dérivées secondes ne dépendant pas des variables <span class="math inline">\(Y_i\)</span>, les algorithmes de Newton-Raphson et de Fisher-scoring sont exactement les mêmes.</p>
+</div>
+<div id="ajustement-et-prédiction" class="section level3">
+<h3><span class="header-section-number">11.1.3</span> Ajustement et prédiction</h3>
+<p>Une fois le modèle ajusté, nous obtenons une estimation pour chaque prédicteur linéaire <span class="math inline">\(\eta_i={\bf x}_i\theta\)</span> par <span class="math inline">\(\hat \eta_i={\bf x}_i\hat\theta\)</span> et pour chaque paramètre
+<span class="math display">\[\hat \lambda(\textbf{x}_i) = \lambda_{\hat\theta}({\bf x}_i) = \exp(\textbf{x}_i \hat\theta).\]</span></p>
+<p>Les valeurs ajustées <span class="math inline">\(\widehat Y_i\)</span> pour les <span class="math inline">\(Y_i\)</span> sont alors définies suivant la règle
+<span class="math display">\[
+\widehat Y_i \ \in\ \underset{k\in\mathbb{N}}{\mbox{argmax}} \ \left\{\frac{(\hat\lambda(\textbf{x}_i))^k}{k!}e^{-\hat\lambda(\textbf{x}_i)}\right\}.
+\]</span>
+<span class="math inline">\(\widehat Y_i\)</span> correspond donc à l’entier le plus probable pour la loi de Poisson de paramètre <span class="math inline">\(\hat\lambda(\textbf{x}_i)\)</span>.</p>
+<p>Si l’on se donne maintenant un nouvel individu décrit par <span class="math inline">\(\textbf{x}_0\)</span> alors le modèle ajusté permet de prédire son nombre moyen de “succès”, donné par <span class="math inline">\(\hat\lambda(\textbf{x}_0) = \exp(\textbf{x}_0 \hat\theta)\)</span>, et sa réponse prédite définie par</p>
+<p><span class="math display">\[
+\widehat Y_0 \ \in\ \underset{k\in\mathbb{N}}{\mbox{argmax}} \ \left{\frac{[\hat\lambda(\textbf{x}_0)]^k}{k!}e^{-\hat\lambda(\textbf{x}_0)}\right\}.
+\]</span></p>
+</div>
+</div>
+<div id="exemple-de-régression-loglinéaire-avec-r" class="section level2">
+<h2><span class="header-section-number">11.2</span> Exemple de régression loglinéaire avec R</h2>
+<p>L’étude inférentielle du modèle de régression de Poisson est similaire au cas logistique, et découle directement des résultats asymptotiques étudiés dans le chapitre <a href="GLM.html#GLM">9</a>. Ils ne sont donc pas détaillés ici, mais illustrés dans cette partie sur l’exemple du nombre d’incidents maritimes.</p>
+<div id="régression-loglinéaire-simple" class="section level3">
+<h3><span class="header-section-number">11.2.1</span> Régression loglinéaire simple</h3>
+<p>Dans cette section, on modélise la variable réponse <em>incidents</em> à l’aide d’une seule variable explicative. On va distinguer selon la nature de la variable explicative.</p>
+<div id="variable-explicative-quantitative" class="section level4">
+<h4><span class="header-section-number">11.2.1.1</span> Variable explicative quantitative</h4>
+<p>Commençons par modéliser la variable réponse <em>incidents</em> à l’aide de la variable <span class="math inline">\(x=\)</span> <em>service</em> :
+<span class="math display">\[\ln[\lambda_\theta(x)] = \theta_0 + \theta_1 x.\]</span></p>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="RegLogLin.html#cb243-1"></a>fit.service &lt;-<span class="st"> </span><span class="kw">glm</span>(incidents <span class="op">~</span><span class="st"> </span>service, <span class="dt">data=</span>ShipAccidents, <span class="dt">family=</span>poisson)</span>
+<span id="cb243-2"><a href="RegLogLin.html#cb243-2"></a><span class="kw">summary</span>(fit.service)</span></code></pre></div>
+<pre><code>
+Call:
+glm(formula = incidents ~ service, family = poisson, data = ShipAccidents)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-6.0040  -3.1674  -2.0055   0.9155   7.2372  
+
+Coefficients:
+             Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) 1.613e+00  7.150e-02   22.55   &lt;2e-16 ***
+service     6.417e-05  2.870e-06   22.36   &lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 730.25  on 39  degrees of freedom
+Residual deviance: 374.55  on 38  degrees of freedom
+AIC: 476.41
+
+Number of Fisher Scoring iterations: 6</code></pre>
+<p><img src="Bookdown-poly_files/figure-html/unnamed-chunk-134-1.png" width="672" /></p>
+<p>L’estimation du coefficient de la variable <em>service</em> vaut <span class="math inline">\(6.417 \times 10^{-5}\)</span>, et est donc très proche de <span class="math inline">\(0\)</span>.
+Cependant, la <span class="math inline">\(p\)</span>-valeur du <span class="math inline">\(Z\)</span>-test (basé sur l’approximation Gaussienne) étant <span class="math inline">\(&lt;2\times10^{-16}\)</span>, nous rejetons la nullité de ce coefficient. Cela est probablement dû à la très grande variance de cette variable. En particulier, la variable <em>service</em> semble avoir une influence significative sur la variable <em>incidents</em>.</p>
+</div>
+<div id="variable-explicative-qualitative" class="section level4">
+<h4><span class="header-section-number">11.2.1.2</span> Variable explicative qualitative</h4>
+<p>À présent, modélisons la variable réponse <em>incidents</em> à l’aide de la seule variable qualitative <em>type</em> à <span class="math inline">\(5\)</span> modalités.<br />
+Comme dans le cas binaire, pour rendre le modèle identifiable, il faut choisir une modalité de référence (ici, la modalité choisie par défaut est <em>type=A</em>). Le modèle s’écrit donc
+<span class="math display">\[\ln[\lambda_\theta(x)] = \theta_0 + \theta_1 \mathbb{1}_{{\tt type=B}} + \theta_2 \mathbb{1}_{{\tt type=C}} + \theta_3 \mathbb{1}_{{\tt type=D}} + \theta_4 \mathbb{1}_{{\tt type=E}}.\]</span></p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="RegLogLin.html#cb245-1"></a>fit.type &lt;-<span class="st"> </span><span class="kw">glm</span>(incidents <span class="op">~</span><span class="st"> </span>type, <span class="dt">data=</span>ShipAccidents, <span class="dt">family=</span>poisson)</span>
+<span id="cb245-2"><a href="RegLogLin.html#cb245-2"></a><span class="kw">summary</span>(fit.type)</span></code></pre></div>
+<pre><code>
+Call:
+glm(formula = incidents ~ type, family = poisson, data = ShipAccidents)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-7.9530  -2.0616  -0.4541   1.2873   4.3425  
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)   1.6582     0.1543  10.747  &lt; 2e-16 ***
+typeB         1.7957     0.1666  10.777  &lt; 2e-16 ***
+typeC        -1.2528     0.3273  -3.827  0.00013 ***
+typeD        -0.9045     0.2875  -3.146  0.00165 ** 
+typeE        -0.2719     0.2346  -1.159  0.24650    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 730.25  on 39  degrees of freedom
+Residual deviance: 275.65  on 35  degrees of freedom
+AIC: 383.52
+
+Number of Fisher Scoring iterations: 6</code></pre>
+<p>L’interprétation des coefficients n’étant pas si simple, il est possible de tester la significativité de la variable  par un test de sous-modèle :</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="RegLogLin.html#cb247-1"></a><span class="kw">anova</span>(<span class="kw">glm</span>(incidents <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">data=</span>ShipAccidents, <span class="dt">family=</span>poisson), fit.type, <span class="dt">test=</span><span class="st">&quot;Chisq&quot;</span>)</span></code></pre></div>
+<pre><code>Analysis of Deviance Table
+
+Model 1: incidents ~ 1
+Model 2: incidents ~ type
+  Resid. Df Resid. Dev Df Deviance  Pr(&gt;Chi)    
+1        39     730.25                          
+2        35     275.65  4    454.6 &lt; 2.2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Ici, le test de rapport de vraisemblance (basé sur la déviance des modèles étudiés) rejette le sous-modèle nul. La variable <em>type</em> a une influence significative sur le nombre d’incidents, ce qui est en accord avec les boîtes à moustaches (boxplots) représentées en Figure <a href="RegLogLin.html#fig:incidenttype">11.3</a>. On comprend aussi pourquoi le paramètre estimé associé à <em>type=B</em> est très différent de 0 car différence de comportement de <em>incident</em> entre la modalité <em>A</em> de référence et <em>B</em>. Au contraire, on accepte la nullité du paramètre associé à <em>type=E</em> ce qui est en accord avec le comportement similaire de <em>incident</em> entre les modalités <em>A</em> et <em>E</em> de type (cf Figure <a href="RegLogLin.html#fig:incidenttype">11.3</a>).</p>
+<div class="figure"><span id="fig:incidenttype"></span>
+<img src="Bookdown-poly_files/figure-html/incidenttype-1.png" alt="\label{incidenttype} Nombres d'accidents par mois de services en fonction du type de bateau." width="672" />
+<p class="caption">
+Figure 11.3:  Nombres d’accidents par mois de services en fonction du type de bateau.
+</p>
+</div>
+</div>
+</div>
+<div id="régression-loglinéaire-multiple" class="section level3">
+<h3><span class="header-section-number">11.2.2</span> Régression loglinéaire multiple</h3>
+<div id="ajustement-du-modèle-additif" class="section level4">
+<h4><span class="header-section-number">11.2.2.1</span> Ajustement du modèle additif</h4>
+<p>Dans cette section, on modélise la variable réponse <em>incidents</em> à l’aide de toutes les variables explicatives disponibles.
+Comme pour le cas binaire, nous pourrions considérer toutes les interactions d’ordre 2 entre les variables explicatives.
+Cependant, cela mènerait à estimer 37 coefficients, ce qui semble peu raisonnable pour un échantillon de 40 bateaux.
+Nous ajustons donc le modèle additif suivant</p>
+<p><span class="math display">\[Y_i\sim\mathcal{P}(\lambda(\bf x)_i)\]</span> avec</p>
+<p><span class="math display">\[
+\begin{array}{l l}
+\ln[\lambda(\textbf{x}_i)] = &amp; \theta_0 + \alpha_1 \mathbb{1}_{{\tt type_i=B}} + \alpha_2 \mathbb{1}_{{\tt type_i=C}} + \alpha_3 \mathbb{1}_{{\tt type_i=D}} +\alpha_4 \mathbb{1}_{{\tt type_i=E}}\\
+&amp; + \beta_1 \mathbb{1}_{const_i = &quot;65-69&quot;} + \beta_2 \mathbb{1}_{const_i = &quot;70-74&quot;}  + \beta_3 \mathbb{1}_{const_i =&quot;75-79&quot;} \\
+&amp; + \gamma_1\mathbb{1}_{op_i = &quot;75-79&quot;} + \theta_1 service_i \\
+\end{array}
+\]</span>
+Les modalités de référence des deux variables qualitatives <em>construction</em> et <em>operation</em> choisies sont respectivement <em>1960-64</em> et <em>1960-74</em>.</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="RegLogLin.html#cb249-1"></a>fit.add &lt;-<span class="st"> </span><span class="kw">glm</span>(incidents <span class="op">~</span><span class="st"> </span>. , <span class="dt">data=</span>ShipAccidents, <span class="dt">family=</span>poisson)</span>
+<span id="cb249-2"><a href="RegLogLin.html#cb249-2"></a><span class="kw">summary</span>(fit.add)</span></code></pre></div>
+<pre><code>
+Call:
+glm(formula = incidents ~ ., family = poisson, data = ShipAccidents)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.5810  -1.4773  -0.8972   0.5952   3.2154  
+
+Coefficients:
+                      Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)          5.492e-04  2.787e-01   0.002 0.998427    
+typeB                5.933e-01  2.163e-01   2.743 0.006092 ** 
+typeC               -1.190e+00  3.275e-01  -3.635 0.000278 ***
+typeD               -8.210e-01  2.877e-01  -2.854 0.004321 ** 
+typeE               -2.900e-01  2.351e-01  -1.233 0.217466    
+construction1965-69  1.148e+00  1.793e-01   6.403 1.53e-10 ***
+construction1970-74  1.596e+00  2.242e-01   7.122 1.06e-12 ***
+construction1975-79  5.670e-01  2.809e-01   2.018 0.043557 *  
+operation1975-79     8.619e-01  1.317e-01   6.546 5.92e-11 ***
+service              7.270e-05  8.488e-06   8.565  &lt; 2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 730.253  on 39  degrees of freedom
+Residual deviance:  99.793  on 30  degrees of freedom
+AIC: 217.66
+
+Number of Fisher Scoring iterations: 5</code></pre>
+</div>
+<div id="sélection-de-variables-et-sous-modèles" class="section level4">
+<h4><span class="header-section-number">11.2.2.2</span> Sélection de variables et sous-modèles</h4>
+<p>Il est possible de faire de la sélection de variables grâce à la commande <em>step(fit.add)</em>.
+Une procédure de sélection de variables descendante sur critère AIC est alors appliquée sur le modèle additif.
+Dans notre cas, elle renvoie exactement le même modèle.</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="RegLogLin.html#cb251-1"></a><span class="kw">step</span>(fit.add,<span class="dt">trace=</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>Start:  AIC=217.66
+incidents ~ type + construction + operation + service
+
+               Df Deviance    AIC
+&lt;none&gt;              99.793 217.66
+- type          4  148.053 257.92
+- operation     1  147.687 263.55
+- service       1  182.605 298.47
+- construction  3  191.419 303.29</code></pre>
+<pre><code>
+Call:  glm(formula = incidents ~ type + construction + operation + service, 
+    family = poisson, data = ShipAccidents)
+
+Coefficients:
+        (Intercept)                typeB                typeC  
+          0.0005492            0.5932730           -1.1903189  
+              typeD                typeE  construction1965-69  
+         -0.8210370           -0.2899922            1.1478796  
+construction1970-74  construction1975-79     operation1975-79  
+          1.5964752            0.5669790            0.8618750  
+            service  
+          0.0000727  
+
+Degrees of Freedom: 39 Total (i.e. Null);  30 Residual
+Null Deviance:      730.3 
+Residual Deviance: 99.79    AIC: 217.7</code></pre>
+<p>On pourrait également par exemple tester la nullité simultanée des coefficients des variables <em>contructions</em> et <em>operation</em>, ce qui revient à faire un test de sous-modèle, en considérant seulement les variables <em>type</em> et <em>service</em>.</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="RegLogLin.html#cb254-1"></a>fit.ssmod &lt;-<span class="st"> </span><span class="kw">glm</span>(incidents <span class="op">~</span><span class="st"> </span>type <span class="op">+</span><span class="st"> </span>service, <span class="dt">data=</span>ShipAccidents, <span class="dt">family=</span>poisson)</span>
+<span id="cb254-2"><a href="RegLogLin.html#cb254-2"></a><span class="kw">anova</span>(fit.ssmod, fit.add,  <span class="dt">test=</span><span class="st">&quot;Chisq&quot;</span>)</span></code></pre></div>
+<pre><code>Analysis of Deviance Table
+
+Model 1: incidents ~ type + service
+Model 2: incidents ~ type + construction + operation + service
+  Resid. Df Resid. Dev Df Deviance  Pr(&gt;Chi)    
+1        34    230.832                          
+2        30     99.793  4   131.04 &lt; 2.2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Le test de rapport de vraisemblance rejette le sous-modèle avec une <span class="math inline">\(p\)</span>-valeur <span class="math inline">\(&lt;2\times 10^{-16}\)</span>.</p>
+</div>
+<div id="prédiction-1" class="section level4">
+<h4><span class="header-section-number">11.2.2.3</span> Prédiction</h4>
+<p>On souhaite prédire le nombre moyen d’incidents pour un bateau de type <em>A</em>, construit entre 1965 et 1969, et mis en service entre 1960 et 1975 au bout de 1000 mois de services.</p>
+<p><span class="math display">\[
+\hat\lambda_0 = e^{X_0 \hat\theta_{ML}} \textrm{ with } X_0=(1,\underbrace{0,0,0,0}_{type},\underbrace{1,0,0}_{construction},0,1000)
+\]</span></p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="RegLogLin.html#cb256-1"></a>new.data =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">type=</span><span class="kw">factor</span>(<span class="st">&quot;A&quot;</span>), <span class="dt">construction=</span><span class="kw">factor</span>(<span class="st">&quot;1965-69&quot;</span>),</span>
+<span id="cb256-2"><a href="RegLogLin.html#cb256-2"></a>                       <span class="dt">operation=</span><span class="kw">factor</span>(<span class="st">&quot;1960-74&quot;</span>), <span class="dt">service =</span> <span class="dv">1000</span>)</span>
+<span id="cb256-3"><a href="RegLogLin.html#cb256-3"></a>lambda_hat =<span class="st"> </span><span class="kw">exp</span>(<span class="kw">predict</span>(fit.add,new.data))</span>
+<span id="cb256-4"><a href="RegLogLin.html#cb256-4"></a>lambda_hat</span></code></pre></div>
+<pre><code>       1 
+3.391016 </code></pre>
+<p>Utilisant la loi de Poisson <span class="math inline">\(A\sim\mathcal{P}(\hat\lambda_0)\)</span>, on peut alors prédire la probabilité de certains évenements comme par exemple</p>
+<ul>
+<li><p>probabilité que ce type de bateau n’ait aucun incident : <span class="math inline">\(\mathbb{P}(A=0) = e^{- \hat\lambda_0}\)</span></p></li>
+<li><p>probabilité que ce type de bateau ait au plus un incident :<br />
+<span class="math inline">\(\mathbb{P}(A\leq 1) = (1+\hat\lambda_0)e^{- \hat\lambda_0}\)</span></p></li>
+</ul>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="RegLogLin.html#cb258-1"></a><span class="co"># probabilité d&#39;aucun incident : </span></span>
+<span id="cb258-2"><a href="RegLogLin.html#cb258-2"></a><span class="kw">exp</span>(<span class="op">-</span>lambda_hat)</span></code></pre></div>
+<pre><code>         1 
+0.03367446 </code></pre>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="RegLogLin.html#cb260-1"></a><span class="co"># probabilité d&#39;au plus un incident : </span></span>
+<span id="cb260-2"><a href="RegLogLin.html#cb260-2"></a>(<span class="dv">1</span><span class="op">+</span>lambda_hat) <span class="op">*</span><span class="st"> </span><span class="kw">exp</span>(<span class="op">-</span>lambda_hat)</span></code></pre></div>
+<pre><code>        1 
+0.1478651 </code></pre>
+</div>
+</div>
+</div>
+<div id="sur-dispersion-et-modèle-binomial-négatif" class="section level2">
+<h2><span class="header-section-number">11.3</span> Sur-dispersion et modèle binomial négatif</h2>
+<p>Dans le cas du modèle de régression de Poisson, on a
+<span class="math display">\[\mathbb{E}[Y_i|{\bf x}_i] = \text{Var}(Y_i|{\bf x}_i),\]</span>
+ce qui est une hypothèse très restrictive.
+Si <span class="math inline">\(\mathbb{E}[Y_i|{\bf x}_i] &gt; \text{Var}(Y_i|{\bf x}_i)\)</span> (respectivement <span class="math inline">\(\mathbb{E}[Y_i|{\bf x}_i] &lt; \text{Var}(Y_i|{\bf x}_i)\)</span>), nous parlons alors de <em>sur-dispersion</em> (respectivement de <em>sous-dispersion</em>). Ces deux propriétés n’étant pas autorisées par le modèle de Poisson, nous définissons une classe plus riche de modèles basée sur la loi binomiale négative.</p>
+<p>Rappelons que la loi binomiale négative de paramètres <span class="math inline">\(n\)</span> et <span class="math inline">\(p\)</span> permet de modéliser le nombre d’échecs nécessaires avant l’obtention de <span class="math inline">\(n\)</span> succès lors de la répétition de “tirage” indépendants de probabilité de succès <span class="math inline">\(p\)</span>.
+Elle peut être généralisée à <span class="math inline">\(n=r\)</span> non-entier.</p>
+<p>Le modèle binomial négatif suppose que la loi de <span class="math inline">\(Y_i\)</span> vérifie pour tout <span class="math inline">\(k\)</span>
+<span class="math display">\[\mathbb{P}(Y_i = k) = \frac{\Gamma(r+k)}{k! \Gamma(r)} \left(\frac{\lambda(\textbf{x}_i)}{\lambda(\textbf{x}_i)+r}\right)^k \left(1-\frac{\lambda(\textbf{x}_i)}{\lambda(\textbf{x}_i)+r}\right)^r.\]</span>
+Nous pouvons alors démontrer que
+<span class="math display">\[\mathbb{E}[Y_i] = \lambda(\textbf{x}_i) \quad \mbox{et}\quad \text{Var}(Y_i) = \lambda(\textbf{x}_i) (1 + \nu^2\lambda(\textbf{x}_i)),\]</span>
+où <span class="math inline">\(\nu = 1/r\)</span> mesure le degré de sur-dispersion. Remarquons que le cas limite <span class="math inline">\(\nu=0\)</span> correspond à la loi de Poisson.</p>
+<p>Comme dans le cas Poisson, l’espérance conditionnelle est modélisée par
+<span class="math display">\[\mathbb{E}[Y_i|{\bf x}_i] = \lambda_\theta({\bf x}_i) = \exp({\bf x}_i \theta).\]</span></p>
+<p>En particulier, ce modèle appartient également à la famille des modèles de regression loglinéaire. Les paramètres inconnus <span class="math inline">\(\theta\)</span> et <span class="math inline">\(\nu\)</span> sont estimés par maximum de vraisemblance.
+Dans R, le modèle binomial négatif est implémenté dans la fonction <code>glm()</code> pour la famille de lois <code>family = quasipoisson(link = "log")</code>.</p>
+</div>
+<div id="quelques-codes-avec-python-1" class="section level2">
+<h2><span class="header-section-number">11.4</span> Quelques codes avec python</h2>
+<div class="sourceCode" id="cb262"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb262-1"><a href="RegLogLin.html#cb262-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb262-2"><a href="RegLogLin.html#cb262-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb262-3"><a href="RegLogLin.html#cb262-3"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb262-4"><a href="RegLogLin.html#cb262-4"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> glm</span>
+<span id="cb262-5"><a href="RegLogLin.html#cb262-5"></a></span>
+<span id="cb262-6"><a href="RegLogLin.html#cb262-6"></a>Accidpy<span class="op">=</span>r.ShipAccidents</span>
+<span id="cb262-7"><a href="RegLogLin.html#cb262-7"></a>fitservicepy<span class="op">=</span>glm(<span class="st">&#39;incidents~service&#39;</span>,data<span class="op">=</span>Accidpy,family<span class="op">=</span>sm.families.Poisson()).fit()</span>
+<span id="cb262-8"><a href="RegLogLin.html#cb262-8"></a><span class="bu">print</span>(fitservicepy.summary())</span></code></pre></div>
+<pre><code>                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:              incidents   No. Observations:                   40
+Model:                            GLM   Df Residuals:                       38
+Model Family:                 Poisson   Df Model:                            1
+Link Function:                    log   Scale:                          1.0000
+Method:                          IRLS   Log-Likelihood:                -236.21
+Date:                Jeu, 28 oct 2021   Deviance:                       374.55
+Time:                        11:09:43   Pearson chi2:                     368.
+No. Iterations:                     6                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      1.6127      0.072     22.555      0.000       1.473       1.753
+service     6.417e-05   2.87e-06     22.356      0.000    5.85e-05    6.98e-05
+==============================================================================</code></pre>
+<div class="sourceCode" id="cb264"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb264-1"><a href="RegLogLin.html#cb264-1"></a>fittypepy<span class="op">=</span>glm(<span class="st">&#39;incidents~C(type)&#39;</span>,data<span class="op">=</span>Accidpy,family<span class="op">=</span>sm.families.Poisson()).fit()</span>
+<span id="cb264-2"><a href="RegLogLin.html#cb264-2"></a><span class="bu">print</span>(fittypepy.summary())</span></code></pre></div>
+<pre><code>                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:              incidents   No. Observations:                   40
+Model:                            GLM   Df Residuals:                       35
+Model Family:                 Poisson   Df Model:                            4
+Link Function:                    log   Scale:                          1.0000
+Method:                          IRLS   Log-Likelihood:                -186.76
+Date:                Jeu, 28 oct 2021   Deviance:                       275.65
+Time:                        11:09:44   Pearson chi2:                     249.
+No. Iterations:                     5                                         
+Covariance Type:            nonrobust                                         
+================================================================================
+                   coef    std err          z      P&gt;|z|      [0.025      0.975]
+--------------------------------------------------------------------------------
+Intercept        1.6582      0.154     10.747      0.000       1.356       1.961
+C(type)[T.B]     1.7957      0.167     10.777      0.000       1.469       2.122
+C(type)[T.C]    -1.2528      0.327     -3.827      0.000      -1.894      -0.611
+C(type)[T.D]    -0.9045      0.287     -3.146      0.002      -1.468      -0.341
+C(type)[T.E]    -0.2719      0.235     -1.159      0.246      -0.732       0.188
+================================================================================</code></pre>
+<div class="sourceCode" id="cb266"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb266-1"><a href="RegLogLin.html#cb266-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> chi2</span>
+<span id="cb266-2"><a href="RegLogLin.html#cb266-2"></a>LR_stat<span class="op">=</span>(<span class="op">-</span><span class="dv">2</span>)<span class="op">*</span>(fittypepy.llnull <span class="op">-</span> fittypepy.llf)<span class="op">;</span></span>
+<span id="cb266-3"><a href="RegLogLin.html#cb266-3"></a>pvalue<span class="op">=</span><span class="dv">1</span><span class="op">-</span>chi2(<span class="dv">4</span>).cdf(LR_stat)<span class="op">;</span></span>
+<span id="cb266-4"><a href="RegLogLin.html#cb266-4"></a><span class="bu">print</span>(LR_stat)</span></code></pre></div>
+<pre><code>454.6025535903679</code></pre>
+<div class="sourceCode" id="cb268"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb268-1"><a href="RegLogLin.html#cb268-1"></a><span class="bu">print</span>(pvalue)</span></code></pre></div>
+<pre><code>0.0</code></pre>
+<div class="sourceCode" id="cb270"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb270-1"><a href="RegLogLin.html#cb270-1"></a>fitaddpy <span class="op">=</span>glm(<span class="st">&#39;incidents~C(type)+C(construction)+C(operation)+service&#39;</span>,</span>
+<span id="cb270-2"><a href="RegLogLin.html#cb270-2"></a>               data<span class="op">=</span>Accidpy,family<span class="op">=</span>sm.families.Poisson()).fit()</span>
+<span id="cb270-3"><a href="RegLogLin.html#cb270-3"></a><span class="bu">print</span>(fitaddpy.summary())</span></code></pre></div>
+<pre><code>                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:              incidents   No. Observations:                   40
+Model:                            GLM   Df Residuals:                       30
+Model Family:                 Poisson   Df Model:                            9
+Link Function:                    log   Scale:                          1.0000
+Method:                          IRLS   Log-Likelihood:                -98.830
+Date:                Jeu, 28 oct 2021   Deviance:                       99.793
+Time:                        11:09:45   Pearson chi2:                     90.0
+No. Iterations:                     6                                         
+Covariance Type:            nonrobust                                         
+==============================================================================================
+                                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------
+Intercept                      0.0005      0.279      0.002      0.998      -0.546       0.547
+C(type)[T.B]                   0.5933      0.216      2.743      0.006       0.169       1.017
+C(type)[T.C]                  -1.1903      0.327     -3.635      0.000      -1.832      -0.548
+C(type)[T.D]                  -0.8210      0.288     -2.854      0.004      -1.385      -0.257
+C(type)[T.E]                  -0.2900      0.235     -1.233      0.217      -0.751       0.171
+C(construction)[T.1965-69]     1.1479      0.179      6.403      0.000       0.796       1.499
+C(construction)[T.1970-74]     1.5965      0.224      7.122      0.000       1.157       2.036
+C(construction)[T.1975-79]     0.5670      0.281      2.018      0.044       0.016       1.118
+C(operation)[T.1975-79]        0.8619      0.132      6.546      0.000       0.604       1.120
+service                      7.27e-05   8.49e-06      8.565      0.000    5.61e-05    8.93e-05
+==============================================================================================</code></pre>
+<div class="sourceCode" id="cb272"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb272-1"><a href="RegLogLin.html#cb272-1"></a>fitssmodpy <span class="op">=</span> glm(<span class="st">&#39;incidents~C(type)+service&#39;</span>,data<span class="op">=</span>Accidpy,family<span class="op">=</span>sm.families.Poisson()).fit()</span>
+<span id="cb272-2"><a href="RegLogLin.html#cb272-2"></a>LR_stat<span class="op">=</span>(fitssmodpy.deviance <span class="op">-</span> fitaddpy.deviance)</span>
+<span id="cb272-3"><a href="RegLogLin.html#cb272-3"></a><span class="bu">print</span>(LR_stat)</span></code></pre></div>
+<pre><code>131.03874238496047</code></pre>
+<div class="sourceCode" id="cb274"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb274-1"><a href="RegLogLin.html#cb274-1"></a><span class="bu">print</span>(<span class="dv">1</span><span class="op">-</span>chi2(<span class="dv">4</span>).cdf(LR_stat))</span></code></pre></div>
+<pre><code>0.0</code></pre>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="RegLogistique.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rappels-de-probabilités-statistiques-et-doptimisation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Bookdown-poly.pdf", "Bookdown-poly.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

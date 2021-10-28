@@ -1,0 +1,63 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+
+.summarybox {
+  padding: 1em;
+  background: #F1C9CD;
+  color: black;
+  border: 2px solid red;
+  border-radius: 10px;
+}
+.center {
+  text-align: center;
+}
+
+
+.definition {
+  padding: 0.5em;
+  background: #E3F7FA;
+  color: black;
+  padding-bottom: 0;
+}
+
+.proposition {
+  padding: 0.5em;
+  background: #FBD2D6;
+  color: black;
+  padding-bottom: 0;
+}
+
+.theorem {
+  padding: 0.5em;
+  background: #FF7483 ;
+  color: black;
+  padding-bottom: 0;
+}
+
+.proof {
+  padding: 0.5em;
+  background: #F0EFEF;
+  color: black;
+  padding-bottom: 0;
+}
+
+.algobox {
+  padding: 1em;
+  background: #F0EFEF;
+  color: black;
+  border: 2px solid grey;
+  border-radius: 10px;
+}
